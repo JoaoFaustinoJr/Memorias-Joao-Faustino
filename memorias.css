@@ -543,3 +543,12 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
  .cover .swipe-hint{bottom:34px}
  .cover-memory-landscape{top:40%;bottom:2%;background-position:center 46%}
 }
+
+/* v2.62 — ajustes marcados pelo autor: bloco de nomes sobe e seta sai da fotografia */
+.cover .names{transform:translateY(-28px);margin-top:26px;background:linear-gradient(to bottom,rgba(8,45,73,.58),rgba(8,45,73,.24));padding:8px 22px 11px}
+.cover .swipe-hint{display:none!important}
+.cover .page-edge.next{right:-1px;top:50%;transform:translateY(-50%);background:rgba(23,50,75,.72);border-radius:14px 0 0 14px}
+@media(max-width:600px){
+ .cover .names{transform:translateY(-24px);margin-top:24px;padding:7px 16px 10px}
+ .cover .page-edge.next{right:-1px;top:50%}
+}
