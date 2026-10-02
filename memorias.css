@@ -421,3 +421,15 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .ink-splash i{width:9px;height:8px;right:3px;top:3px}.ink-splash b{width:6px;height:7px;right:59px;top:28px}.ink-splash em{width:5px;height:5px;right:10px;top:94px}.ink-splash span{width:3px;height:4px;right:66px;top:76px}
 @media(max-width:800px){.ink-splash{right:7px;width:62px;opacity:.62}.blue-ink-page article{padding-right:5px}}
 @media print{.ink-splash{opacity:.62}}
+
+/* v2.45 — detalhe dourado revelado ao estender a fita */
+.paged-reader .book>.page.page-active .page-bookmark.set span:before{
+ content:"✦";position:absolute;left:50%;top:82px;transform:translateX(-50%);
+ width:20px;height:20px;display:grid;place-items:center;
+ color:#d0ad62;font:400 15px/20px Georgia,serif;
+ border-top:1px solid rgba(208,173,98,.82);border-bottom:1px solid rgba(208,173,98,.62);
+ text-shadow:0 1px 1px rgba(45,25,10,.5);
+}
+.paged-reader .book>.page.page-active .page-bookmark.set span{
+ box-shadow:inset 1px 0 0 rgba(208,173,98,.58),inset -1px 0 0 rgba(208,173,98,.42),inset 4px 0 7px rgba(255,255,255,.10),inset -5px 0 8px rgba(0,0,0,.24),0 4px 7px rgba(34,20,18,.22)!important;
+}
