@@ -118,3 +118,52 @@ section:has(h2:is(
  .print-btn{transform:scale(.82);transform-origin:right bottom;opacity:.78}
  nav,.toolbar{transition:transform .22s ease}
 }
+
+/* v2.24 — vinhetas lineares, desenhadas com CSS e ouro envelhecido */
+.story-start{position:relative}
+.story-start .page-head{position:relative}
+.engraving-road .page-head::after,.engraving-river .page-head::after,.engraving-rural .page-head::after,
+.engraving-tree .page-head::after,.engraving-family .page-head::after,.engraving-faith .page-head::after,
+.engraving-horse .page-head::after{
+ content:"";display:block;width:76%;height:34px;margin:13px auto 5px;opacity:.55
+}
+.engraving-road .page-head::after{
+ background:
+ linear-gradient(165deg,transparent 47%,var(--gold) 48% 49%,transparent 50%) left bottom/55% 75% no-repeat,
+ linear-gradient(15deg,transparent 47%,var(--gold) 48% 49%,transparent 50%) right bottom/55% 75% no-repeat,
+ linear-gradient(100deg,transparent 48%,var(--gold) 49% 50%,transparent 51%) center/22% 100% no-repeat
+}
+.engraving-river .page-head::after{
+ background:
+ radial-gradient(90% 60% at 25% 20%,transparent 58%,var(--gold) 59% 60%,transparent 61%),
+ radial-gradient(90% 60% at 70% 55%,transparent 58%,var(--gold) 59% 60%,transparent 61%)
+}
+.engraving-rural .page-head::after{
+ background:
+ radial-gradient(70% 100% at 50% 105%,transparent 63%,var(--gold) 64% 65%,transparent 66%),
+ linear-gradient(90deg,transparent 49%,var(--gold) 50% 51%,transparent 52%) center bottom/1px 70% no-repeat
+}
+.engraving-tree .page-head::after{
+ background:
+ linear-gradient(90deg,transparent 49%,var(--gold) 50% 51%,transparent 52%) center bottom/2px 72% no-repeat,
+ radial-gradient(ellipse at 50% 34%,transparent 47%,var(--gold) 48% 50%,transparent 51%) center/45% 85% no-repeat
+}
+.engraving-family .page-head::after{
+ background:
+ radial-gradient(circle,var(--gold) 0 2px,transparent 2.5px) 50% 15%/100% 100% no-repeat,
+ linear-gradient(145deg,transparent 49%,var(--gold) 50% 51%,transparent 52%) 38% 80%/28% 70% no-repeat,
+ linear-gradient(35deg,transparent 49%,var(--gold) 50% 51%,transparent 52%) 62% 80%/28% 70% no-repeat
+}
+.engraving-faith .page-head::after{
+ background:
+ linear-gradient(90deg,transparent 49%,var(--gold) 50% 51%,transparent 52%) center/1px 100% no-repeat,
+ linear-gradient(0deg,transparent 48%,var(--gold) 49% 51%,transparent 52%) center 35%/24px 1px no-repeat
+}
+.engraving-horse .page-head::after{content:"♞";background:none;text-align:center;height:auto;font:26px Georgia;color:var(--gold)}
+/* a vinheta textual antiga fica menor quando há desenho temático */
+.engraving-road::before,.engraving-river::before,.engraving-rural::before,.engraving-tree::before,
+.engraving-family::before,.engraving-faith::before,.engraving-horse::before{font-size:.8rem;opacity:.38}
+@media(max-width:760px){
+ .engraving-road .page-head::after,.engraving-river .page-head::after,.engraving-rural .page-head::after,
+ .engraving-tree .page-head::after,.engraving-family .page-head::after,.engraving-faith .page-head::after{height:25px;margin:8px auto 3px}
+}
