@@ -401,3 +401,12 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
  .paged-reader .book>.page.page-active .page-bookmark span:after{border-left-width:16px!important;border-right-width:16px!important}
  .paged-reader .book>.page.page-active .page-bookmark.set,.paged-reader .book>.page.page-active .page-bookmark.set span{height:175px!important}
 }
+
+/* v2.44 — fotografia documental integrada à Parte V */
+.family-photo-page{display:flex;flex-direction:column}
+.family-document{margin:20px auto 0;max-width:78%;text-align:center}
+.family-document img{display:block;max-width:100%;max-height:600px;margin:auto;border:7px solid #f4eddd;outline:1px solid rgba(169,132,66,.55);box-shadow:0 12px 30px rgba(45,38,29,.18);filter:sepia(.08) contrast(1.02)}
+.family-document figcaption{margin:17px auto 0;max-width:34em;font-size:13px;line-height:1.55;color:var(--muted)}
+.family-document figcaption strong{color:var(--ink);font-weight:600}
+.photo-note{max-width:31em;margin:24px auto 0;padding-top:13px;border-top:1px solid rgba(169,132,66,.45);font-size:12px!important;line-height:1.55!important;color:var(--muted);text-align:center;text-indent:0!important}
+@media(max-width:600px){.family-document{max-width:88%;margin-top:14px}.family-document img{max-height:500px;border-width:5px}.family-document figcaption{font-size:12px}.photo-note{font-size:11px!important}}
