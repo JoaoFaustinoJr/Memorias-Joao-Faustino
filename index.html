@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MEMÓRIAS — Projeto editorial</title>
 <meta name="description" content="Maquete editorial de MEMÓRIAS — João Faustino da Silva / João Faustino Major / João do Neco">
-<link rel="stylesheet" href="./memorias.css?v=238">
+<link rel="stylesheet" href="./memorias.css?v=240">
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <nav class="toolbar">
   <a href="#capa">Capa</a><a href="#prefacio">Prefácio</a><a href="#sumario">Compêndio</a><a href="#texto">Texto</a><a href="#genealogia">Genealogia</a>
-  <span>Projeto editorial · versão 2.39</span>
+  <span>Projeto editorial · versão 2.40</span>
 <a class="archive-link" href="conteudo-integral.html">Conteúdo integral</a></nav>
 
 <div class="reader-shell"><button class="bookmark-ribbon" type="button" aria-label="Marcar esta página" aria-pressed="false"><span></span></button><button class="page-arrow prev" type="button" aria-label="Página anterior">‹</button><main class="book">
@@ -649,7 +649,7 @@
 <script>
 (()=>{const pages=[...document.querySelectorAll('.book>.page')];let index=0,x=0,y=0,t=0,busy=false;
 const shell=document.querySelector('.reader-shell'),prev=document.querySelector('.page-arrow.prev'),next=document.querySelector('.page-arrow.next');
-function show(n,dir=1){if(busy||n<0||n>=pages.length||n===index)return;busy=true;const old=pages[index],neo=pages[n];neo.classList.add('page-active',dir>0?'page-enter-next':'page-enter-prev');old.classList.add(dir>0?'page-leave-next':'page-leave-prev');requestAnimationFrame(()=>requestAnimationFrame(()=>neo.classList.add('page-enter-go')));setTimeout(()=>{old.className=old.className.replace(/ page-(leave-next|leave-prev)/g,'');old.classList.remove('page-active');neo.classList.remove('page-enter-next','page-enter-prev','page-enter-go');index=n;location.hash=neo.id||'';update();busy=false},540)}
+function show(n,dir=1){if(n<0||n>=pages.length||n===index)return;if(busy){busy=false;pages.forEach(p=>p.classList.remove('page-leave-next','page-leave-prev','page-enter-next','page-enter-prev','page-enter-go'))}busy=true;const old=pages[index],neo=pages[n];neo.classList.add('page-active',dir>0?'page-enter-next':'page-enter-prev');old.classList.add(dir>0?'page-leave-next':'page-leave-prev');requestAnimationFrame(()=>requestAnimationFrame(()=>neo.classList.add('page-enter-go')));setTimeout(()=>{old.className=old.className.replace(/ page-(leave-next|leave-prev)/g,'');old.classList.remove('page-active');neo.classList.remove('page-enter-next','page-enter-prev','page-enter-go');index=n;location.hash=neo.id||'';update();busy=false},540)}
 function update(){prev.disabled=index===0;next.disabled=index===pages.length-1;syncBookmark()}
 const ribbon=document.querySelector('.bookmark-ribbon'),jump=document.querySelector('.bookmark-jump');
 function pageLabel(p,n){const head=p.querySelector('.page-head h2,.part-page h2,.title-page h2,.cover h1');return head?head.textContent.replace(/\s+/g,' ').trim():'Página '+(n+1)}
@@ -661,8 +661,12 @@ function openHash(){if(!location.hash)return;const target=document.querySelector
 pages.forEach((p,i)=>{if(i===0)p.classList.add('page-active')});document.documentElement.classList.add('paged-reader');openHash();update();
 prev.onclick=()=>show(index-1,-1);next.onclick=()=>show(index+1,1);
 document.addEventListener('click',e=>{const a=e.target.closest('.contents-list a,.toolbar a[href^="#"]');if(!a)return;const target=document.querySelector(a.getAttribute('href'));const n=pages.indexOf(target);if(n>=0){e.preventDefault();show(n,n>index?1:-1)}});
-document.addEventListener('touchstart',e=>{if(e.touches.length!==1)return;x=e.touches[0].clientX;y=e.touches[0].clientY;t=Date.now()},{passive:true});
-document.addEventListener('touchend',e=>{const q=e.changedTouches[0],dx=q.clientX-x,dy=q.clientY-y;if(Date.now()-t>750||Math.abs(dx)<55||Math.abs(dx)<Math.abs(dy)*1.15)return;show(index+(dx<0?1:-1),dx<0?1:-1)},{passive:true});
+let dragging=false,pid=null;
+shell.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;dragging=true;pid=e.pointerId;x=e.clientX;y=e.clientY;t=Date.now();try{shell.setPointerCapture(pid)}catch(_){}},{passive:true});
+shell.addEventListener('pointerup',e=>{if(!dragging)return;dragging=false;const dx=e.clientX-x,dy=e.clientY-y;if(Date.now()-t<1200&&Math.abs(dx)>38&&Math.abs(dx)>Math.abs(dy)*.9)show(index+(dx<0?1:-1),dx<0?1:-1)},{passive:true});
+shell.addEventListener('pointercancel',()=>dragging=false,{passive:true});
+shell.addEventListener('touchstart',e=>{if(e.touches.length!==1)return;x=e.touches[0].clientX;y=e.touches[0].clientY;t=Date.now()},{passive:true});
+shell.addEventListener('touchend',e=>{const q=e.changedTouches[0],dx=q.clientX-x,dy=q.clientY-y;if(Date.now()-t<1200&&Math.abs(dx)>38&&Math.abs(dx)>Math.abs(dy)*.9)show(index+(dx<0?1:-1),dx<0?1:-1)},{passive:true});
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown')show(index+1,1);if(e.key==='ArrowLeft'||e.key==='PageUp')show(index-1,-1)});
 })();
 </script></body></html>
