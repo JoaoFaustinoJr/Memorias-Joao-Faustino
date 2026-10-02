@@ -11,10 +11,10 @@
 <body>
 <nav class="toolbar">
   <a href="#capa">Capa</a><a href="#prefacio">Prefácio</a><a href="#sumario">Compêndio</a><a href="#texto">Texto</a><a href="#genealogia">Genealogia</a>
-  <span>Projeto editorial · versão 2.36</span>
+  <span>Projeto editorial · versão 2.37</span>
 <a class="archive-link" href="conteudo-integral.html">Conteúdo integral</a></nav>
 
-<main class="book">
+<div class="reader-shell"><button class="page-arrow prev" type="button" aria-label="Página anterior">‹</button><main class="book">
 <section class="page cover" id="capa">
   <div class="cover-rule"></div>
   <h1>MEMÓRIAS</h1>
@@ -647,10 +647,16 @@
 <footer>MEMÓRIAS · maquete para definição do aspecto do livro · fotografias serão adicionadas depois</footer>
 <button class="print-btn" type="button" onclick="window.print()" aria-label="Imprimir maquete">Imprimir / PDF</button>
 <script>
-(()=>{const pages=[...document.querySelectorAll('.book>.page')];let x=0,y=0,t=0;
-const current=()=>{let best=pages[0],d=Infinity;for(const p of pages){const n=Math.abs(p.getBoundingClientRect().top-72);if(n<d){d=n;best=p}}return pages.indexOf(best)};
+(()=>{const pages=[...document.querySelectorAll('.book>.page')];let index=0,x=0,y=0,t=0,busy=false;
+const shell=document.querySelector('.reader-shell'),prev=document.querySelector('.page-arrow.prev'),next=document.querySelector('.page-arrow.next');
+function show(n,dir=1){if(busy||n<0||n>=pages.length||n===index)return;busy=true;const old=pages[index],neo=pages[n];neo.classList.add('page-active',dir>0?'page-enter-next':'page-enter-prev');old.classList.add(dir>0?'page-leave-next':'page-leave-prev');requestAnimationFrame(()=>requestAnimationFrame(()=>neo.classList.add('page-enter-go')));setTimeout(()=>{old.className=old.className.replace(/ page-(leave-next|leave-prev)/g,'');old.classList.remove('page-active');neo.classList.remove('page-enter-next','page-enter-prev','page-enter-go');index=n;location.hash=neo.id||'';update();busy=false},540)}
+function update(){prev.disabled=index===0;next.disabled=index===pages.length-1}
+function openHash(){if(!location.hash)return;const target=document.querySelector(location.hash);const n=pages.indexOf(target);if(n>=0){pages[index].classList.remove('page-active');index=n;pages[index].classList.add('page-active');update()}}
+pages.forEach((p,i)=>{if(i===0)p.classList.add('page-active')});document.documentElement.classList.add('paged-reader');openHash();update();
+prev.onclick=()=>show(index-1,-1);next.onclick=()=>show(index+1,1);
+document.addEventListener('click',e=>{const a=e.target.closest('.contents-list a,.toolbar a[href^="#"]');if(!a)return;const target=document.querySelector(a.getAttribute('href'));const n=pages.indexOf(target);if(n>=0){e.preventDefault();show(n,n>index?1:-1)}});
 document.addEventListener('touchstart',e=>{if(e.touches.length!==1)return;x=e.touches[0].clientX;y=e.touches[0].clientY;t=Date.now()},{passive:true});
-document.addEventListener('touchend',e=>{const q=e.changedTouches[0],dx=q.clientX-x,dy=q.clientY-y;if(Date.now()-t>700||Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.35)return;const i=current()+(dx<0?1:-1);if(pages[i])pages[i].scrollIntoView({behavior:'smooth',block:'start'})},{passive:true});
-let last=scrollY;const bar=document.querySelector('.toolbar');addEventListener('scroll',()=>{const n=scrollY;if(n>last+8&&n>90)bar.classList.add('toolbar-hidden');else if(n<last-8)bar.classList.remove('toolbar-hidden');last=n},{passive:true});
+document.addEventListener('touchend',e=>{const q=e.changedTouches[0],dx=q.clientX-x,dy=q.clientY-y;if(Date.now()-t>750||Math.abs(dx)<55||Math.abs(dx)<Math.abs(dy)*1.15)return;show(index+(dx<0?1:-1),dx<0?1:-1)},{passive:true});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown')show(index+1,1);if(e.key==='ArrowLeft'||e.key==='PageUp')show(index-1,-1)});
 })();
 </script></body></html>
