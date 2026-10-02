@@ -311,3 +311,16 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 /* v2.33 — carta de viagem */
 .route-map-figure{margin:.4rem auto .65rem;width:76%;text-align:center}.route-map-figure img{display:block;width:100%;max-height:360px;object-fit:contain;mix-blend-mode:multiply}.route-map-figure figcaption{font-size:.66rem;line-height:1.35;color:var(--muted);margin-top:.2rem;font-style:italic}
 @media(max-width:760px){.route-map-figure{width:88%}.route-map-figure img{max-height:300px}}
+
+/* v2.36 — acabamento de capa, compêndio interativo e leitura gestual */
+.toolbar{transition:transform .28s ease,box-shadow .28s ease}.toolbar-hidden{transform:translateY(-110%);box-shadow:none}
+.cover{background:radial-gradient(ellipse at 50% 28%,rgba(61,91,116,.32),transparent 43%),linear-gradient(180deg,#19374f 0%,#102a40 100%);padding-top:82px}
+.cover:before{content:"";position:absolute;inset:28px;border:1px solid rgba(201,182,140,.25);pointer-events:none}
+.cover .cover-rule{margin:16px 0 38px;width:42px;background:#b99452}
+.cover h1{text-shadow:0 2px 18px rgba(0,0,0,.16);letter-spacing:.12em}
+.cover .names{position:relative;padding-top:25px}.cover .names:before{content:"";position:absolute;top:7px;left:35%;right:35%;height:1px;background:rgba(201,182,140,.45)}
+.cover-author{font:600 9px/1.2 system-ui,sans-serif;letter-spacing:.27em;color:#d0bc91;margin:12px 0 0;z-index:2}
+.swipe-hint{display:none;font:500 9px/1 system-ui,sans-serif;letter-spacing:.12em;color:rgba(246,240,226,.52);z-index:3}
+.contents-list li{padding:0}.contents-list a{display:flex;align-items:baseline;width:100%;padding:.48rem .2rem;color:inherit;text-decoration:none;border-radius:4px;transition:background .18s ease,color .18s ease}.contents-list a:hover,.contents-list a:focus-visible{background:rgba(169,132,66,.08);color:var(--navy);outline:none}.contents-list a span{flex:0 1 auto}.contents-list a i{flex:1 1 auto;margin:0 .55rem;border-bottom:1px dotted rgba(120,111,98,.5)}.contents-list a b{flex:0 0 auto}
+@media(max-width:600px){.swipe-hint{display:block;margin-top:5px}.cover:before{inset:15px}.cover .cover-rule{margin-top:8px}.contents-list a{padding:.55rem .05rem}.contents-list a i{margin:0 .35rem}.page{scroll-margin-top:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.toolbar,.contents-list a{transition:none}}
