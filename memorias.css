@@ -167,3 +167,51 @@ section:has(h2:is(
  .engraving-road .page-head::after,.engraving-river .page-head::after,.engraving-rural .page-head::after,
  .engraving-tree .page-head::after,.engraving-family .page-head::after,.engraving-faith .page-head::after{height:25px;margin:8px auto 3px}
 }
+
+/* v2.25 — gravuras com presença visual real, sem competir com o texto */
+.story-start .page-head::after{
+ width:84%!important;height:48px!important;margin:16px auto 12px!important;opacity:.82!important;
+ filter:none
+}
+.engraving-road .page-head::after{
+ background:
+ linear-gradient(168deg,transparent 47.5%,var(--gold) 48% 49.2%,transparent 49.7%) left bottom/58% 88% no-repeat,
+ linear-gradient(12deg,transparent 47.5%,var(--gold) 48% 49.2%,transparent 49.7%) right bottom/58% 88% no-repeat,
+ linear-gradient(100deg,transparent 48%,var(--gold) 49% 51%,transparent 52%) center bottom/24% 100% no-repeat!important
+}
+.engraving-river .page-head::after{
+ background:
+ radial-gradient(100% 70% at 18% 5%,transparent 57%,var(--gold) 58% 60%,transparent 61%),
+ radial-gradient(100% 70% at 72% 48%,transparent 57%,var(--gold) 58% 60%,transparent 61%),
+ radial-gradient(100% 70% at 35% 90%,transparent 57%,var(--gold) 58% 60%,transparent 61%)!important
+}
+.engraving-rural .page-head::after{
+ background:
+ radial-gradient(80% 125% at 50% 118%,transparent 62%,var(--gold) 63% 65%,transparent 66%),
+ linear-gradient(90deg,transparent 49%,var(--gold) 49.5% 50.5%,transparent 51%) center bottom/2px 62% no-repeat,
+ radial-gradient(circle at 72% 30%,var(--gold) 0 3px,transparent 3.5px)!important
+}
+.engraving-tree .page-head::after{
+ background:
+ linear-gradient(90deg,transparent 48.5%,var(--gold) 49% 51%,transparent 51.5%) center bottom/3px 68% no-repeat,
+ radial-gradient(ellipse at 50% 31%,transparent 43%,var(--gold) 44% 47%,transparent 48%) center/52% 90% no-repeat!important
+}
+.engraving-family .page-head::after{
+ background:
+ radial-gradient(circle at 50% 12%,var(--gold) 0 3px,transparent 3.5px),
+ linear-gradient(145deg,transparent 48%,var(--gold) 49% 51%,transparent 52%) 37% 88%/31% 78% no-repeat,
+ linear-gradient(35deg,transparent 48%,var(--gold) 49% 51%,transparent 52%) 63% 88%/31% 78% no-repeat,
+ radial-gradient(circle at 29% 83%,var(--gold) 0 2.5px,transparent 3px),
+ radial-gradient(circle at 71% 83%,var(--gold) 0 2.5px,transparent 3px)!important
+}
+.engraving-faith .page-head::after{
+ background:
+ linear-gradient(90deg,transparent 48%,var(--gold) 49% 51%,transparent 52%) center/3px 100% no-repeat,
+ linear-gradient(0deg,transparent 47%,var(--gold) 48% 52%,transparent 53%) center 34%/34px 3px no-repeat!important
+}
+.engraving-horse .page-head::after{font-size:38px!important;opacity:.82!important;color:var(--gold)!important}
+.story-start[class*="engraving-"]::before{display:none!important}
+@media(max-width:760px){
+ .story-start .page-head::after{width:88%!important;height:38px!important;margin:12px auto 9px!important;opacity:.88!important}
+ .engraving-horse .page-head::after{font-size:32px!important;height:38px!important}
+}
