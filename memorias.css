@@ -433,3 +433,18 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .paged-reader .book>.page.page-active .page-bookmark.set span{
  box-shadow:inset 1px 0 0 rgba(208,173,98,.58),inset -1px 0 0 rgba(208,173,98,.42),inset 4px 0 7px rgba(255,255,255,.10),inset -5px 0 8px rgba(0,0,0,.24),0 4px 7px rgba(34,20,18,.22)!important;
 }
+
+/* v2.46 — memória que se revela dentro da própria capa */
+.cover{isolation:isolate;overflow:hidden}
+.cover-memory-landscape{position:absolute;z-index:0;left:4%;right:4%;top:30%;bottom:5%;pointer-events:none;opacity:.62;
+ background:
+ linear-gradient(90deg,rgba(18,48,72,.92) 0%,rgba(18,48,72,.72) 34%,rgba(18,48,72,.34) 66%,rgba(18,48,72,.08) 100%),
+ url("./assets/fotos/paisagem-memoria.jpg") center 54%/cover no-repeat;
+ filter:saturate(.58) sepia(.16) contrast(.94);
+ -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.18) 9%,#000 31%,#000 82%,transparent 100%);
+ mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.18) 9%,#000 31%,#000 82%,transparent 100%);
+}
+.cover-memory-landscape:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(205,185,141,.08),transparent 45%,rgba(215,180,105,.13));mix-blend-mode:screen}
+.cover> :not(.cover-memory-landscape){position:relative;z-index:2}
+@media(max-width:600px){.cover-memory-landscape{left:3%;right:3%;top:33%;bottom:6%;opacity:.54;background-position:center 56%}}
+@media print{.cover-memory-landscape{opacity:.48}}
