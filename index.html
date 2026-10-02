@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MEMÓRIAS — Projeto editorial</title>
 <meta name="description" content="Maquete editorial de MEMÓRIAS — João Faustino da Silva / João Faustino Major / João do Neco">
-<link rel="stylesheet" href="./memorias.css?v=240">
+<link rel="stylesheet" href="./memorias.css?v=241">
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <nav class="toolbar">
   <a href="#capa">Capa</a><a href="#prefacio">Prefácio</a><a href="#sumario">Compêndio</a><a href="#texto">Texto</a><a href="#genealogia">Genealogia</a>
-  <span>Projeto editorial · versão 2.40</span>
+  <span>Projeto editorial · versão 2.41</span>
 <a class="archive-link" href="conteudo-integral.html">Conteúdo integral</a></nav>
 
 <div class="reader-shell"><button class="bookmark-ribbon" type="button" aria-label="Marcar esta página" aria-pressed="false"><span></span></button><button class="page-arrow prev" type="button" aria-label="Página anterior">‹</button><main class="book">
@@ -647,26 +647,29 @@
 <footer>MEMÓRIAS · maquete para definição do aspecto do livro · fotografias serão adicionadas depois</footer>
 <button class="print-btn" type="button" onclick="window.print()" aria-label="Imprimir maquete">Imprimir / PDF</button>
 <script>
-(()=>{const pages=[...document.querySelectorAll('.book>.page')];let index=0,x=0,y=0,t=0,busy=false;
-const shell=document.querySelector('.reader-shell'),prev=document.querySelector('.page-arrow.prev'),next=document.querySelector('.page-arrow.next');
-function show(n,dir=1){if(n<0||n>=pages.length||n===index)return;if(busy){busy=false;pages.forEach(p=>p.classList.remove('page-leave-next','page-leave-prev','page-enter-next','page-enter-prev','page-enter-go'))}busy=true;const old=pages[index],neo=pages[n];neo.classList.add('page-active',dir>0?'page-enter-next':'page-enter-prev');old.classList.add(dir>0?'page-leave-next':'page-leave-prev');requestAnimationFrame(()=>requestAnimationFrame(()=>neo.classList.add('page-enter-go')));setTimeout(()=>{old.className=old.className.replace(/ page-(leave-next|leave-prev)/g,'');old.classList.remove('page-active');neo.classList.remove('page-enter-next','page-enter-prev','page-enter-go');index=n;location.hash=neo.id||'';update();busy=false},540)}
-function update(){prev.disabled=index===0;next.disabled=index===pages.length-1;syncBookmark()}
+(()=>{
+const pages=Array.from(document.querySelectorAll('.book > .page'));
+const prev=document.querySelector('.page-arrow.prev'),next=document.querySelector('.page-arrow.next');
 const ribbon=document.querySelector('.bookmark-ribbon'),jump=document.querySelector('.bookmark-jump');
-function pageLabel(p,n){const head=p.querySelector('.page-head h2,.part-page h2,.title-page h2,.cover h1');return head?head.textContent.replace(/\s+/g,' ').trim():'Página '+(n+1)}
-function saved(){const v=parseInt(localStorage.getItem('memorias-bookmark')||'-1',10);return Number.isFinite(v)?v:-1}
-function syncBookmark(){const m=saved(),on=m===index;ribbon.classList.toggle('set',on);ribbon.setAttribute('aria-pressed',on?'true':'false');ribbon.setAttribute('aria-label',on?'Remover marca desta página':'Marcar esta página');if(m>=0&&pages[m]){jump.disabled=false;jump.querySelector('small').textContent=pageLabel(pages[m],m)}else{jump.disabled=true;jump.querySelector('small').textContent='Nenhuma página marcada'}}
-ribbon.onclick=()=>{const m=saved();if(m===index)localStorage.removeItem('memorias-bookmark');else localStorage.setItem('memorias-bookmark',String(index));syncBookmark()};
-jump.onclick=()=>{const m=saved();if(m>=0&&pages[m])show(m,m>index?1:-1)};
-function openHash(){if(!location.hash)return;const target=document.querySelector(location.hash);const n=pages.indexOf(target);if(n>=0){pages[index].classList.remove('page-active');index=n;pages[index].classList.add('page-active');update()}}
-pages.forEach((p,i)=>{if(i===0)p.classList.add('page-active')});document.documentElement.classList.add('paged-reader');openHash();update();
-prev.onclick=()=>show(index-1,-1);next.onclick=()=>show(index+1,1);
-document.addEventListener('click',e=>{const a=e.target.closest('.contents-list a,.toolbar a[href^="#"]');if(!a)return;const target=document.querySelector(a.getAttribute('href'));const n=pages.indexOf(target);if(n>=0){e.preventDefault();show(n,n>index?1:-1)}});
-let dragging=false,pid=null;
-shell.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;dragging=true;pid=e.pointerId;x=e.clientX;y=e.clientY;t=Date.now();try{shell.setPointerCapture(pid)}catch(_){}},{passive:true});
-shell.addEventListener('pointerup',e=>{if(!dragging)return;dragging=false;const dx=e.clientX-x,dy=e.clientY-y;if(Date.now()-t<1200&&Math.abs(dx)>38&&Math.abs(dx)>Math.abs(dy)*.9)show(index+(dx<0?1:-1),dx<0?1:-1)},{passive:true});
-shell.addEventListener('pointercancel',()=>dragging=false,{passive:true});
-shell.addEventListener('touchstart',e=>{if(e.touches.length!==1)return;x=e.touches[0].clientX;y=e.touches[0].clientY;t=Date.now()},{passive:true});
-shell.addEventListener('touchend',e=>{const q=e.changedTouches[0],dx=q.clientX-x,dy=q.clientY-y;if(Date.now()-t<1200&&Math.abs(dx)>38&&Math.abs(dx)>Math.abs(dy)*.9)show(index+(dx<0?1:-1),dx<0?1:-1)},{passive:true});
-document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown')show(index+1,1);if(e.key==='ArrowLeft'||e.key==='PageUp')show(index-1,-1)});
+let index=0,startX=null,startY=null,startT=0;
+function label(p,n){const e=p.querySelector('.page-head h2,.part-page h2,.title-page h2,.cover h1');return e?e.textContent.replace(/\s+/g,' ').trim():'Página '+(n+1)}
+function saved(){const n=Number(localStorage.getItem('memorias-bookmark'));return Number.isInteger(n)&&n>=2&&n<pages.length?n:-1}
+function sync(){prev.hidden=index===0;next.hidden=index===pages.length-1;ribbon.hidden=index<2;const m=saved(),on=m===index;ribbon.classList.toggle('set',on);ribbon.setAttribute('aria-pressed',String(on));if(jump){jump.disabled=m<0;jump.querySelector('small').textContent=m>=0?label(pages[m],m):'Nenhuma página marcada'}}
+function go(n,dir){if(n<0||n>=pages.length||n===index)return;const old=pages[index],neo=pages[n];old.classList.remove('page-active');neo.classList.add('page-active','page-turning',dir>0?'turn-from-right':'turn-from-left');index=n;sync();requestAnimationFrame(()=>requestAnimationFrame(()=>neo.classList.remove('turn-from-right','turn-from-left')));setTimeout(()=>neo.classList.remove('page-turning'),430)}
+pages.forEach((p,i)=>p.classList.toggle('page-active',i===0));
+document.documentElement.classList.add('paged-reader');
+const hashTarget=location.hash&&document.querySelector(location.hash),hi=pages.indexOf(hashTarget);if(hi>=0){pages[0].classList.remove('page-active');index=hi;pages[index].classList.add('page-active')}
+prev.addEventListener('click',()=>go(index-1,-1));next.addEventListener('click',()=>go(index+1,1));
+ribbon.addEventListener('click',()=>{if(index<2)return;const m=saved();if(m===index)localStorage.removeItem('memorias-bookmark');else localStorage.setItem('memorias-bookmark',String(index));sync()});
+if(jump)jump.addEventListener('click',()=>{const m=saved();if(m>=0)go(m,m>index?1:-1)});
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const target=document.querySelector(a.getAttribute('href'));const n=pages.indexOf(target);if(n>=0){e.preventDefault();go(n,n>index?1:-1)}});
+function begin(x,y){startX=x;startY=y;startT=Date.now()}
+function end(x,y){if(startX===null)return;const dx=x-startX,dy=y-startY,dt=Date.now()-startT;startX=null;if(dt<1500&&Math.abs(dx)>=32&&Math.abs(dx)>Math.abs(dy)*.75)go(index+(dx<0?1:-1),dx<0?1:-1)}
+document.addEventListener('touchstart',e=>{if(e.touches.length===1)begin(e.touches[0].clientX,e.touches[0].clientY)},{passive:true,capture:true});
+document.addEventListener('touchend',e=>{if(e.changedTouches.length)end(e.changedTouches[0].clientX,e.changedTouches[0].clientY)},{passive:true,capture:true});
+document.addEventListener('pointerdown',e=>{if(e.pointerType!=='touch')begin(e.clientX,e.clientY)},{passive:true});
+document.addEventListener('pointerup',e=>{if(e.pointerType!=='touch')end(e.clientX,e.clientY)},{passive:true});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown')go(index+1,1);if(e.key==='ArrowLeft'||e.key==='PageUp')go(index-1,-1)});
+sync();
 })();
 </script></body></html>
