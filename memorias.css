@@ -215,3 +215,44 @@ section:has(h2:is(
  .story-start .page-head::after{width:88%!important;height:38px!important;margin:12px auto 9px!important;opacity:.88!important}
  .engraving-horse .page-head::after{font-size:32px!important;height:38px!important}
 }
+
+/* v2.26 — direção aprovada: lápis/carvão, sofisticado e contido */
+:root{--charcoal:#4a4742;--charcoal-soft:rgba(74,71,66,.58)}
+.story-start .page-head::after{
+  opacity:.72!important;filter:grayscale(1);height:54px!important;
+  width:76%!important;margin:14px auto 14px!important;
+}
+.engraving-road .page-head::after{
+ background:
+  linear-gradient(167deg,transparent 48%,var(--charcoal-soft) 48.5% 49%,transparent 49.5%) 0 80%/62% 72% no-repeat,
+  linear-gradient(13deg,transparent 48%,var(--charcoal-soft) 48.5% 49%,transparent 49.5%) 100% 80%/62% 72% no-repeat,
+  linear-gradient(99deg,transparent 48.7%,var(--charcoal) 49.2% 49.8%,transparent 50.3%) center bottom/18% 94% no-repeat!important
+}
+.engraving-river .page-head::after{
+ background:
+  radial-gradient(95% 60% at 22% 5%,transparent 60%,var(--charcoal-soft) 60.5% 61%,transparent 61.5%),
+  radial-gradient(95% 60% at 72% 48%,transparent 60%,var(--charcoal-soft) 60.5% 61%,transparent 61.5%),
+  radial-gradient(95% 60% at 36% 92%,transparent 60%,var(--charcoal-soft) 60.5% 61%,transparent 61.5%)!important
+}
+.engraving-rural .page-head::after{
+ background:
+  radial-gradient(78% 120% at 50% 118%,transparent 64%,var(--charcoal-soft) 64.5% 65%,transparent 65.5%),
+  linear-gradient(101deg,transparent 49%,var(--charcoal-soft) 49.5% 50%,transparent 50.5%) center bottom/16% 64% no-repeat!important
+}
+.engraving-tree .page-head::after,.engraving-family .page-head::after{
+ background:
+  linear-gradient(91deg,transparent 49%,var(--charcoal) 49.4% 50%,transparent 50.4%) center bottom/3px 70% no-repeat,
+  radial-gradient(ellipse at 50% 31%,transparent 46%,var(--charcoal-soft) 46.5% 47.5%,transparent 48%) center/48% 86% no-repeat!important
+}
+.engraving-faith .page-head::after{
+ background:
+  linear-gradient(90deg,transparent 49%,var(--charcoal-soft) 49.4% 50.2%,transparent 50.6%) center/2px 88% no-repeat,
+  linear-gradient(0deg,transparent 49%,var(--charcoal-soft) 49.4% 50.6%,transparent 51%) center 35%/26px 2px no-repeat!important
+}
+.engraving-horse .page-head::after{color:var(--charcoal)!important;opacity:.65!important;font-size:34px!important}
+.page-head h2::after{background:var(--gold);opacity:.72}
+.prose-page::after{opacity:.08!important;filter:grayscale(1)}
+.cover{--cover-ornament-opacity:.42}
+@media(max-width:760px){
+ .story-start .page-head::after{width:72%!important;height:42px!important;opacity:.68!important}
+}
