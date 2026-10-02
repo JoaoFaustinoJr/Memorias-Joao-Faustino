@@ -1,0 +1,13 @@
+{
+  "name":"Memórias — João Faustino Major",
+  "short_name":"Memórias",
+  "description":"Memórias de João Faustino da Silva — João Faustino Major — João do Neco",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "background_color":"#17324b",
+  "theme_color":"#17324b",
+  "icons":[
+    {"src":"./assets/fotos/Screenshot_20261002-051918.png","sizes":"any","type":"image/png","purpose":"any maskable"}
+  ]
+}
