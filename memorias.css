@@ -293,3 +293,17 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .document-note{margin-top:.75rem;padding:.65rem .75rem;border-left:2px solid rgba(169,132,66,.6);background:rgba(169,132,66,.035)}
 .document-note strong{font-family:Georgia,serif;color:var(--navy);font-weight:500}.document-note p{margin:.25rem 0 0;font-size:.74rem;line-height:1.48;color:var(--muted)}
 @media(max-width:760px){.route-legend{flex-wrap:wrap;gap:.4rem 1rem}.journey-scale{font-size:.62rem}}
+
+/* v2.33 — carta de viagem: fato documental x reconstrução */
+.journey-chart{position:relative}
+.journey-legend{display:flex;gap:1rem;justify-content:center;font-size:.68rem;color:var(--muted);margin:.5rem 0 1rem}
+.journey-legend i{display:inline-block;width:28px;vertical-align:middle;margin-right:.35rem;border-top:1.5px solid var(--gold)}
+.journey-legend .inferred{border-top-style:dotted}
+.journey-line{width:76%;margin:0 auto}
+.jnode{position:relative;padding:.23rem .2rem .23rem 1rem}
+.jnode:before{content:"";position:absolute;left:0;top:.72rem;width:6px;height:6px;border:1px solid var(--gold);border-radius:50%;background:var(--paper)}
+.jnode b{font:600 .92rem Georgia,serif;color:var(--navy)}.jnode small{display:block;color:var(--muted);font-size:.67rem}
+.jnode.water b:before{content:"≈ ";font-weight:400;color:var(--gold)}
+.journey-line>i{display:block;height:13px;margin-left:3px;border-left:1.5px solid var(--gold)}
+.journey-line>i.inferred{border-left-style:dotted;opacity:.65}
+.editorial-caution{width:82%;margin:1rem auto 0;font-size:.69rem;line-height:1.45;color:var(--muted);font-style:italic;border-top:1px solid rgba(169,132,66,.35);padding-top:.55rem}
