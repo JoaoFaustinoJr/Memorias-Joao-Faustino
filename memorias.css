@@ -359,3 +359,13 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
  .page-arrow.next{display:block!important;visibility:visible!important}
  .page-arrow.prev{display:block!important;visibility:visible!important}
 }
+
+/* v2.41 — leitor simplificado e controles coerentes */
+.paged-reader .book>.page{display:none!important;position:relative!important;opacity:1;transform:none}
+.paged-reader .book>.page.page-active{display:block!important}
+.paged-reader .book>.page.page-turning{display:block!important;transition:transform .4s cubic-bezier(.22,.72,.2,1),opacity .3s ease;transform-origin:left center}
+.paged-reader .book>.page.page-turning.turn-from-right{transform:perspective(1400px) rotateY(-18deg) translateX(7%);opacity:.62}
+.paged-reader .book>.page.page-turning.turn-from-left{transform:perspective(1400px) rotateY(18deg) translateX(-7%);opacity:.62;transform-origin:right center}
+.page-arrow[hidden],.bookmark-ribbon[hidden]{display:none!important}
+@media(max-width:800px){.page-arrow{top:52%;z-index:60}.page-arrow.prev{left:2px}.page-arrow.next{right:2px}.bookmark-ribbon{z-index:61}}
+@media print{.paged-reader .book>.page{display:block!important}}
