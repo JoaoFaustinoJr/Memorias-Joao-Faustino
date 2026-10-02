@@ -51,3 +51,9 @@
 /* Parte I 1.4 — sequência inicial da Saga */
 .saga-opening .page-head:before{content:"";position:absolute;right:0;top:-18px;width:78px;height:46px;border-top:1px solid rgba(169,132,66,.45);border-radius:50%;transform:rotate(-8deg)}
 .road-fade{position:absolute;left:72px;right:72px;bottom:54px;height:32px;border-top:1.5px solid var(--gold);border-radius:50%;opacity:.22;transform:rotate(2deg)}
+
+/* Parte II 1.5 — identidade e raízes */
+.roots-part .root-thread{width:1px;height:95px;background:var(--gold);margin:48px auto 0;position:relative;opacity:.65}.roots-part .root-thread:before,.roots-part .root-thread:after{content:"";position:absolute;width:55px;height:1px;background:var(--gold);bottom:20px}.roots-part .root-thread:before{right:0;transform:rotate(-28deg);transform-origin:right}.roots-part .root-thread:after{left:0;transform:rotate(28deg);transform-origin:left}
+.mountain-mark{position:absolute;left:90px;right:90px;bottom:55px;height:55px;border-top:1px solid var(--navy);border-radius:50% 45% 0 0;transform:skewX(-18deg);opacity:.13}
+.coffee-mark{position:absolute;right:78px;bottom:48px;font-size:64px;color:var(--gold);opacity:.18;transform:rotate(-18deg)}
+.chapter-notes{background:linear-gradient(145deg,#fbf6eb,#f3ead8)}
