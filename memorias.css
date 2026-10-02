@@ -513,3 +513,16 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
  .part-page h2{font-size:50px;line-height:.92;margin-top:30px}
  .part-page p{font-size:17px}
 }
+
+/* v2.60 — capa: cor viva e céu azul como campo tipográfico */
+.cover-memory-landscape{
+ opacity:1;
+ filter:saturate(1.18) contrast(1.04) brightness(1.03);
+ background:
+ linear-gradient(to bottom,rgba(9,48,78,.34) 0%,rgba(9,48,78,.20) 25%,rgba(9,48,78,.05) 48%,rgba(9,48,78,.02) 72%,rgba(9,48,78,.22) 100%),
+ url("./assets/fotos/Screenshot_20261002-051918.png") center 50%/cover no-repeat;
+}
+.cover .cover-title,.cover h1{position:relative;z-index:3}
+.cover .cover-title:before,.cover h1:before{content:"";position:absolute;z-index:-1;left:-10%;right:-10%;top:-42%;bottom:-115%;background:linear-gradient(to bottom,rgba(9,52,84,.52),rgba(9,52,84,.25) 62%,transparent);filter:blur(8px);border-radius:22px}
+.cover h1,.cover .cover-title,.cover .cover-names,.cover .cover-author{color:#fffaf0;text-shadow:0 2px 8px rgba(0,25,45,.28)}
+@media(max-width:600px){.cover-memory-landscape{filter:saturate(1.22) contrast(1.03) brightness(1.04)}}
