@@ -350,3 +350,12 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
  .paged-reader .bookmark-ribbon.set{height:96px}
  .bookmark-jump{border-left:5px solid #781c2b}
 }
+
+/* v2.40 — gesto de página móvel */
+.paged-reader .reader-shell{touch-action:pan-y;overscroll-behavior-x:contain}
+.paged-reader .book>.page{touch-action:pan-y}
+@media(max-width:800px){
+ .paged-reader .book>.page.page-active{transform:translateZ(0)}
+ .page-arrow.next{display:block!important;visibility:visible!important}
+ .page-arrow.prev{display:block!important;visibility:visible!important}
+}
