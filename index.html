@@ -5,13 +5,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MEMÓRIAS — Projeto editorial</title>
 <meta name="description" content="Maquete editorial de MEMÓRIAS — João Faustino da Silva / João Faustino Major / João do Neco">
-<link rel="stylesheet" href="./memorias.css?v=251">
+<meta name="theme-color" content="#17324b">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./assets/fotos/Screenshot_20261002-051918.png">
+<link rel="stylesheet" href="./memorias.css?v=252">
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <nav class="toolbar">
   <a href="#capa">Capa</a><a href="#prefacio">Prefácio</a><a href="#sumario">Compêndio</a><a href="#texto">Texto</a><a href="#genealogia">Genealogia</a>
-  <span>Projeto editorial · versão 2.51</span>
+  <span>Projeto editorial · versão 2.52</span>
 <a class="archive-link" href="conteudo-integral.html">Conteúdo integral</a></nav>
 
 <div class="reader-shell"><main class="book">
@@ -689,4 +692,7 @@ document.addEventListener('pointerup',e=>{if(e.pointerType!=='touch')end(e.clien
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown')go(index+1,1);if(e.key==='ArrowLeft'||e.key==='PageUp')go(index-1,-1)});
 sync();renderControls();
 })();
-</script></body></html>
+</script><script>
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}
+</script>
+</body></html>
