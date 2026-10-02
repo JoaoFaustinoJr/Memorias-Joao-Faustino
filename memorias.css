@@ -560,3 +560,29 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .title-subtitle{text-align:center;margin:.15rem auto 1.5rem;font-family:Georgia,'Times New Roman',serif;font-style:italic;color:#9b7942;font-size:1.15rem}
 .cover .names{margin-top:.35rem}
 @media(max-width:640px){.cover h1{font-size:clamp(2.65rem,13vw,4.2rem);line-height:.9}.cover-subtitle{max-width:88%;margin-top:.85rem;margin-bottom:1.25rem;font-size:1.12rem}.cover .names{margin-top:.15rem}}
+
+
+/* v2.63 — capa: título/autoria mais altos e nomes sem máscara */
+.cover h1{
+  transform:translateY(-34px);
+}
+.cover-subtitle{
+  transform:translateY(-34px);
+  margin-top:.72rem;
+  margin-bottom:.82rem;
+}
+.cover .names{
+  transform:translateY(-34px)!important;
+  margin-top:0!important;
+  padding:0!important;
+  background:none!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+@media(max-width:640px){
+  .cover h1{transform:translateY(-30px)}
+  .cover-subtitle{transform:translateY(-30px);margin-top:.65rem;margin-bottom:.72rem}
+  .cover .names{transform:translateY(-30px)!important;padding:0!important;background:none!important}
+}
