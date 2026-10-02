@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MEMÓRIAS — Projeto editorial</title>
 <meta name="description" content="Maquete editorial de MEMÓRIAS — João Faustino da Silva / João Faustino Major / João do Neco">
-<link rel="stylesheet" href="./memorias.css?v=242">
+<link rel="stylesheet" href="./memorias.css?v=243">
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <nav class="toolbar">
   <a href="#capa">Capa</a><a href="#prefacio">Prefácio</a><a href="#sumario">Compêndio</a><a href="#texto">Texto</a><a href="#genealogia">Genealogia</a>
-  <span>Projeto editorial · versão 2.42</span>
+  <span>Projeto editorial · versão 2.43</span>
 <a class="archive-link" href="conteudo-integral.html">Conteúdo integral</a></nav>
 
 <div class="reader-shell"><main class="book">
@@ -654,7 +654,7 @@ let index=0,startX=null,startY=null,startT=0;
 function label(p,n){const e=p.querySelector('.page-head h2,.part-page h2,.title-page h2,.cover h1');return e?e.textContent.replace(/\s+/g,' ').trim():'Página '+(n+1)}
 function saved(){const n=Number(localStorage.getItem('memorias-bookmark'));return Number.isInteger(n)&&n>=2&&n<pages.length?n:-1}
 function sync(){const m=saved();if(jump){jump.disabled=m<0;jump.querySelector('small').textContent=m>=0?label(pages[m],m):'Nenhuma página marcada'}}
-function renderControls(){pages.forEach((p,i)=>{p.querySelectorAll('.page-edge,.page-bookmark').forEach(e=>e.remove());if(i===index){if(i>0)p.insertAdjacentHTML('beforeend','<button class="page-edge prev" aria-label="Página anterior">‹</button>');if(i<pages.length-1)p.insertAdjacentHTML('beforeend','<button class="page-edge next" aria-label="Próxima página">›</button>');if(i>=2){const on=saved()===i;p.insertAdjacentHTML('beforeend','<button class="page-bookmark '+(on?'set':'')+'" aria-label="'+(on?'Remover marcação':'Marcar esta página')+'"><span></span></button>')}}})}
+function renderControls(){pages.forEach((p,i)=>{p.querySelectorAll('.page-edge,.page-bookmark').forEach(e=>e.remove());if(i===index){if(i>0)p.insertAdjacentHTML('beforeend','<button class="page-edge prev" aria-label="Página anterior">‹</button>');if(i<pages.length-1)p.insertAdjacentHTML('beforeend','<button class="page-edge next" aria-label="Próxima página">›</button>');if(i>=2){const on=saved()===i;p.insertAdjacentHTML('beforeend','<button class="page-bookmark '+(on?'set':'')+'" aria-label="'+(on?'Remover marcação':'Marcar esta página')+'"><span></span></button>')}}});document.body.classList.toggle('bookmark-eligible',index>=2)}
 function go(n,dir){if(n<0||n>=pages.length||n===index)return;const old=pages[index],neo=pages[n];old.classList.remove('page-active');neo.classList.add('page-active','page-turning',dir>0?'turn-from-right':'turn-from-left');index=n;sync();renderControls();requestAnimationFrame(()=>requestAnimationFrame(()=>neo.classList.remove('turn-from-right','turn-from-left')));setTimeout(()=>neo.classList.remove('page-turning'),430)}
 pages.forEach((p,i)=>p.classList.toggle('page-active',i===0));
 document.documentElement.classList.add('paged-reader');
