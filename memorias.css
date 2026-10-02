@@ -439,7 +439,7 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .cover-memory-landscape{position:absolute;z-index:0;left:4%;right:4%;top:30%;bottom:5%;pointer-events:none;opacity:.62;
  background:
  linear-gradient(90deg,rgba(18,48,72,.92) 0%,rgba(18,48,72,.72) 34%,rgba(18,48,72,.34) 66%,rgba(18,48,72,.08) 100%),
- url("./assets/fotos/IMG-20260925-WA0053.jpg") center 54%/cover no-repeat;
+ url("./assets/fotos/Screenshot_20261002-051918.png") center 54%/cover no-repeat;
  filter:saturate(.58) sepia(.16) contrast(.94);
  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.18) 9%,#000 31%,#000 82%,transparent 100%);
  mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.18) 9%,#000 31%,#000 82%,transparent 100%);
