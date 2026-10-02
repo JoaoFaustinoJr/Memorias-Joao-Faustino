@@ -526,3 +526,20 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .cover .cover-title:before,.cover h1:before{content:"";position:absolute;z-index:-1;left:-10%;right:-10%;top:-42%;bottom:-115%;background:linear-gradient(to bottom,rgba(9,52,84,.52),rgba(9,52,84,.25) 62%,transparent);filter:blur(8px);border-radius:22px}
 .cover h1,.cover .cover-title,.cover .cover-names,.cover .cover-author{color:#fffaf0;text-shadow:0 2px 8px rgba(0,25,45,.28)}
 @media(max-width:600px){.cover-memory-landscape{filter:saturate(1.22) contrast(1.03) brightness(1.04)}}
+
+/* v2.61 — correção de hierarquia da capa */
+.cover .names{margin-top:34px;padding:8px 22px 12px;background:linear-gradient(to bottom,rgba(8,45,73,.48),rgba(8,45,73,.16));}
+.cover .names strong{font-size:19px;line-height:1.25}
+.cover .names span{font-size:13px;line-height:1.35;opacity:.94}
+.cover .cover-author{display:none!important}
+.cover .edition{position:absolute;left:0;right:0;bottom:74px;margin:0;text-align:center;font-size:13px;letter-spacing:.08em;color:#fffaf0;text-shadow:0 2px 8px rgba(0,25,45,.55);z-index:4}
+.cover .swipe-hint{position:absolute;left:0;right:0;bottom:36px;margin:0;color:#fffaf0;opacity:.78;text-shadow:0 2px 8px rgba(0,25,45,.65);z-index:4}
+.cover-memory-landscape{top:39%;bottom:2%;background-position:center 47%}
+@media(max-width:600px){
+ .cover .names{margin-top:30px;padding:7px 16px 10px}
+ .cover .names strong{font-size:17px}
+ .cover .names span{font-size:12.5px}
+ .cover .edition{bottom:70px;font-size:12px}
+ .cover .swipe-hint{bottom:34px}
+ .cover-memory-landscape{top:40%;bottom:2%;background-position:center 46%}
+}
