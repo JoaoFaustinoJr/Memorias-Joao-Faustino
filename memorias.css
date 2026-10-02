@@ -275,3 +275,12 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 }
 /* gravura = memória: carvão, sem moldura */
 .feature-engraving .page-head::after{filter:grayscale(1);opacity:.56!important;width:64%!important;height:44px!important;margin:13px auto 16px!important}
+
+/* v2.32 — gravura como memória; mapa como documento */
+.charcoal-plate{display:block;width:82%;max-height:150px;object-fit:contain;margin:.2rem auto 1rem;opacity:.78;mix-blend-mode:multiply}
+.story-plate{width:72%;max-height:105px;margin:.15rem auto .8rem}
+.route-facts{display:grid;grid-template-columns:auto 1fr;gap:.15rem .7rem;margin:.7rem 0 1rem;padding:.65rem .8rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.route-facts b{font-family:Georgia,serif;color:var(--navy);font-size:1.12rem}.route-facts span{font-size:.78rem;color:var(--muted);align-self:center}
+.historic-route{margin:.5rem 0}.route-stop{padding:.28rem .6rem;border-left:2px solid rgba(169,132,66,.65)}.route-stop strong{font-family:Georgia,serif;color:var(--navy)}.route-stop small{display:block;color:var(--muted);font-size:.7rem}.historic-route>i{display:block;height:8px;border-left:1px dotted var(--gold);margin-left:.6rem}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.geo-grid p,.waterline{font-size:.79rem;line-height:1.48}.geo-grid strong{font-family:Georgia,serif;color:var(--navy);font-size:1.1rem}
+@media(max-width:760px){.charcoal-plate{width:92%;max-height:120px}.story-plate{width:82%;max-height:85px}.geo-grid{grid-template-columns:1fr;gap:.25rem}.route-stop small{font-size:.67rem}}
