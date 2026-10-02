@@ -57,3 +57,10 @@
 .mountain-mark{position:absolute;left:90px;right:90px;bottom:55px;height:55px;border-top:1px solid var(--navy);border-radius:50% 45% 0 0;transform:skewX(-18deg);opacity:.13}
 .coffee-mark{position:absolute;right:78px;bottom:48px;font-size:64px;color:var(--gold);opacity:.18;transform:rotate(-18deg)}
 .chapter-notes{background:linear-gradient(145deg,#fbf6eb,#f3ead8)}
+
+/* Parte III 1.6 — infância */
+.childhood-horizon{width:68%;height:70px;margin:50px auto 0;position:relative;opacity:.48}.childhood-horizon:before{content:"";position:absolute;left:0;right:0;bottom:12px;border-top:1px solid var(--gold);border-radius:50%}.childhood-horizon i{position:absolute;width:30px;height:30px;border:1px solid var(--gold);border-radius:50%;right:25%;top:0}.childhood-horizon b{position:absolute;left:18%;bottom:10px;width:1px;height:38px;background:var(--navy);transform:rotate(-5deg)}
+.rooster-mark{position:absolute;right:76px;bottom:52px;color:var(--navy);font-size:55px;opacity:.12;transform:rotate(10deg)}
+.dialogue{text-indent:0!important;margin-left:2.4em!important;color:var(--navy);font-style:italic}
+.horse-line{position:absolute;right:70px;bottom:55px;width:95px;height:38px;border-top:2px solid var(--gold);border-radius:50%;opacity:.18;transform:rotate(-9deg)}
+.water-lines{position:absolute;left:75px;right:75px;bottom:48px;height:30px;opacity:.16;background:repeating-radial-gradient(ellipse at center,transparent 0 8px,var(--navy) 9px 10px,transparent 11px 17px)}
