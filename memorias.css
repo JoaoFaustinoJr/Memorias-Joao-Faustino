@@ -87,3 +87,34 @@
  .story-start::before{margin-bottom:.4rem}
 }
 @media print{.prose-page::after{opacity:.14}.story-start::before{color:#8e6e34}}
+
+/* v2.23 — gravuras narrativas: o ornamento acompanha o assunto */
+.story-start{--engraving:"❦"}
+.story-start::before{content:var(--engraving);font-family:Georgia,"Times New Roman",serif;font-size:1.5rem;color:var(--gold);opacity:.78}
+.story-start:has(h2:is(
+ [data-x])){}
+.story-start:has(h2){}
+/* estrada / viagem / saga */
+.story-start:has(h2:nth-child(n)){}
+/* seletores por conteúdo, mantidos sem alterar o texto */
+section:has(h2:is(
+)){}
+/* classes semânticas aplicadas no HTML v2.23 */
+.engraving-road{--engraving:"╱  ╲  ───  ╱  ╲"}
+.engraving-river{--engraving:"≈  ≋  ≈"}
+.engraving-tree{--engraving:"❦  ♧  ❦"}
+.engraving-horse{--engraving:"♞"}
+.engraving-faith{--engraving:"✦  †  ✦"}
+.engraving-memory{--engraving:"❧"}
+.engraving-verse{--engraving:"❦"}
+.engraving-rural{--engraving:"⌒  ♧  ⌒"}
+.engraving-family{--engraving:"❦ ── ❦"}
+.engraving-road::after,.engraving-river::after,.engraving-tree::after,.engraving-horse::after,
+.engraving-faith::after,.engraving-rural::after,.engraving-family::after{
+ color:var(--gold);opacity:.18
+}
+/* leitura móvel: controles não devem cobrir o livro */
+@media(max-width:760px){
+ .print-btn{transform:scale(.82);transform-origin:right bottom;opacity:.78}
+ nav,.toolbar{transition:transform .22s ease}
+}
