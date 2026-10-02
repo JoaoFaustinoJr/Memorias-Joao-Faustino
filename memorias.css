@@ -307,3 +307,7 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .journey-line>i{display:block;height:13px;margin-left:3px;border-left:1.5px solid var(--gold)}
 .journey-line>i.inferred{border-left-style:dotted;opacity:.65}
 .editorial-caution{width:82%;margin:1rem auto 0;font-size:.69rem;line-height:1.45;color:var(--muted);font-style:italic;border-top:1px solid rgba(169,132,66,.35);padding-top:.55rem}
+
+/* v2.33 — carta de viagem */
+.route-map-figure{margin:.4rem auto .65rem;width:76%;text-align:center}.route-map-figure img{display:block;width:100%;max-height:360px;object-fit:contain;mix-blend-mode:multiply}.route-map-figure figcaption{font-size:.66rem;line-height:1.35;color:var(--muted);margin-top:.2rem;font-style:italic}
+@media(max-width:760px){.route-map-figure{width:88%}.route-map-figure img{max-height:300px}}
