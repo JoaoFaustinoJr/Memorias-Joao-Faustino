@@ -410,3 +410,14 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .family-document figcaption strong{color:var(--ink);font-weight:600}
 .photo-note{max-width:31em;margin:24px auto 0;padding-top:13px;border-top:1px solid rgba(169,132,66,.45);font-size:12px!important;line-height:1.55!important;color:var(--muted);text-align:center;text-indent:0!important}
 @media(max-width:600px){.family-document{max-width:88%;margin-top:14px}.family-document img{max-height:500px;border-width:5px}.family-document figcaption{font-size:12px}.photo-note{font-size:11px!important}}
+
+/* v2.44 — respingo editorial de tinta em "Saudades daquele Olhar Azul" */
+.blue-ink-page{position:relative;overflow:hidden}
+.blue-ink-page article,.blue-ink-page .page-head{position:relative;z-index:2}
+.ink-splash{position:absolute;z-index:1;right:18px;top:43%;width:76px;height:108px;opacity:.74;pointer-events:none;transform:rotate(-8deg)}
+.ink-splash:before{content:"";position:absolute;right:5px;top:31px;width:48px;height:50px;border-radius:48% 52% 44% 56% / 56% 43% 57% 44%;background:radial-gradient(circle at 38% 35%,#294f70 0 14%,#173f61 42%,#102f4c 74%,rgba(16,47,76,.9) 100%);box-shadow:-11px -8px 0 -8px #244d70,12px -15px 0 -10px #173d5d,-19px 21px 0 -12px #1b4568,14px 25px 0 -13px #153956}
+.ink-splash:after{content:"";position:absolute;right:27px;top:12px;width:4px;height:88px;background:#183f61;border-radius:80% 30% 65% 40%;transform:rotate(18deg);opacity:.62}
+.ink-splash i,.ink-splash b,.ink-splash em,.ink-splash span{position:absolute;display:block;border-radius:50%;background:#173f61}
+.ink-splash i{width:9px;height:8px;right:3px;top:3px}.ink-splash b{width:6px;height:7px;right:59px;top:28px}.ink-splash em{width:5px;height:5px;right:10px;top:94px}.ink-splash span{width:3px;height:4px;right:66px;top:76px}
+@media(max-width:800px){.ink-splash{right:7px;width:62px;opacity:.62}.blue-ink-page article{padding-right:5px}}
+@media print{.ink-splash{opacity:.62}}
