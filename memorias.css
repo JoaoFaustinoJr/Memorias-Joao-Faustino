@@ -13,3 +13,25 @@
 @media(max-width:600px){.prose-page article{text-align:left}.print-btn{right:12px;bottom:12px;padding:10px 14px}}
 @page{size:160mm 230mm;margin:0}
 @media print{body{background:#fff}.print-btn{display:none}.page{overflow:hidden}.prose-page:before,.genealogy:before,.photo-page:before,.notes-page:before{bottom:12mm}}
+
+/* Refinamento editorial 1.1 — capa discreta e narrativas longas */
+.cover{background:linear-gradient(180deg,#18354e 0%,#142e45 100%);padding-top:96px}
+.cover .kicker{font-size:9px;letter-spacing:.32em;color:#cbb88e;opacity:.82;margin-top:8px}
+.cover .cover-rule{width:34px;margin:30px 0 34px;opacity:.8}
+.cover h1{font-size:61px;letter-spacing:.105em;font-weight:400}
+.cover .names{margin-top:22px;gap:6px}.cover .names strong{font-weight:400;font-size:18px}.cover .names span{font-size:13px;opacity:.84}
+.cover-landscape{position:absolute;left:0;right:0;bottom:105px;height:235px;overflow:hidden;opacity:.38}
+.cover-landscape .hill{position:absolute;border:1.4px solid #c5ab76;border-radius:50% 50% 0 0;transform:rotate(-5deg);background:transparent}
+.cover-landscape .h1{width:430px;height:125px;left:-35px;bottom:-57px}.cover-landscape .h2{width:470px;height:145px;right:-105px;bottom:-76px;transform:rotate(4deg)}
+.cover-landscape .path-line{position:absolute;width:430px;height:120px;left:145px;bottom:-72px;border-top:2px solid #b89555;border-radius:50%;transform:rotate(-8deg)}
+.cover-landscape .tree-mark{position:absolute;left:112px;bottom:52px;color:#c8b07d;font-size:70px;font-family:Georgia,serif;transform:scaleX(.72);opacity:.7}
+.cover .roots{width:56%;opacity:.32;z-index:1}.cover .edition{z-index:2}
+.story-start:after{border-color:rgba(169,132,66,.14)}
+.story-continuation{padding-top:72px}
+.running-head{font:700 9px/1.2 system-ui,sans-serif;letter-spacing:.18em;color:#9b8764;border-bottom:1px solid rgba(169,132,66,.38);padding-bottom:12px;margin-bottom:46px;display:flex;justify-content:space-between}
+.running-head span{font-weight:400;letter-spacing:.08em;font-style:italic;text-transform:none}
+.story-continuation article{font-size:18px;line-height:1.72;max-width:34em;margin:auto;hyphens:auto}
+.story-continuation article p{text-indent:1.35em;margin:0 0 1.15em}.story-continuation article p:first-child,.story-continuation article .continuation{text-indent:0}
+.engraving-line{position:absolute;left:76px;right:76px;bottom:62px;height:28px;opacity:.32}.engraving-line:before,.engraving-line:after{content:"";position:absolute;top:14px;width:44%;height:1px;background:var(--gold)}.engraving-line:before{left:0}.engraving-line:after{right:0}.engraving-line span{position:absolute;width:8px;height:8px;border:1px solid var(--gold);transform:rotate(45deg);left:calc(50% - 4px);top:10px}
+@media(max-width:600px){.cover{padding-top:64px}.cover h1{font-size:40px}.cover-landscape{height:170px}.story-continuation{padding-top:48px}.running-head{margin-bottom:30px}.engraving-line{left:36px;right:36px}}
+@media print{.story-start,.story-continuation{break-after:page;page-break-after:always}.story-continuation{break-before:page;page-break-before:always}}
