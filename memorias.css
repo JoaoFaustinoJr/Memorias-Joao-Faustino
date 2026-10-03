@@ -1002,3 +1002,22 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .bird-audio-toggle{display:flex;align-items:center;gap:.42rem;margin:.05rem auto .7rem;padding:.34rem .7rem;border:1px solid rgba(153,125,70,.28);border-radius:999px;background:rgba(255,252,242,.68);color:#6f685d;font:600 .68rem/1.1 system-ui,sans-serif;letter-spacing:.04em}
 .bird-audio-toggle span{font-weight:500}
 @media(max-width:600px){.bird-song-page .bird-plate{width:82%;max-height:6.2rem;margin:.05rem auto .2rem}.bird-audio-toggle{margin:.05rem auto .42rem;font-size:.62rem;padding:.28rem .58rem}}
+
+/* 2.88 — Compêndio: leitura móvel sem sobreposição */
+.contents-list li>a{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;column-gap:16px;width:100%;text-decoration:none;color:inherit}
+.contents-list li>a>span{min-width:0;line-height:1.25;padding-right:4px}
+.contents-list li>a>i{display:none}
+.contents-list li>a>b{max-width:118px;text-align:right;line-height:1.25;white-space:normal;padding-top:.35em}
+@media(max-width:600px){
+ .contents-page{padding-left:44px;padding-right:44px}
+ .contents-list{margin-top:18px}
+ .contents-list li{display:block;padding:8px 0;font-size:13.5px}
+ .contents-list li>a{grid-template-columns:minmax(0,1fr) 104px;column-gap:14px}
+ .contents-list li>a>span{line-height:1.22}
+ .contents-list li>a>b{max-width:104px;font-size:8.5px;line-height:1.25;letter-spacing:.07em}
+}
+@media(max-width:390px){
+ .contents-page{padding-left:38px;padding-right:38px}
+ .contents-list li>a{grid-template-columns:minmax(0,1fr) 88px;column-gap:10px}
+ .contents-list li>a>b{max-width:88px;font-size:8px}
+}
