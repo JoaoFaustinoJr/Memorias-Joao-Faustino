@@ -8,13 +8,13 @@
 <meta name="theme-color" content="#17324b">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="apple-touch-icon" href="./assets/fotos/file_00000000ba78820eb7ec5a3721e57d12.png">
-<link rel="stylesheet" href="./memorias.css?v=295">
+<link rel="stylesheet" href="./memorias.css?v=296">
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <nav class="toolbar">
   <a href="#capa">Capa</a><a href="#prefacio">Prefácio</a><a href="#sumario">Compêndio</a><a href="#texto">Texto</a><a href="#genealogia">Genealogia</a>
-  <span>Projeto editorial · versão 2.95</span>
+  <span>Projeto editorial · versão 2.96</span>
 <a class="archive-link" href="conteudo-integral.html">Conteúdo integral</a></nav>
 
 <div class="reader-shell"><main class="book">
@@ -821,7 +821,7 @@ const hashTarget=location.hash&&document.querySelector(location.hash),hi=pages.i
 if(jump)jump.addEventListener('click',()=>{const m=saved();if(m>=0)go(m,m>index?1:-1)});
 document.addEventListener('click',e=>{const sound=e.target.closest('.bird-inline-sound');if(sound){const p=sound.closest('.page'),key=sound.dataset.bird,a=p.querySelector('.bird-audio[data-bird="'+key+'"]');if(!a)return;p.querySelectorAll('.bird-audio').forEach(x=>{if(x!==a){x.pause();x.currentTime=0}});p.querySelectorAll('.bird-inline-sound').forEach(x=>{if(x!==sound)x.textContent='▶'});if(!a.paused){a.pause();sound.textContent='▶';return}a.volume=.5;const play=a.play();sound.textContent='■';if(play&&play.catch)play.catch(()=>{sound.textContent='▶'});a.onended=()=>{sound.textContent='▶'};return}const edge=e.target.closest('.page-edge');if(edge){go(index+(edge.classList.contains('next')?1:-1),edge.classList.contains('next')?1:-1);return}const mark=e.target.closest('.page-bookmark');if(mark){const m=saved();if(m===index)localStorage.removeItem('memorias-bookmark');else localStorage.setItem('memorias-bookmark',String(index));sync();renderControls();return}const a=e.target.closest('a[href^="#"]');if(!a)return;const target=document.querySelector(a.getAttribute('href'));const n=pages.indexOf(target);if(n>=0){e.preventDefault();go(n,n>index?1:-1)}});
 function begin(x,y){startX=x;startY=y;startT=Date.now()}
-function end(x,y){if(startX===null)return;const dx=x-startX,dy=y-startY,dt=Date.now()-startT;startX=null;if(dt<1500&&Math.abs(dx)>=32&&Math.abs(dx)>Math.abs(dy)*.75)go(index+(dx<0?1:-1),dx<0?1:-1)}
+function end(x,y){if(startX===null)return;const dx=x-startX,dy=y-startY,dt=Date.now()-startT;startX=null;/* gesto deliberado: evita troca acidental durante leitura/rolagem */if(dt>=140&&dt<1300&&Math.abs(dx)>=58&&Math.abs(dx)>Math.abs(dy)*1.35)go(index+(dx<0?1:-1),dx<0?1:-1)}
 document.addEventListener('touchstart',e=>{if(e.touches.length===1)begin(e.touches[0].clientX,e.touches[0].clientY)},{passive:true,capture:true});
 document.addEventListener('touchend',e=>{if(e.changedTouches.length)end(e.changedTouches[0].clientX,e.changedTouches[0].clientY)},{passive:true,capture:true});
 document.addEventListener('pointerdown',e=>{if(e.pointerType!=='touch')begin(e.clientX,e.clientY)},{passive:true});
