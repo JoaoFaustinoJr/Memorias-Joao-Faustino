@@ -1310,3 +1310,26 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
  .cover-subtitle{margin-top:16px!important;max-width:82%!important;font-size:clamp(17px,5vw,21px)!important}
  .cover .names{margin-top:18px!important}
 }
+
+/* 3.22 — capa: serra protagonista; mapas digitalizados em leitura correta */
+.cover-memory-landscape{
+  background-position:center 38%!important;
+  filter:saturate(1.30) contrast(1.055) brightness(1.015)!important;
+}
+.cover h1{
+  margin-top:38px!important;
+  font-size:clamp(39px,10vw,57px)!important;
+  line-height:.91!important;
+}
+.cover-subtitle{margin-top:12px!important}
+.cover .names{margin-top:18px!important}
+.inline-historical-map img,
+.panorama-map-figure img,
+.historical-map-figure img{
+  transform:scaleX(-1);
+}
+@media(max-width:600px){
+ .cover-memory-landscape{background-position:center 37%!important}
+ .cover h1{margin-top:34px!important;font-size:clamp(38px,10.8vw,50px)!important}
+ .cover-subtitle{margin-top:11px!important}
+}
