@@ -1388,3 +1388,13 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .historical-map-gallery object{display:block;width:100%;height:min(57vh,560px);border:0;background:#ead9ad}
 .historical-map-gallery figcaption{font-family:Arial,sans-serif;font-size:10px;line-height:1.38;color:#53606a;background:#f8f1df;padding:8px 7px 4px}
 .historical-map-gallery figcaption b{color:#9a742f}
+
+/* 3.27 — nenhuma interface de PDF dentro do livro */
+.clean-map-series object{display:none!important}
+.map-plate{overflow:hidden!important;background:#efe2bd!important}
+.map-plate-visible img{display:block;width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;transform:none!important}
+.pending-clean-plate{min-height:118px;display:flex;flex-direction:column;justify-content:center}
+.map-plate-label{text-align:center;padding:18px 12px 12px;background:linear-gradient(135deg,#ead8a8,#f5e8c3);color:var(--blue)}
+.map-plate-label b{display:block;font-size:24px;color:#9a742f;letter-spacing:.08em}
+.map-plate-label span{display:block;margin-top:4px;font:700 10px/1.35 Arial,sans-serif;letter-spacing:.08em}
+.map-plate-label small{display:block;margin-top:8px;font:italic 9px/1.3 Arial,sans-serif;color:#766b58}
