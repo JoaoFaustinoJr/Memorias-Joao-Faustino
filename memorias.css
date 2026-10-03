@@ -1028,3 +1028,11 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .bird-sound span{display:block}.bird-sound small{display:block;margin-top:2px;font-size:8px;font-weight:400;color:var(--muted);letter-spacing:.03em}
 .bird-sound:not(:disabled){cursor:pointer}.bird-pending{opacity:.62}
 @media(max-width:420px){.bird-soundboard{grid-template-columns:1fr 1fr;gap:6px}.bird-sound{padding:7px 8px;font-size:9px}}
+
+/* 2.93 — áudio integrado ao texto da Trova */
+.bird-song-page .bird-soundboard{display:none}
+.bird-inline-sound{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;margin:0 2px;padding:0;border:0;border-bottom:1px dotted rgba(169,132,66,.65);background:transparent;color:var(--gold);font:600 13px/1 Georgia,serif;vertical-align:baseline;cursor:pointer;opacity:.78}
+.bird-inline-sound:hover,.bird-inline-sound:focus{opacity:1;color:var(--navy);outline:none}
+.bird-inline-pending{display:inline-block;color:var(--gold);font-size:10px;opacity:.45;vertical-align:middle}
+.bird-audio-note{margin-top:16px!important;text-indent:0!important;font:italic 9px/1.4 Georgia,serif!important;color:var(--muted);letter-spacing:.02em}
+@media(max-width:420px){.bird-inline-sound{width:18px;height:18px;font-size:12px}.bird-audio-note{font-size:8.5px!important}}
