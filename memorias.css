@@ -967,3 +967,16 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .narrative-illustration .foliage ellipse{fill:#ad8b4b;stroke:none;opacity:.14}
 .narrative-illustration span{display:block;margin-top:-5px;font:600 .56rem/1.2 system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#9d7d3d}
 @media(max-width:640px){.narrative-illustration{width:70%;margin:16px auto 12px}.narrative-illustration span{font-size:.49rem}}
+
+
+/* v2.80 — gravuras narrativas: preservar desenho antigo, reforçar acabamento */
+.restored-engraving{
+  opacity:.82;
+  filter:sepia(.72) saturate(.82) contrast(1.42) brightness(.92);
+  transform:scale(1.015);
+  transform-origin:center;
+}
+.story-plate.restored-engraving{width:min(72%,430px);margin:25px auto 20px}
+@media(max-width:640px){
+ .story-plate.restored-engraving{width:68%;margin:18px auto 15px}
+}
