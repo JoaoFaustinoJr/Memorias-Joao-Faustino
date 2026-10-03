@@ -1137,3 +1137,59 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 
 /* 3.15 — panorama cronológico */
 .north-old-anchor{margin-top:14px}.north-old-anchor .archive-card{margin-bottom:9px}.north-old-anchor .archive-card em{font-style:normal}
+
+/* 3.16 — narrativa e aparato documental visualmente distintos */
+.prose-page article>.inline-anchor{
+  position:relative;
+  margin:18px 2px 20px;
+  padding:13px 13px 12px 16px;
+  border:1px solid rgba(169,132,66,.42);
+  border-left:4px solid var(--gold);
+  border-radius:2px;
+  background:linear-gradient(135deg,rgba(169,132,66,.075),rgba(255,255,255,.20));
+  box-shadow:0 4px 13px rgba(50,39,22,.055);
+  font-family:Arial,sans-serif;
+}
+.prose-page article>.inline-anchor:before{
+  content:"";
+  display:block;
+  width:42px;
+  margin:-4px 0 9px;
+  border-top:1px solid rgba(169,132,66,.7);
+}
+.prose-page article>.inline-anchor>span{
+  display:block;
+  margin-bottom:8px;
+  color:var(--gold);
+  font:700 8px/1.2 Arial,sans-serif;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.prose-page article>.inline-anchor p,
+.prose-page article>.inline-anchor small,
+.prose-page article>.inline-anchor em{
+  font-family:Arial,sans-serif;
+}
+.prose-page article>.inline-anchor p{
+  margin:7px 0!important;
+  font-size:10px!important;
+  line-height:1.42!important;
+  text-indent:0!important;
+}
+.prose-page article>.inline-anchor small{
+  display:block;
+  margin-top:8px;
+  padding-top:6px;
+  border-top:1px solid rgba(169,132,66,.22);
+  font-size:7.8px!important;
+  line-height:1.32!important;
+  color:var(--muted);
+}
+.prose-page article>.inline-anchor+.inline-anchor{margin-top:22px}
+.prose-page article>p+.inline-anchor{margin-top:19px}
+.prose-page article>.inline-anchor+p{margin-top:18px}
+.prose-page article>.marginal-note{
+  background:rgba(169,132,66,.045);
+  border-style:dashed;
+  border-left-style:solid;
+}
