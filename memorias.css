@@ -1260,3 +1260,8 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
  .cover .names{margin-top:8px!important}
  .cover-route{bottom:8%!important}
 }
+
+/* 3.20 — mapa histórico dentro da âncora de Itararé */
+.inline-historical-map{margin:5px 0 11px!important;background:#f1eadb}
+.inline-historical-map img{max-height:34vh!important}
+.inline-historical-map figcaption{background:rgba(255,250,239,.92)}
