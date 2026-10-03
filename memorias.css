@@ -586,3 +586,23 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
   .cover-subtitle{transform:translateY(-30px);margin-top:.65rem;margin-bottom:.72rem}
   .cover .names{transform:translateY(-30px)!important;padding:0!important;background:none!important}
 }
+
+
+/* v2.64 — fotografia inteira com cor viva */
+.cover-memory-landscape{
+  top:0!important;
+  right:0!important;
+  bottom:0!important;
+  left:0!important;
+  opacity:1!important;
+  filter:saturate(1.22) contrast(1.04) brightness(1.03)!important;
+  background:
+    url("./assets/fotos/Screenshot_20261002-051918.png") center center/cover no-repeat!important;
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
+}
+.cover-memory-landscape:after{display:none!important}
+.cover h1:before,.cover .cover-title:before{display:none!important}
+.cover h1,.cover-subtitle,.cover .names,.cover .edition{
+  text-shadow:0 2px 8px rgba(0,25,45,.62);
+}
