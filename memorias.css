@@ -755,3 +755,7 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .preface-editorial .standout{font-style:italic}
 .preface-editorial .preface-close{margin-top:1.7em;text-align:right}
 .author-preface{ }
+
+
+/* v2.67 — assinatura editorial discreta */
+.preface-signature{margin-top:1.2em;text-align:right;font-family:Georgia,serif;font-style:italic;font-size:.82em;letter-spacing:.04em;opacity:.64}
