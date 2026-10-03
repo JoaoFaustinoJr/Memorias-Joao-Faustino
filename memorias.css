@@ -748,3 +748,10 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .cover-route circle,.cover-route span{display:none!important}
 .cover-memory-landscape{background:linear-gradient(to bottom,rgba(8,45,73,.08) 0%,rgba(8,45,73,.025) 34%,transparent 60%,rgba(8,45,73,.035) 100%),url("./assets/fotos/Screenshot_20261002-051918.png") center 47%/cover no-repeat!important;filter:saturate(1.2) contrast(1.035) brightness(1.025)!important}
 @media(max-width:600px){.cover-route{left:15%!important;right:10%!important;bottom:22%!important;height:72px!important}}
+
+
+/* v2.66 — prefácio editorial: silêncio visual e leitura literária */
+.preface-editorial article{max-width:34em;margin-left:auto;margin-right:auto}
+.preface-editorial .standout{font-style:italic}
+.preface-editorial .preface-close{margin-top:1.7em;text-align:right}
+.author-preface{ }
