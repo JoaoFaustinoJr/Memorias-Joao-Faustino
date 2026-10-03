@@ -924,3 +924,22 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .roots-illustration .leaf-canopy ellipse:nth-child(3n+1){opacity:.21}
 .roots-illustration .leaf-canopy ellipse:nth-child(3n+2){opacity:.13}
 .roots-illustration .tree-crown{position:relative}
+
+
+/* v2.78 — segunda geração das gravuras: mais orgânicas, sem perder o traço esquemático */
+.chapter-emblem:after{content:"";position:absolute;left:50%;bottom:4px;width:58%;height:10px;transform:translateX(-50%);border-bottom:1px solid rgba(173,139,75,.28);border-radius:50%}
+.journey-emblem:before,.childhood-emblem:before,.jaboti-emblem:before,.time-emblem:before{content:"";position:absolute;inset:18px 18px 8px;background:radial-gradient(ellipse at 50% 72%,rgba(173,139,75,.10),transparent 58%);border-radius:50%}
+.journey-emblem .ridge,.childhood-emblem .hill,.jaboti-emblem .hill{border-top-width:2.3px}
+.journey-emblem .ridge:after,.childhood-emblem .hill:after,.jaboti-emblem .hill:after{content:"";position:absolute;width:6px;height:6px;border-radius:50%;background:#ad8b4b;opacity:.34;top:-4px;left:24%}
+.stories-emblem:before{content:"";position:absolute;left:52px;right:52px;bottom:17px;height:25px;background:radial-gradient(ellipse,rgba(173,139,75,.14),transparent 68%);border-radius:50%}
+.stories-emblem .flame{background:rgba(173,139,75,.045)}
+.family-emblem:before{content:"";position:absolute;left:68px;top:16px;width:74px;height:78px;border:1px solid rgba(173,139,75,.13);border-radius:50% 50% 46% 54%;transform:rotate(8deg)}
+.family-emblem i{background:rgba(173,139,75,.12)}
+.jaboti-emblem .tree:after{content:"";position:absolute;width:16px;height:12px;border:1.6px solid #ad8b4b;border-radius:50%;left:-7px;top:-12px;opacity:.7}
+.faith-emblem:before{content:"";position:absolute;left:67px;top:9px;width:76px;height:96px;border:1px solid rgba(173,139,75,.18);border-radius:50%}
+.faith-emblem .ray{opacity:.58}
+.verse-emblem:before{content:"";position:absolute;left:70px;top:12px;width:76px;height:92px;background:radial-gradient(ellipse,rgba(173,139,75,.08),transparent 68%);border-radius:50%}
+.verse-emblem .leaf{background:rgba(173,139,75,.08)}
+.time-emblem .sun{box-shadow:0 0 0 8px rgba(173,139,75,.06),0 0 0 17px rgba(173,139,75,.035)}
+.voices-emblem .line{height:1.7px;border-radius:50%;background:linear-gradient(90deg,transparent 0,#ad8b4b 8%,#ad8b4b 88%,transparent 100%)}
+.voices-emblem:before{content:"“";position:absolute;left:82px;top:-9px;font:italic 58px Georgia,serif;color:#ad8b4b;opacity:.16}
