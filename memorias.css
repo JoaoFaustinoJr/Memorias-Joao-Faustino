@@ -1118,3 +1118,9 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .inline-anchor .anchor-extra{margin-top:9px!important;padding-top:8px;border-top:1px dotted rgba(169,132,66,.38)}
 .marginal-note{margin-left:10%!important;border-left:2px solid var(--gold)!important;border-top:0!important;border-bottom:0!important;background:transparent!important}
 @media(max-width:600px){.illustrated-anchor .anchor-visual{padding:11px}.anchor-photo-placeholder{min-height:92px}.map-route-mini{gap:4px}.map-route-mini i{font-size:7.7px}.marginal-note{margin-left:7%!important}}
+
+/* 3.11 — documentos consultáveis dentro do livro */
+.document-link{display:inline-block;margin-top:10px;padding:6px 9px;border:1px solid rgba(169,132,66,.7);color:var(--navy);font:700 8px/1.2 Arial,sans-serif;letter-spacing:.08em;text-decoration:none;text-transform:uppercase}
+.document-link:focus,.document-link:hover{background:rgba(169,132,66,.12)}
+.inline-doc-link{margin:6px 0 0 6px;padding:4px 6px;font-size:7px}
+.archive-card{background:linear-gradient(135deg,rgba(238,226,190,.5),rgba(255,255,255,.08))!important}
