@@ -1358,3 +1358,9 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
   padding:8px 10px!important;
   background:#f1e5c8!important;
 }
+
+/* 3.23 — mapas: uma ocorrência por documento, sem bordas de digitalização */
+.inline-historical-map,.panorama-map-figure{display:none!important}
+.historical-map-figure{overflow:hidden!important;background:#efe2bd!important;padding:0!important}
+.historical-map-figure img{width:100%!important;max-height:none!important;object-fit:cover!important;transform:none!important;filter:sepia(.08) saturate(1.04) contrast(1.03)!important}
+.historical-map-figure figcaption{padding:9px 10px!important;background:#f7f0df!important}
