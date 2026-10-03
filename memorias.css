@@ -893,3 +893,27 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .roots-illustration .leaf-dots circle{fill:#ad8b4b;opacity:.72}
 .roots-illustration span{display:block;margin-top:-4px;font:600 .63rem/1.2 system-ui,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#9d7d3d}
 @media(max-width:640px){.roots-illustration{width:68%;margin-top:18px}.roots-illustration span{font-size:.54rem}}
+
+
+/* v2.75 — vocabulário de gravuras editoriais */
+.chapter-emblem{position:relative;width:210px;height:120px;margin:28px auto 0;color:#ad8b4b;opacity:.78}
+.chapter-emblem span,.chapter-emblem i{position:absolute;display:block;box-sizing:border-box}
+.journey-emblem .ridge,.childhood-emblem .hill,.jaboti-emblem .hill{border-top:2px solid #ad8b4b;border-radius:50%}
+.journey-emblem .r1{left:8px;top:45px;width:125px;height:55px;transform:rotate(-5deg)}
+.journey-emblem .r2{right:5px;top:33px;width:128px;height:68px;transform:rotate(7deg)}
+.journey-emblem .pathline,.childhood-emblem .pathline{left:92px;top:55px;width:42px;height:64px;border-left:2px solid #ad8b4b;border-radius:50%;transform:rotate(24deg)}
+.childhood-emblem .sun,.time-emblem .sun{width:19px;height:19px;border:2px solid #ad8b4b;border-radius:50%}
+.childhood-emblem .sun{left:94px;top:12px}.childhood-emblem .h1{left:10px;top:55px;width:120px;height:52px}.childhood-emblem .h2{right:4px;top:49px;width:120px;height:58px}
+.stories-emblem .ground{left:30px;right:30px;bottom:14px;border-top:2px solid #ad8b4b}
+.stories-emblem .flame{bottom:16px;border:2px solid #ad8b4b;border-bottom:0;border-radius:60% 0 60% 60%;transform:rotate(45deg)}
+.stories-emblem .f1{left:83px;width:42px;height:62px}.stories-emblem .f2{left:63px;width:30px;height:43px}.stories-emblem .f3{left:117px;width:28px;height:40px}
+.family-emblem .branch{height:2px;background:#ad8b4b;transform-origin:left}.family-emblem .b1{left:105px;top:88px;width:76px;transform:rotate(-55deg)}.family-emblem .b2{left:105px;top:88px;width:76px;transform:rotate(-125deg)}.family-emblem .b3{left:105px;top:20px;width:2px;height:70px}
+.family-emblem i{width:8px;height:8px;border:2px solid #ad8b4b;border-radius:50%}.family-emblem i:nth-of-type(1){left:101px;top:12px}.family-emblem i:nth-of-type(2){left:164px;top:22px}.family-emblem i:nth-of-type(3){left:37px;top:22px}.family-emblem i:nth-of-type(4){left:101px;top:84px}.family-emblem i:nth-of-type(5){left:101px;top:104px}
+.jaboti-emblem .h1{left:4px;top:48px;width:132px;height:58px}.jaboti-emblem .h2{right:3px;top:38px;width:135px;height:68px}.jaboti-emblem .road{left:98px;top:58px;width:40px;height:60px;border-left:2px solid #ad8b4b;border-radius:50%;transform:rotate(22deg)}.jaboti-emblem .tree{left:43px;top:59px;width:2px;height:35px;background:#ad8b4b}.jaboti-emblem .tree:before{content:"";position:absolute;width:24px;height:24px;border:2px solid #ad8b4b;border-radius:50%;left:-11px;top:-18px}
+.faith-emblem .cross{left:101px;top:25px;width:3px;height:70px;background:#ad8b4b}.faith-emblem .cross:after{content:"";position:absolute;width:38px;height:3px;background:#ad8b4b;left:-17px;top:18px}.faith-emblem .ray{height:1px;background:#ad8b4b;top:62px;width:55px}.faith-emblem .r1{left:17px;transform:rotate(12deg)}.faith-emblem .r2{right:17px;transform:rotate(-12deg)}.faith-emblem .r3{left:78px;top:105px;width:55px}
+.verse-emblem .stem{left:104px;top:22px;width:2px;height:78px;background:#ad8b4b;transform:rotate(12deg)}.verse-emblem .leaf{width:32px;height:17px;border:2px solid #ad8b4b;border-radius:100% 0}.verse-emblem .l1{left:71px;top:49px;transform:rotate(22deg)}.verse-emblem .l2{left:107px;top:67px;transform:rotate(-35deg)}.verse-emblem .note{font:italic 28px Georgia;color:#ad8b4b}.verse-emblem .n1{left:139px;top:25px}.verse-emblem .n2{left:53px;top:76px}
+.time-emblem .arc{border-top:2px solid #ad8b4b;border-radius:50%}.time-emblem .a1{left:25px;top:30px;width:160px;height:80px}.time-emblem .a2{left:48px;top:45px;width:114px;height:58px}.time-emblem .horizon{left:20px;right:20px;top:89px;border-top:2px solid #ad8b4b}.time-emblem .sun{left:95px;top:79px;background:#fbf4df}
+.voices-emblem .line{left:30px;height:2px;background:#ad8b4b;transform-origin:left}.voices-emblem .l1{top:32px;width:145px}.voices-emblem .l2{top:53px;width:110px}.voices-emblem .l3{top:74px;width:132px}.voices-emblem .l4{top:95px;width:83px}
+.prose-page article:after{content:"◆";display:block;margin:2.3rem auto .4rem;text-align:center;color:#ad8b4b;font-size:.55rem;opacity:.45}
+.preface-editorial article:after,.author-preface article:after{content:none}
+@media(max-width:640px){.chapter-emblem{width:180px;height:105px;margin-top:18px;transform:scale(.9);transform-origin:top center}}
