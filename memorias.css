@@ -917,3 +917,10 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .prose-page article:after{content:"◆";display:block;margin:2.3rem auto .4rem;text-align:center;color:#ad8b4b;font-size:.55rem;opacity:.45}
 .preface-editorial article:after,.author-preface article:after{content:none}
 @media(max-width:640px){.chapter-emblem{width:180px;height:105px;margin-top:18px;transform:scale(.9);transform-origin:top center}}
+
+
+/* v2.77 — copa orgânica, leve, preservando a leitura dos galhos */
+.roots-illustration .leaf-canopy ellipse{fill:#ad8b4b;stroke:none;opacity:.16}
+.roots-illustration .leaf-canopy ellipse:nth-child(3n+1){opacity:.21}
+.roots-illustration .leaf-canopy ellipse:nth-child(3n+2){opacity:.13}
+.roots-illustration .tree-crown{position:relative}
