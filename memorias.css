@@ -956,3 +956,14 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .verse-emblem .detail.petal{width:22px;height:11px;border-radius:100% 0!important}.verse-emblem .p1{left:85px;top:32px;transform:rotate(35deg)}.verse-emblem .p2{left:109px;top:47px;transform:rotate(-28deg)}.verse-emblem .p3{left:77px;top:71px;transform:rotate(15deg)}
 .time-emblem .detail.cloud{width:45px;height:13px;border-radius:50%!important}.time-emblem .c1{left:34px;top:57px}.time-emblem .c2{right:29px;top:51px;opacity:.1}
 .voices-emblem .detail.ink{width:7px;height:7px;border-radius:50%!important}.voices-emblem .i1{left:178px;top:29px}.voices-emblem .i2{left:146px;top:71px}.voices-emblem .i3{left:119px;top:93px}
+
+
+/* v2.79 — gravuras narrativas no mesmo idioma visual das aberturas */
+.narrative-illustration{width:min(76%,440px);margin:24px auto 18px;text-align:center;color:#ad8b4b;opacity:.82}
+.narrative-illustration svg{display:block;width:100%;height:auto}
+.narrative-illustration path{fill:none;stroke:#ad8b4b;stroke-linecap:round;stroke-linejoin:round}
+.narrative-illustration .ridge.back{stroke-width:1.5;opacity:.48}.narrative-illustration .ridge.front{stroke-width:2;opacity:.72}.narrative-illustration .trail{stroke-width:2.4;stroke-dasharray:2 6}
+.narrative-illustration .travellers circle{fill:#ad8b4b;opacity:.72}.narrative-illustration .travellers path{stroke-width:2;opacity:.75}
+.narrative-illustration .foliage ellipse{fill:#ad8b4b;stroke:none;opacity:.14}
+.narrative-illustration span{display:block;margin-top:-5px;font:600 .56rem/1.2 system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#9d7d3d}
+@media(max-width:640px){.narrative-illustration{width:70%;margin:16px auto 12px}.narrative-illustration span{font-size:.49rem}}
