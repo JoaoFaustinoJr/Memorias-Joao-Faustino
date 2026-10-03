@@ -1199,3 +1199,8 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .document-figure img{display:block;width:100%;height:auto;max-height:46vh;object-fit:contain;background:#eee8d9}
 .document-figure figcaption{padding:7px 3px 2px;font:8px/1.35 Arial,sans-serif;color:var(--muted);text-align:left}
 .document-figure figcaption b{color:var(--gold);letter-spacing:.04em}
+
+/* 3.18 — documento visual no fluxo narrativo */
+.panorama-map-figure{margin:17px 2px 8px}
+.panorama-map-figure+ .inline-anchor{margin-top:8px!important}
+.panorama-map-figure img{max-height:40vh;filter:sepia(.10) contrast(.97)}
