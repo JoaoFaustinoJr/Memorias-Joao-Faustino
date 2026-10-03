@@ -862,3 +862,22 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
     background:rgba(23,50,75,.58)!important;
   }
 }
+
+
+/* v2.73 — subtítulo da capa: contraste sem tarja */
+.cover-subtitle{
+  color:#f1c75b!important;
+  font-weight:600!important;
+  text-shadow:
+    0 1px 1px rgba(18,34,34,.9),
+    0 2px 5px rgba(10,28,35,.78),
+    0 0 12px rgba(10,28,35,.36)!important;
+}
+@media(max-width:640px){
+  .cover-subtitle{
+    font-size:clamp(1.22rem,5.25vw,1.62rem)!important;
+    line-height:1.05!important;
+    left:10%!important;right:10%!important;
+    letter-spacing:.005em!important;
+  }
+}
