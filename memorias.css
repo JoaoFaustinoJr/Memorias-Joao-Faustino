@@ -1128,3 +1128,9 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 /* 3.12 — leitura histórica do mapa */
 .map-reading-note{border-left:2px solid var(--gold);padding-left:8px;margin-top:8px!important}
 .marginal-note small{display:block;margin-top:6px;color:var(--muted);font-size:8px;line-height:1.3;font-style:italic}
+
+/* 3.14 — leitura documental e memória industrial */
+.map-reading-note{margin:11px 0 8px;padding:10px 11px;border-left:3px solid var(--gold);background:rgba(169,132,66,.065);text-align:left}
+.map-reading-note>b{display:block;margin-bottom:6px;color:var(--gold);font:700 8px/1.2 Arial,sans-serif;letter-spacing:.12em}
+.map-reading-note p{margin:0!important;font-size:10.5px!important;line-height:1.4!important}
+.map-reading-note small{display:block;margin-top:7px!important;font-size:8px!important;line-height:1.3!important;color:var(--muted)}
