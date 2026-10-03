@@ -1086,3 +1086,7 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 /* 3.06 — âncoras comparativas e cronológicas */
 .regional-anchors .archival-find em{color:var(--navy)}
 .regional-anchors .archival-find p+ p{margin-top:11px}
+
+/* 3.07 — documentos visuais, cartografia e cronologia */
+.regional-anchors .archive-stamp+ p{margin-top:2px}
+.regional-anchors .archival-find strong{font-weight:700}
