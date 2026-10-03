@@ -759,3 +759,13 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 
 /* v2.67 — assinatura editorial discreta */
 .preface-signature{margin-top:1.2em;text-align:right;font-family:Georgia,serif;font-style:italic;font-size:.82em;letter-spacing:.04em;opacity:.64}
+
+
+/* v2.68 — sistema editorial: formato constante, páginas com personalidade */
+.page{box-sizing:border-box;min-height:990px}
+.preface-editorial .standout cite{display:block;margin-top:.75em;font:600 .34em/1.4 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#9d7d3d}
+.preface-editorial{background-image:linear-gradient(135deg,rgba(180,145,76,.035),transparent 38%)}
+.author-preface{background-image:linear-gradient(to bottom,rgba(26,62,88,.025),transparent 28%)}
+.toc-page{background-image:linear-gradient(90deg,rgba(180,145,76,.025),transparent 32%)}
+.part-divider{background-image:radial-gradient(circle at 50% 38%,rgba(180,145,76,.055),transparent 36%)}
+@media(max-width:600px){.page{min-height:990px}.preface-editorial .standout cite{font-size:.32em}}
