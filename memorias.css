@@ -1093,3 +1093,7 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 
 /* 3.07 — documentos cartográficos e cronologia */
 .regional-anchors .archival-find .archive-stamp{max-width:100%;white-space:normal}
+
+/* 3.08 — inventário de documentação visual */
+.visual-document-plan .archival-find p{padding-bottom:8px}
+.visual-document-plan .archival-find p:not(.anchor-source){border-bottom:1px dotted rgba(169,132,66,.3)}
