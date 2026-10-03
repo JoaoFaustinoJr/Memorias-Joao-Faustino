@@ -943,3 +943,16 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .time-emblem .sun{box-shadow:0 0 0 8px rgba(173,139,75,.06),0 0 0 17px rgba(173,139,75,.035)}
 .voices-emblem .line{height:1.7px;border-radius:50%;background:linear-gradient(90deg,transparent 0,#ad8b4b 8%,#ad8b4b 88%,transparent 100%)}
 .voices-emblem:before{content:"“";position:absolute;left:82px;top:-9px;font:italic 58px Georgia,serif;color:#ad8b4b;opacity:.16}
+
+
+/* v2.78 — segunda camada orgânica nas gravuras, inspirada na copa da árvore */
+.chapter-emblem .detail{border:0!important;background:#ad8b4b;opacity:.14}
+.journey-emblem .detail{width:34px;height:12px;border-radius:50%!important}.journey-emblem .d1{left:31px;top:54px;transform:rotate(-12deg)}.journey-emblem .d2{left:82px;top:40px;transform:rotate(8deg)}.journey-emblem .d3{right:20px;top:50px;transform:rotate(-7deg)}
+.childhood-emblem .detail{width:27px;height:11px;border-radius:50%!important}.childhood-emblem .d1{left:32px;top:65px}.childhood-emblem .d2{right:28px;top:60px}.childhood-emblem .d3{left:89px;top:82px}
+.stories-emblem .detail{width:17px;height:17px;border-radius:50%!important;filter:blur(1px)}.stories-emblem .d1{left:77px;top:48px}.stories-emblem .d2{left:101px;top:33px;opacity:.2}.stories-emblem .d3{left:123px;top:56px}
+.family-emblem .detail.leaf{width:28px!important;height:13px!important;border-radius:100% 0!important}.family-emblem .l1{left:46px;top:39px;transform:rotate(24deg)}.family-emblem .l2{right:44px;top:39px;transform:rotate(-24deg)}.family-emblem .l3{left:91px;top:23px;transform:rotate(5deg)}
+.jaboti-emblem .detail.crown{width:20px;height:14px;border-radius:50%!important}.jaboti-emblem .c1{left:32px;top:39px}.jaboti-emblem .c2{left:46px;top:35px;opacity:.2}.jaboti-emblem .c3{left:55px;top:43px}
+.faith-emblem .detail.glow{border-radius:50%!important}.faith-emblem .g1{left:75px;top:25px;width:60px;height:60px;opacity:.055}.faith-emblem .g2{left:88px;top:38px;width:34px;height:34px;opacity:.08}.faith-emblem .g3{left:97px;top:47px;width:16px;height:16px;opacity:.12}
+.verse-emblem .detail.petal{width:22px;height:11px;border-radius:100% 0!important}.verse-emblem .p1{left:85px;top:32px;transform:rotate(35deg)}.verse-emblem .p2{left:109px;top:47px;transform:rotate(-28deg)}.verse-emblem .p3{left:77px;top:71px;transform:rotate(15deg)}
+.time-emblem .detail.cloud{width:45px;height:13px;border-radius:50%!important}.time-emblem .c1{left:34px;top:57px}.time-emblem .c2{right:29px;top:51px;opacity:.1}
+.voices-emblem .detail.ink{width:7px;height:7px;border-radius:50%!important}.voices-emblem .i1{left:178px;top:29px}.voices-emblem .i2{left:146px;top:71px}.voices-emblem .i3{left:119px;top:93px}
