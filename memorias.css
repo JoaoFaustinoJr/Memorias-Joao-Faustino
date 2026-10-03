@@ -996,3 +996,9 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
  .family-document figcaption{font-size:.74rem;line-height:1.38}
  .family-photo-page .editorial-caption{font-size:.66rem;margin-top:8px}
 }
+
+/* Trova dos passarinhos — presença gráfica e som ambiente opcional */
+.bird-song-page .bird-plate{width:78%;max-height:9.2rem;object-fit:contain;margin:.25rem auto .45rem;display:block;opacity:.78}
+.bird-audio-toggle{display:flex;align-items:center;gap:.42rem;margin:.05rem auto .7rem;padding:.34rem .7rem;border:1px solid rgba(153,125,70,.28);border-radius:999px;background:rgba(255,252,242,.68);color:#6f685d;font:600 .68rem/1.1 system-ui,sans-serif;letter-spacing:.04em}
+.bird-audio-toggle span{font-weight:500}
+@media(max-width:600px){.bird-song-page .bird-plate{width:82%;max-height:6.2rem;margin:.05rem auto .2rem}.bird-audio-toggle{margin:.05rem auto .42rem;font-size:.62rem;padding:.28rem .58rem}}
