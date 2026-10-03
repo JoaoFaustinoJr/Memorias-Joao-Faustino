@@ -1021,3 +1021,10 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
  .contents-list li>a{grid-template-columns:minmax(0,1fr) 88px;column-gap:10px}
  .contents-list li>a>b{max-width:88px;font-size:8px}
 }
+
+/* 2.89 — Passarinhos da Trova */
+.bird-soundboard{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0 16px}
+.bird-sound{min-height:42px;border:1px solid rgba(169,132,66,.38);background:rgba(250,246,235,.72);color:var(--navy);font:600 10px/1.2 system-ui,sans-serif;letter-spacing:.04em;padding:8px 10px;text-align:left;border-radius:3px}
+.bird-sound span{display:block}.bird-sound small{display:block;margin-top:2px;font-size:8px;font-weight:400;color:var(--muted);letter-spacing:.03em}
+.bird-sound:not(:disabled){cursor:pointer}.bird-pending{opacity:.62}
+@media(max-width:420px){.bird-soundboard{grid-template-columns:1fr 1fr;gap:6px}.bird-sound{padding:7px 8px;font-size:9px}}
