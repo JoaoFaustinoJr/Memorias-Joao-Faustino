@@ -1090,3 +1090,6 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 /* 3.07 — documentos visuais, cartografia e cronologia */
 .regional-anchors .archive-stamp+ p{margin-top:2px}
 .regional-anchors .archival-find strong{font-weight:700}
+
+/* 3.07 — documentos cartográficos e cronologia */
+.regional-anchors .archival-find .archive-stamp{max-width:100%;white-space:normal}
