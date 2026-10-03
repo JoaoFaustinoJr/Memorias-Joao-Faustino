@@ -1036,3 +1036,8 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .bird-inline-pending{display:inline-block;color:var(--gold);font-size:10px;opacity:.45;vertical-align:middle}
 .bird-audio-note{margin-top:16px!important;text-indent:0!important;font:italic 9px/1.4 Georgia,serif!important;color:var(--muted);letter-spacing:.02em}
 @media(max-width:420px){.bird-inline-sound{width:18px;height:18px;font-size:12px}.bird-audio-note{font-size:8.5px!important}}
+
+/* 2.94 — controles sonoros pequenos, mas reconhecíveis */
+.bird-inline-sound{width:22px;height:22px;border:1px solid rgba(169,132,66,.48);border-radius:50%;background:rgba(169,132,66,.07);color:var(--gold);font:600 8px/1 system-ui,sans-serif;vertical-align:middle;margin:0 3px;opacity:.88}
+.bird-inline-sound:active{transform:scale(.94);background:rgba(169,132,66,.16)}
+.bird-audio-note{opacity:.78}
