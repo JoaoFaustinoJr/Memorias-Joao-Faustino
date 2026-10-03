@@ -881,3 +881,15 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
     letter-spacing:.005em!important;
   }
 }
+
+
+/* v2.74 — aberturas: ilustração editorial em vez de símbolo esquemático */
+.roots-illustration{width:min(74%,430px);margin:28px auto 0;text-align:center;color:#9d7d3d;opacity:.88}
+.roots-illustration svg{display:block;width:100%;height:auto;overflow:visible}
+.roots-illustration path{fill:none;stroke:#ad8b4b;stroke-linecap:round;stroke-linejoin:round}
+.roots-illustration .tree-crown path{stroke-width:2.2}
+.roots-illustration .trunk{stroke-width:5.2}
+.roots-illustration .roots path{stroke-width:2.5}
+.roots-illustration .leaf-dots circle{fill:#ad8b4b;opacity:.72}
+.roots-illustration span{display:block;margin-top:-4px;font:600 .63rem/1.2 system-ui,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#9d7d3d}
+@media(max-width:640px){.roots-illustration{width:68%;margin-top:18px}.roots-illustration span{font-size:.54rem}}
