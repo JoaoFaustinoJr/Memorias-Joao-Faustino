@@ -739,3 +739,12 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
  .cover-route{left:10%;right:10%;bottom:15%;height:54px}
  .cover .edition{bottom:38px}
 }
+
+
+/* v2.64 — capa aprovada: caminho como memória, não como mapa */
+.cover .names{background:none!important;padding-left:0!important;padding-right:0!important}
+.cover-route{left:17%!important;right:12%!important;bottom:23%!important;height:82px!important;opacity:.66!important;filter:drop-shadow(0 1px 2px rgba(30,24,10,.22))}
+.cover-route path{fill:none!important;stroke:#e6c46d!important;stroke-width:1.15!important;stroke-dasharray:none!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+.cover-route circle,.cover-route span{display:none!important}
+.cover-memory-landscape{background:linear-gradient(to bottom,rgba(8,45,73,.08) 0%,rgba(8,45,73,.025) 34%,transparent 60%,rgba(8,45,73,.035) 100%),url("./assets/fotos/Screenshot_20261002-051918.png") center 47%/cover no-repeat!important;filter:saturate(1.2) contrast(1.035) brightness(1.025)!important}
+@media(max-width:600px){.cover-route{left:15%!important;right:10%!important;bottom:22%!important;height:72px!important}}
