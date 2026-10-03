@@ -838,3 +838,27 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
  .cover .names{top:47%!important}
  .cover-route{bottom:7.5%!important}
 }
+
+
+/* v2.72 — acabamento de capa: mais livro, menos maquete */
+@media(max-width:640px){
+  body:has(.cover.page-active) footer{display:none!important}
+  .paged-reader .reader-shell:has(.cover.page-active){padding-bottom:0!important}
+  .cover h1{top:6.4%!important}
+  .cover-subtitle{top:33.6%!important}
+  .cover .names{top:45.8%!important}
+  .cover .names strong{font-weight:500!important;font-size:clamp(1.12rem,4.9vw,1.52rem)!important}
+  .cover .names span{opacity:.94!important}
+  .cover-route{
+    left:20%!important;right:15%!important;
+    bottom:12.5%!important;height:38px!important;
+    opacity:.34!important;
+    filter:drop-shadow(0 1px 1px rgba(30,24,10,.12))!important;
+  }
+  .cover-route path{stroke:#e6c46d!important;stroke-width:.72!important}
+  .cover .page-edge.next{
+    width:22px!important;height:44px!important;
+    opacity:.30!important;
+    background:rgba(23,50,75,.58)!important;
+  }
+}
