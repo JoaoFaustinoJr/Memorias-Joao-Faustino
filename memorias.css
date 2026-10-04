@@ -1404,3 +1404,6 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .cover.cover-art{padding:0!important;overflow:hidden;background:#e7dcc6!important;display:flex!important;align-items:center!important;justify-content:center!important}
 .cover.cover-art>img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#e7dcc6}
 @media (max-width:700px){.cover.cover-art>img{width:100%;height:100%;object-fit:contain}}
+
+/* v3.34 — documento primário de Tomazina */
+.primary-source-card .document-open{display:block;text-decoration:none;color:inherit}.archive-document-cover{min-height:320px;padding:38px 34px;box-sizing:border-box;border:1px solid rgba(88,62,36,.32);background:linear-gradient(145deg,#e9ddc2,#f5edda 52%,#d9c6a4);box-shadow:inset 0 0 45px rgba(92,61,30,.10);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}.archive-document-cover span{font-size:.72rem;letter-spacing:.18em;color:#795b3d}.archive-document-cover strong{font-family:Georgia,serif;font-size:2.25rem;letter-spacing:.08em;margin:.5rem 0;color:#423426}.archive-document-cover em{font-family:Georgia,serif;max-width:430px;line-height:1.45;color:#5c4936}.archive-document-cover small{margin-top:1.3rem;line-height:1.5;color:#745f48}.archive-document-cover:hover{filter:brightness(.98)}
