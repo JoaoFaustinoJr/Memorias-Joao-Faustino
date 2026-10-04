@@ -8,13 +8,13 @@
 <meta name="theme-color" content="#17324b">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="apple-touch-icon" href="./assets/fotos/file_00000000ba78820eb7ec5a3721e57d12.png">
-<link rel="stylesheet" href="./memorias.css?v=346">
+<link rel="stylesheet" href="./memorias.css?v=347">
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <nav class="toolbar">
   <a href="#capa">Capa</a><a href="#prefacio">Nota</a><a href="#sumario">Compêndio</a><a href="#texto">Texto</a><a href="#genealogia">Genealogia</a>
-  <span>Projeto editorial · versão 3.46</span>
+  <span>Projeto editorial · versão 3.47</span>
 <a class="archive-link" href="conteudo-integral.html">Conteúdo integral</a></nav>
 
 <div class="reader-shell"><main class="book">
@@ -1052,7 +1052,7 @@ const pages=Array.from(document.querySelectorAll('.book > .page'));
 const synth=('speechSynthesis' in window)?window.speechSynthesis:null;
 let narrating=false;
 function stopNarration(){if(synth)synth.cancel();narrating=false;document.querySelectorAll('.narration-btn').forEach(b=>{b.classList.remove('speaking');b.textContent='▶ Ouvir esta página'})}
-function narratePage(p,btn){if(!synth||!p)return;if(narrating){stopNarration();return}const clone=p.cloneNode(true);clone.querySelectorAll('button,audio,script,style,.page-edge,.page-bookmark,.anchor-source').forEach(e=>e.remove());const txt=clone.innerText.replace(/\s+/g,' ').trim();if(!txt)return;const u=new SpeechSynthesisUtterance(txt);u.lang='pt-BR';u.rate=.86;u.pitch=.96;u.onend=u.onerror=()=>stopNarration();narrating=true;btn.classList.add('speaking');btn.textContent='■ Parar narração';synth.speak(u)}
+function narratePage(p,btn){if(!synth||!p)return;if(narrating){stopNarration();return}const clone=p.cloneNode(true);clone.querySelectorAll('button,audio,script,style,.page-edge,.page-bookmark,.anchor-source,.crossing-sources,.soundscape-cue,figcaption').forEach(e=>e.remove());const txt=clone.innerText.replace(/\s+/g,' ').trim();if(!txt)return;const u=new SpeechSynthesisUtterance(txt);u.lang='pt-BR';u.rate=.86;u.pitch=.96;u.onend=u.onerror=()=>stopNarration();narrating=true;btn.classList.add('speaking');btn.textContent='■ Parar narração';synth.speak(u)}
 const jump=document.querySelector('.bookmark-jump');
 let index=0,startX=null,startY=null,startT=0;
 function label(p,n){const e=p.querySelector('.page-head h2,.part-page h2,.title-page h2,.cover h1');return e?e.textContent.replace(/\s+/g,' ').trim():'Página '+(n+1)}
@@ -1087,7 +1087,14 @@ document.documentElement.classList.add('paged-reader');
 const hashTarget=location.hash&&document.querySelector(location.hash),hi=pages.indexOf(hashTarget);if(hi>=0){pages[0].classList.remove('page-active');index=hi;pages[index].classList.add('page-active')};setTimeout(()=>pageAudio(pages[index],true),180)
 
 if(jump)jump.addEventListener('click',()=>{const m=saved();if(m>=0)go(m,m>index?1:-1)});
-document.addEventListener('click',e=>{const narration=e.target.closest('.narration-btn');if(narration){narratePage(pages[index],narration);return}const sound=e.target.closest('.bird-inline-sound');if(sound){const p=sound.closest('.page'),key=sound.dataset.bird,a=p.querySelector('.bird-audio[data-bird="'+key+'"]');if(!a)return;p.querySelectorAll('.bird-audio').forEach(x=>{if(x!==a){x.pause();x.currentTime=0}});p.querySelectorAll('.bird-inline-sound').forEach(x=>{if(x!==sound)x.textContent='▶'});if(!a.paused){a.pause();sound.textContent='▶';return}a.volume=.5;const play=a.play();sound.textContent='■';if(play&&play.catch)play.catch(()=>{sound.textContent='▶'});a.onended=()=>{sound.textContent='▶'};return}const edge=e.target.closest('.page-edge');if(edge){go(index+(edge.classList.contains('next')?1:-1),edge.classList.contains('next')?1:-1);return}const mark=e.target.closest('.page-bookmark');if(mark){const m=saved();if(m===index)localStorage.removeItem('memorias-bookmark');else localStorage.setItem('memorias-bookmark',String(index));sync();renderControls();return}const a=e.target.closest('a[href^="#"]');if(!a)return;const target=document.querySelector(a.getAttribute('href'));const n=pages.indexOf(target);if(n>=0){e.preventDefault();go(n,n>index?1:-1)}});
+function playSoundscape(kind,btn){
+ const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
+ const ctx=new AC(),out=ctx.createGain(),now=ctx.currentTime,dur=kind==='tropa'?8:9;out.gain.value=.13;out.connect(ctx.destination);
+ function noise(at,len,level,cut){const b=ctx.createBuffer(1,Math.floor(ctx.sampleRate*len),ctx.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;const src=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain();src.buffer=b;f.type='lowpass';f.frequency.value=cut;g.gain.setValueAtTime(.001,at);g.gain.linearRampToValueAtTime(level,at+.12);g.gain.exponentialRampToValueAtTime(.001,at+len);src.connect(f);f.connect(g);g.connect(out);src.start(at);src.stop(at+len)}
+ if(kind==='tropa'){noise(now,dur,.13,850);for(let t=.25;t<dur;t+=.42+Math.random()*.22){const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.setValueAtTime(125+Math.random()*35,now+t);o.frequency.exponentialRampToValueAtTime(58,now+t+.1);g.gain.setValueAtTime(.001,now+t);g.gain.linearRampToValueAtTime(.45,now+t+.012);g.gain.exponentialRampToValueAtTime(.001,now+t+.13);o.connect(g);g.connect(out);o.start(now+t);o.stop(now+t+.14)}}else{noise(now,dur,.27,1400);noise(now+.15,dur-.15,.08,3900)}
+ const original=btn.textContent;btn.textContent='■ Ambiente tocando';btn.classList.add('playing');setTimeout(()=>{btn.textContent=original;btn.classList.remove('playing');ctx.close()},dur*1000)
+}
+document.addEventListener('click',e=>{const ambience=e.target.closest('.soundscape-btn');if(ambience){playSoundscape(ambience.closest('.soundscape-cue').dataset.soundscape,ambience);return}const narration=e.target.closest('.narration-btn');if(narration){narratePage(pages[index],narration);return}const sound=e.target.closest('.bird-inline-sound');if(sound){const p=sound.closest('.page'),key=sound.dataset.bird,a=p.querySelector('.bird-audio[data-bird="'+key+'"]');if(!a)return;p.querySelectorAll('.bird-audio').forEach(x=>{if(x!==a){x.pause();x.currentTime=0}});p.querySelectorAll('.bird-inline-sound').forEach(x=>{if(x!==sound)x.textContent='▶'});if(!a.paused){a.pause();sound.textContent='▶';return}a.volume=.5;const play=a.play();sound.textContent='■';if(play&&play.catch)play.catch(()=>{sound.textContent='▶'});a.onended=()=>{sound.textContent='▶'};return}const edge=e.target.closest('.page-edge');if(edge){go(index+(edge.classList.contains('next')?1:-1),edge.classList.contains('next')?1:-1);return}const mark=e.target.closest('.page-bookmark');if(mark){const m=saved();if(m===index)localStorage.removeItem('memorias-bookmark');else localStorage.setItem('memorias-bookmark',String(index));sync();renderControls();return}const a=e.target.closest('a[href^="#"]');if(!a)return;const target=document.querySelector(a.getAttribute('href'));const n=pages.indexOf(target);if(n>=0){e.preventDefault();go(n,n>index?1:-1)}});
 function begin(x,y){startX=x;startY=y;startT=Date.now()}
 function end(x,y){if(startX===null)return;const dx=x-startX,dy=y-startY,dt=Date.now()-startT;startX=null;/* gesto deliberado: evita troca acidental durante leitura/rolagem */if(dt>=140&&dt<1300&&Math.abs(dx)>=58&&Math.abs(dx)>Math.abs(dy)*1.35)go(index+(dx<0?1:-1),dx<0?1:-1)}
 document.addEventListener('touchstart',e=>{if(e.touches.length===1)begin(e.touches[0].clientX,e.touches[0].clientY)},{passive:true,capture:true});
