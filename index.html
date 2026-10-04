@@ -8,13 +8,13 @@
 <meta name="theme-color" content="#17324b">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="apple-touch-icon" href="./assets/fotos/file_00000000ba78820eb7ec5a3721e57d12.png">
-<link rel="stylesheet" href="./memorias.css?v=339">
+<link rel="stylesheet" href="./memorias.css?v=340">
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <nav class="toolbar">
   <a href="#capa">Capa</a><a href="#prefacio">Nota</a><a href="#sumario">Compêndio</a><a href="#texto">Texto</a><a href="#genealogia">Genealogia</a>
-  <span>Projeto editorial · versão 3.39</span>
+  <span>Projeto editorial · versão 3.40</span>
 <a class="archive-link" href="conteudo-integral.html">Conteúdo integral</a></nav>
 
 <div class="reader-shell"><main class="book">
@@ -197,7 +197,7 @@
   <p>E, exatamente como uma profecia bíblica, assim aconteceu! O primeiro paranaense da família foi o meu Pai e teve como pajem o primo Duca. Duca levou o ainda menino Neco Major em algumas viagens a Jaguariaíva e depois em várias idas a Wenceslau Braz.</p>
   <p>Mais tarde, os trilhos alcançaram Pinhalão. Então os vagões de carga aposentaram os tropeiros. Os serviços de transportes de mercadorias em cargueiros e no lombo dos animais não eram mais necessários.</p>
   <figure class="inline-document-photo"><img src="./assets/fotos/tropa-de-mulas.jpg" alt="Registro histórico de uma tropa de mulas em caminho rural" loading="lazy"><figcaption><strong>Do cargueiro ao vagão.</strong> A fotografia de uma tropa é colocada aqui, junto ao momento em que o próprio relato registra a substituição gradual desse transporte pela ferrovia. <em>Imagem de contexto histórico; não representa a tropa da família.</em></figcaption></figure>
-  <aside class="inline-anchor illustrated-anchor"><span>ÂNCORA · OS TRILHOS SE APROXIMAM</span><div class="anchor-visual map-window" aria-label="Esquema editorial baseado no mapa histórico do Paraná de 1922"><b>MAPA HISTÓRICO · 1922</b><div class="map-route-mini"><i>Jaguariaíva</i><u></u><i>Wenceslau Braz</i><u></u><i>Ibaiti</i></div><small>Prévia esquemática · o mapa original do IAT substituirá este quadro quando incorporado ao acervo do livro.</small></div><p>O mapa histórico do Paraná de 1922 registra o ramal do Paranapanema e também o pequeno ramal que partia de Wenceslau Braz em direção ao vale do Rio do Peixe, chegando naquele ano a Ibaiti.</p><small>Fonte: Coletânea de Mapas Históricos do Paraná · Instituto Água e Terra. <a class="document-link inline-doc-link" href="https://www.iat.pr.gov.br/Pagina/Coletanea-de-Mapas-Historicos-do-Parana" target="_blank" rel="noopener">Abrir acervo oficial</a></small></aside>
+  <aside class="inline-anchor illustrated-anchor"><span>ÂNCORA · OS TRILHOS SE APROXIMAM</span><div class="anchor-visual map-window real-map"><a href="https://commons.wikimedia.org/wiki/File:Terceira_Edi%C3%A7%C3%A3o_Corrigida_-_1921._Mappa_Geral_do_Estado_do_Paran%C3%A1_de_Romario_Martins_Director_do_Museu_Paranaense_-_1%2C_Acervo_do_Museu_Paulista_da_USP.jpg" target="_blank" rel="noopener"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Terceira_Edi%C3%A7%C3%A3o_Corrigida_-_1921._Mappa_Geral_do_Estado_do_Paran%C3%A1_de_Romario_Martins_Director_do_Museu_Paranaense_-_1%2C_Acervo_do_Museu_Paulista_da_USP.jpg?width=1280" alt="Mappa Geral do Estado do Paraná de Romário Martins, edição corrigida de 1921" loading="lazy"></a><small><strong>Mapa real · 1921.</strong> Romário Martins · Acervo do Museu Paulista da USP. Toque para ampliar.</small></div><p>O mapa histórico do Paraná de 1922 registra o ramal do Paranapanema e também o pequeno ramal que partia de Wenceslau Braz em direção ao vale do Rio do Peixe, chegando naquele ano a Ibaiti.</p><small>Fonte: Coletânea de Mapas Históricos do Paraná · Instituto Água e Terra. <a class="document-link inline-doc-link" href="https://www.iat.pr.gov.br/Pagina/Coletanea-de-Mapas-Historicos-do-Parana" target="_blank" rel="noopener">Abrir acervo oficial</a></small></aside>
   <p>Depois disso, Duca voltou a Minas duas vezes com tropas. Na terceira vez, viajou de trem e era para ficar por lá em definitivo. Mas não ficou!</p>
   <p>PS. Minha Vó teve mais um filho homem, que não sobreviveu.</p>
   <p class="source-sign">Residencial Faustino — Rua José de Azevedo, 100<br>Jaboti, 17 de janeiro de 2017<br>JFMajor</p>
@@ -1035,12 +1035,16 @@
 <script>
 (()=>{
 const pages=Array.from(document.querySelectorAll('.book > .page'));
+const synth=('speechSynthesis' in window)?window.speechSynthesis:null;
+let narrating=false;
+function stopNarration(){if(synth)synth.cancel();narrating=false;document.querySelectorAll('.narration-btn').forEach(b=>{b.classList.remove('speaking');b.textContent='▶ Ouvir esta página'})}
+function narratePage(p,btn){if(!synth||!p)return;if(narrating){stopNarration();return}const clone=p.cloneNode(true);clone.querySelectorAll('button,audio,script,style,.page-edge,.page-bookmark,.anchor-source').forEach(e=>e.remove());const txt=clone.innerText.replace(/\s+/g,' ').trim();if(!txt)return;const u=new SpeechSynthesisUtterance(txt);u.lang='pt-BR';u.rate=.92;u.pitch=1;u.onend=u.onerror=()=>stopNarration();narrating=true;btn.classList.add('speaking');btn.textContent='■ Parar narração';synth.speak(u)}
 const jump=document.querySelector('.bookmark-jump');
 let index=0,startX=null,startY=null,startT=0;
 function label(p,n){const e=p.querySelector('.page-head h2,.part-page h2,.title-page h2,.cover h1');return e?e.textContent.replace(/\s+/g,' ').trim():'Página '+(n+1)}
 function saved(){const n=Number(localStorage.getItem('memorias-bookmark'));return Number.isInteger(n)&&n>=2&&n<pages.length?n:-1}
 function sync(){const m=saved();if(jump){jump.disabled=m<0;jump.querySelector('small').textContent=m>=0?label(pages[m],m):'Nenhuma página marcada'}}
-function renderControls(){pages.forEach((p,i)=>{p.querySelectorAll('.page-edge,.page-bookmark').forEach(e=>e.remove());if(i===index){if(i>0)p.insertAdjacentHTML('beforeend','<button class="page-edge prev" aria-label="Página anterior">‹</button>');if(i<pages.length-1)p.insertAdjacentHTML('beforeend','<button class="page-edge next" aria-label="Próxima página">›</button>');if(i>=2){const on=saved()===i;p.insertAdjacentHTML('beforeend','<button class="page-bookmark '+(on?'set':'')+'" aria-label="'+(on?'Remover marcação':'Marcar esta página')+'"><span></span></button>')}}});document.body.classList.toggle('bookmark-eligible',index>=2)}
+function renderControls(){pages.forEach((p,i)=>{p.querySelectorAll('.page-edge,.page-bookmark,.narration-btn').forEach(e=>e.remove());if(i===index){if(i>0)p.insertAdjacentHTML('beforeend','<button class="page-edge prev" aria-label="Página anterior">‹</button>');if(i<pages.length-1)p.insertAdjacentHTML('beforeend','<button class="page-edge next" aria-label="Próxima página">›</button>');if(i>=2){const on=saved()===i;p.insertAdjacentHTML('beforeend','<button class="page-bookmark '+(on?'set':'')+'" aria-label="'+(on?'Remover marcação':'Marcar esta página')+'"><span></span></button>');if(synth)p.insertAdjacentHTML('beforeend','<button class="narration-btn" type="button" aria-label="Ouvir esta página">▶ Ouvir esta página</button>')}}});document.body.classList.toggle('bookmark-eligible',index>=2)}
 let birdSequenceToken=0;
 async function pageAudio(p,entering){
  birdSequenceToken++;
@@ -1063,13 +1067,13 @@ async function pageAudio(p,entering){
   }catch(e){if(b)b.textContent='▶';}
  }
 }
-function go(n,dir){if(n<0||n>=pages.length||n===index)return;const old=pages[index],neo=pages[n];pageAudio(old,false);old.classList.remove('page-active');neo.classList.add('page-active','page-turning',dir>0?'turn-from-right':'turn-from-left');index=n;pageAudio(neo,true);sync();renderControls();requestAnimationFrame(()=>requestAnimationFrame(()=>neo.classList.remove('turn-from-right','turn-from-left')));setTimeout(()=>neo.classList.remove('page-turning'),430)}
+function go(n,dir){if(n<0||n>=pages.length||n===index)return;stopNarration();const old=pages[index],neo=pages[n];pageAudio(old,false);old.classList.remove('page-active');neo.classList.add('page-active','page-turning',dir>0?'turn-from-right':'turn-from-left');index=n;pageAudio(neo,true);sync();renderControls();requestAnimationFrame(()=>requestAnimationFrame(()=>neo.classList.remove('turn-from-right','turn-from-left')));setTimeout(()=>neo.classList.remove('page-turning'),430)}
 pages.forEach((p,i)=>p.classList.toggle('page-active',i===0));
 document.documentElement.classList.add('paged-reader');
 const hashTarget=location.hash&&document.querySelector(location.hash),hi=pages.indexOf(hashTarget);if(hi>=0){pages[0].classList.remove('page-active');index=hi;pages[index].classList.add('page-active')};setTimeout(()=>pageAudio(pages[index],true),180)
 
 if(jump)jump.addEventListener('click',()=>{const m=saved();if(m>=0)go(m,m>index?1:-1)});
-document.addEventListener('click',e=>{const sound=e.target.closest('.bird-inline-sound');if(sound){const p=sound.closest('.page'),key=sound.dataset.bird,a=p.querySelector('.bird-audio[data-bird="'+key+'"]');if(!a)return;p.querySelectorAll('.bird-audio').forEach(x=>{if(x!==a){x.pause();x.currentTime=0}});p.querySelectorAll('.bird-inline-sound').forEach(x=>{if(x!==sound)x.textContent='▶'});if(!a.paused){a.pause();sound.textContent='▶';return}a.volume=.5;const play=a.play();sound.textContent='■';if(play&&play.catch)play.catch(()=>{sound.textContent='▶'});a.onended=()=>{sound.textContent='▶'};return}const edge=e.target.closest('.page-edge');if(edge){go(index+(edge.classList.contains('next')?1:-1),edge.classList.contains('next')?1:-1);return}const mark=e.target.closest('.page-bookmark');if(mark){const m=saved();if(m===index)localStorage.removeItem('memorias-bookmark');else localStorage.setItem('memorias-bookmark',String(index));sync();renderControls();return}const a=e.target.closest('a[href^="#"]');if(!a)return;const target=document.querySelector(a.getAttribute('href'));const n=pages.indexOf(target);if(n>=0){e.preventDefault();go(n,n>index?1:-1)}});
+document.addEventListener('click',e=>{const narration=e.target.closest('.narration-btn');if(narration){narratePage(pages[index],narration);return}const sound=e.target.closest('.bird-inline-sound');if(sound){const p=sound.closest('.page'),key=sound.dataset.bird,a=p.querySelector('.bird-audio[data-bird="'+key+'"]');if(!a)return;p.querySelectorAll('.bird-audio').forEach(x=>{if(x!==a){x.pause();x.currentTime=0}});p.querySelectorAll('.bird-inline-sound').forEach(x=>{if(x!==sound)x.textContent='▶'});if(!a.paused){a.pause();sound.textContent='▶';return}a.volume=.5;const play=a.play();sound.textContent='■';if(play&&play.catch)play.catch(()=>{sound.textContent='▶'});a.onended=()=>{sound.textContent='▶'};return}const edge=e.target.closest('.page-edge');if(edge){go(index+(edge.classList.contains('next')?1:-1),edge.classList.contains('next')?1:-1);return}const mark=e.target.closest('.page-bookmark');if(mark){const m=saved();if(m===index)localStorage.removeItem('memorias-bookmark');else localStorage.setItem('memorias-bookmark',String(index));sync();renderControls();return}const a=e.target.closest('a[href^="#"]');if(!a)return;const target=document.querySelector(a.getAttribute('href'));const n=pages.indexOf(target);if(n>=0){e.preventDefault();go(n,n>index?1:-1)}});
 function begin(x,y){startX=x;startY=y;startT=Date.now()}
 function end(x,y){if(startX===null)return;const dx=x-startX,dy=y-startY,dt=Date.now()-startT;startX=null;/* gesto deliberado: evita troca acidental durante leitura/rolagem */if(dt>=140&&dt<1300&&Math.abs(dx)>=58&&Math.abs(dx)>Math.abs(dy)*1.35)go(index+(dx<0?1:-1),dx<0?1:-1)}
 document.addEventListener('touchstart',e=>{if(e.touches.length===1)begin(e.touches[0].clientX,e.touches[0].clientY)},{passive:true,capture:true});
