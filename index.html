@@ -8,13 +8,13 @@
 <meta name="theme-color" content="#17324b">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="apple-touch-icon" href="./assets/fotos/file_00000000ba78820eb7ec5a3721e57d12.png">
-<link rel="stylesheet" href="./memorias.css?v=347">
+<link rel="stylesheet" href="./memorias.css?v=348">
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <nav class="toolbar">
   <a href="#capa">Capa</a><a href="#prefacio">Nota</a><a href="#sumario">Compêndio</a><a href="#texto">Texto</a><a href="#genealogia">Genealogia</a>
-  <span>Projeto editorial · versão 3.47</span>
+  <span>Projeto editorial · versão 3.48</span>
 <a class="archive-link" href="conteudo-integral.html">Conteúdo integral</a></nav>
 
 <div class="reader-shell"><main class="book">
@@ -1081,7 +1081,8 @@ async function pageAudio(p,entering){
   }catch(e){if(b)b.textContent='▶';}
  }
 }
-function go(n,dir){if(n<0||n>=pages.length||n===index)return;stopNarration();const old=pages[index],neo=pages[n];pageAudio(old,false);old.classList.remove('page-active');neo.classList.add('page-active','page-turning',dir>0?'turn-from-right':'turn-from-left');index=n;pageAudio(neo,true);sync();renderControls();requestAnimationFrame(()=>requestAnimationFrame(()=>neo.classList.remove('turn-from-right','turn-from-left')));setTimeout(()=>neo.classList.remove('page-turning'),430)}
+function stopSoundscapes(){document.querySelectorAll('.soundscape-btn.playing').forEach(b=>{b.classList.remove('playing');b.textContent=b.closest('[data-soundscape]').dataset.soundscape==='tropa'?'♫ Ouvir a tropa se preparando':'♫ Ouvir a travessia'})}
+function go(n,dir){if(n<0||n>=pages.length||n===index)return;stopNarration();stopSoundscapes();const old=pages[index],neo=pages[n];pageAudio(old,false);old.classList.remove('page-active');neo.classList.add('page-active','page-turning',dir>0?'turn-from-right':'turn-from-left');index=n;pageAudio(neo,true);sync();renderControls();requestAnimationFrame(()=>requestAnimationFrame(()=>neo.classList.remove('turn-from-right','turn-from-left')));setTimeout(()=>neo.classList.remove('page-turning'),430)}
 pages.forEach((p,i)=>p.classList.toggle('page-active',i===0));
 document.documentElement.classList.add('paged-reader');
 const hashTarget=location.hash&&document.querySelector(location.hash),hi=pages.indexOf(hashTarget);if(hi>=0){pages[0].classList.remove('page-active');index=hi;pages[index].classList.add('page-active')};setTimeout(()=>pageAudio(pages[index],true),180)
@@ -1089,7 +1090,7 @@ const hashTarget=location.hash&&document.querySelector(location.hash),hi=pages.i
 if(jump)jump.addEventListener('click',()=>{const m=saved();if(m>=0)go(m,m>index?1:-1)});
 function playSoundscape(kind,btn){
  const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
- const ctx=new AC(),out=ctx.createGain(),now=ctx.currentTime,dur=kind==='tropa'?8:9;out.gain.value=.13;out.connect(ctx.destination);
+ if(btn.classList.contains('playing'))return;const ctx=new AC(),out=ctx.createGain(),now=ctx.currentTime,dur=kind==='tropa'?8:9;out.gain.value=.10;out.connect(ctx.destination);
  function noise(at,len,level,cut){const b=ctx.createBuffer(1,Math.floor(ctx.sampleRate*len),ctx.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;const src=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain();src.buffer=b;f.type='lowpass';f.frequency.value=cut;g.gain.setValueAtTime(.001,at);g.gain.linearRampToValueAtTime(level,at+.12);g.gain.exponentialRampToValueAtTime(.001,at+len);src.connect(f);f.connect(g);g.connect(out);src.start(at);src.stop(at+len)}
  if(kind==='tropa'){noise(now,dur,.13,850);for(let t=.25;t<dur;t+=.42+Math.random()*.22){const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.setValueAtTime(125+Math.random()*35,now+t);o.frequency.exponentialRampToValueAtTime(58,now+t+.1);g.gain.setValueAtTime(.001,now+t);g.gain.linearRampToValueAtTime(.45,now+t+.012);g.gain.exponentialRampToValueAtTime(.001,now+t+.13);o.connect(g);g.connect(out);o.start(now+t);o.stop(now+t+.14)}}else{noise(now,dur,.27,1400);noise(now+.15,dur-.15,.08,3900)}
  const original=btn.textContent;btn.textContent='■ Ambiente tocando';btn.classList.add('playing');setTimeout(()=>{btn.textContent=original;btn.classList.remove('playing');ctx.close()},dur*1000)
