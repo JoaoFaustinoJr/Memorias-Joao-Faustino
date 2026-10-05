@@ -1465,3 +1465,12 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
  .nature-anchor::after,.inline-anchor.illustrated-anchor::after{width:56px;height:44px;right:8px;top:9px}
 }
 @media print{.nature-anchor::after,.inline-anchor.illustrated-anchor::after{box-shadow:none}}
+
+/* 3.27 — âncoras naturais: fotografia em lugar de pictogramas */
+.nature-anchor:before,.nature-anchor:after,.fauna-anchor:before,.landscape-anchor:before{display:none!important;content:none!important}
+.nature-photo{margin:13px 0 8px;border:1px solid rgba(143,126,76,.42);background:#f2ead6;padding:6px}
+.nature-photo img{display:block;width:100%;height:auto;max-height:42vh;object-fit:cover;object-position:center}
+.nature-photo figcaption{font-family:Arial,sans-serif;font-size:9px;line-height:1.38;color:#5e625d;padding:7px 6px 2px}
+.nature-photo figcaption b{color:#21425b}
+.historical-nature-photo img{filter:sepia(.13) contrast(1.03)}
+.trope-photo img{max-height:34vh;object-fit:contain;background:#e9dfc7}
