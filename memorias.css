@@ -1446,3 +1446,22 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .nature-anchor>span{display:block;margin-bottom:6px;color:#667b4d;font:700 8px/1.2 Arial,sans-serif;letter-spacing:.13em}
 .nature-anchor p{margin:5px 0!important;font-size:9.7px!important;line-height:1.4!important;text-indent:0!important}
 .nature-anchor small{display:block;margin-top:6px;font-size:7.8px!important;line-height:1.3!important;color:var(--muted)}
+
+
+/* v3.49 — pequenas imagens ilustrativas em todas as âncoras */
+.inline-anchor,.nature-anchor,.document-anchor,.archival-find{position:relative}
+.nature-anchor,.inline-anchor.illustrated-anchor{padding-right:92px!important;min-height:82px}
+.nature-anchor::after,.inline-anchor.illustrated-anchor::after{
+ content:"";position:absolute;right:10px;top:10px;width:68px;height:52px;border-radius:7px;
+ background:#f2ead8 url("./assets/anchor-landscape.svg") center/cover no-repeat;
+ border:1px solid rgba(122,101,63,.22);box-shadow:0 2px 7px rgba(61,48,28,.08)
+}
+.nature-anchor.fauna-anchor::after{background-image:url("./assets/anchor-fauna.svg")}
+.nature-anchor.landscape-anchor::after{background-image:url("./assets/anchor-landscape.svg")}
+.inline-anchor.illustrated-anchor::after{background-image:url("./assets/anchor-history.svg")}
+.nature-anchor>span,.inline-anchor.illustrated-anchor>span{padding-right:2px}
+@media(max-width:520px){
+ .nature-anchor,.inline-anchor.illustrated-anchor{padding-right:76px!important}
+ .nature-anchor::after,.inline-anchor.illustrated-anchor::after{width:56px;height:44px;right:8px;top:9px}
+}
+@media print{.nature-anchor::after,.inline-anchor.illustrated-anchor::after{box-shadow:none}}
