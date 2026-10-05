@@ -1473,3 +1473,6 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 
 /* v3.52 — reproduções documentais com proporção e bordas preservadas */
 .verified-archive-photo img{height:auto;object-fit:contain}.inline-anchor .verified-archive-photo{margin:12px 0}.inline-anchor .verified-archive-photo img{max-height:270px}.verified-archive-photo a{color:inherit}.clean-map-series .map-plate img{width:100%;height:auto;max-height:none;object-fit:contain}
+
+/* v3.53 — preserva a resolução da fotografia documental */
+.inline-document-photo img[src*="tropeiros-ponta-grossa"],.document-photo img[src*="tropeiros-ponta-grossa"],.trope-photo img[src*="tropeiros-ponta-grossa"]{display:block;width:200px;max-width:100%;height:auto;object-fit:contain;margin:0 auto}
