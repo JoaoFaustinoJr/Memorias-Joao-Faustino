@@ -1448,24 +1448,6 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .nature-anchor small{display:block;margin-top:6px;font-size:7.8px!important;line-height:1.3!important;color:var(--muted)}
 
 
-/* v3.49 — pequenas imagens ilustrativas em todas as âncoras */
-.inline-anchor,.nature-anchor,.document-anchor,.archival-find{position:relative}
-.nature-anchor,.inline-anchor.illustrated-anchor{padding-right:92px!important;min-height:82px}
-.nature-anchor::after,.inline-anchor.illustrated-anchor::after{
- content:"";position:absolute;right:10px;top:10px;width:68px;height:52px;border-radius:7px;
- background:#f2ead8 url("./assets/anchor-landscape.svg") center/cover no-repeat;
- border:1px solid rgba(122,101,63,.22);box-shadow:0 2px 7px rgba(61,48,28,.08)
-}
-.nature-anchor.fauna-anchor::after{background-image:url("./assets/anchor-fauna.svg")}
-.nature-anchor.landscape-anchor::after{background-image:url("./assets/anchor-landscape.svg")}
-.inline-anchor.illustrated-anchor::after{background-image:url("./assets/anchor-history.svg")}
-.nature-anchor>span,.inline-anchor.illustrated-anchor>span{padding-right:2px}
-@media(max-width:520px){
- .nature-anchor,.inline-anchor.illustrated-anchor{padding-right:76px!important}
- .nature-anchor::after,.inline-anchor.illustrated-anchor::after{width:56px;height:44px;right:8px;top:9px}
-}
-@media print{.nature-anchor::after,.inline-anchor.illustrated-anchor::after{box-shadow:none}}
-
 /* 3.27 — âncoras naturais: fotografia em lugar de pictogramas */
 .nature-anchor:before,.nature-anchor:after,.fauna-anchor:before,.landscape-anchor:before{display:none!important;content:none!important}
 .nature-photo{margin:13px 0 8px;border:1px solid rgba(143,126,76,.42);background:#f2ead6;padding:6px}
@@ -1474,3 +1456,17 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .nature-photo figcaption b{color:#21425b}
 .historical-nature-photo img{filter:sepia(.13) contrast(1.03)}
 .trope-photo img{max-height:34vh;object-fit:contain;background:#e9dfc7}
+
+/* v3.50 — fotografias reais nas âncoras, sem pictogramas */
+.nature-anchor::before,.nature-anchor::after,
+.inline-anchor.illustrated-anchor::before,.inline-anchor.illustrated-anchor::after{
+ display:none!important;content:none!important;background-image:none!important
+}
+.nature-anchor,.inline-anchor.illustrated-anchor{padding-right:12px!important;min-height:0;display:flow-root}
+.anchor-real-thumb{float:right;width:78px;margin:3px 0 8px 12px;padding:0;border:0;background:none;text-indent:0}
+.anchor-real-thumb[hidden]{display:none!important}
+.anchor-real-thumb a{display:block}
+.anchor-real-thumb img{display:block;width:100%;height:64px;object-fit:cover;border:1px solid rgba(122,101,63,.25);border-radius:4px}
+.anchor-real-thumb figcaption{font:7px/1.3 Arial,sans-serif!important;color:#625c50;padding-top:3px;text-align:left;text-indent:0}
+.anchor-real-thumb figcaption a{display:inline;color:inherit}
+@media(max-width:520px){.anchor-real-thumb{width:66px;margin-left:9px}.anchor-real-thumb img{height:54px}}
