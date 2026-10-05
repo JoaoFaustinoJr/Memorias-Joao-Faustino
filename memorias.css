@@ -1493,3 +1493,34 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 
 .uniform-book body>footer{display:none}.leaf-running-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:34px}
 .uniform-book .book-leaf:before{content:attr(data-folio);position:absolute;bottom:19px;left:50%;transform:translateX(-50%);font:11px/1 Georgia,serif;color:#9b8d78;letter-spacing:.08em}
+/* v3.56 — composição editorial: narrativa, notas e documentos */
+.uniform-book footer{display:none}
+.uniform-book .book>.book-leaf{padding:44px 62px 54px!important}
+.uniform-book .book-leaf article{font-size:18px!important;line-height:1.58!important;max-width:34em;margin-left:auto;margin-right:auto}
+.uniform-book .book-leaf article>p{margin-top:0;margin-bottom:.85em;orphans:3;widows:3}
+.uniform-book .book-leaf p.paragraph-carry{text-indent:0!important}
+.uniform-book .book-leaf p.paragraph-carry:first-letter{float:none!important;font:inherit!important;padding:0!important;margin:0!important;color:inherit!important}
+.uniform-book .book-leaf .page-head{padding-bottom:15px;margin-bottom:23px;text-align:left}
+.uniform-book .book-leaf .page-head h2{font-size:30px;line-height:1.14;letter-spacing:-.015em;margin:9px 0}
+.uniform-book .book-leaf .page-head p{font-size:14px;line-height:1.4}
+.uniform-book .book-leaf .inline-anchor,.uniform-book .book-leaf .nature-anchor{margin:18px 0;padding:13px 14px!important;border:1px solid #d8c7a6;border-left:3px solid #ab854b;box-shadow:none;background:#f7f1e5;text-align:left}
+.uniform-book .book-leaf .inline-anchor p,.uniform-book .book-leaf .nature-anchor p{font:12px/1.52 system-ui,sans-serif!important;text-indent:0!important;margin:9px 0!important;color:#35444b}
+.uniform-book .book-leaf .inline-anchor>span,.uniform-book .book-leaf .nature-anchor>span{font:700 9px/1.5 system-ui,sans-serif;letter-spacing:.11em;display:block;margin-bottom:10px;color:#91703f}
+.uniform-book .book-leaf .anchor-visual.archive-card{padding:8px 0 10px;min-height:0;border:0;border-bottom:1px solid #d8c7a6;background:none;box-shadow:none;text-align:left}
+.uniform-book .book-leaf .archive-card b{font:700 10px/1.4 system-ui,sans-serif;letter-spacing:.06em}
+.uniform-book .book-leaf .archive-card em{font:15px/1.35 Georgia,serif;display:block;margin:5px 0;color:#234052}
+.uniform-book .book-leaf .archive-card small{font:9px/1.45 system-ui,sans-serif;margin-top:6px;border:0;padding:0}
+.uniform-book .book-leaf .anchor-real-thumb{width:66px;margin:2px 0 8px 12px}.uniform-book .book-leaf .anchor-real-thumb img{height:56px}
+.uniform-book .book-leaf figcaption{font:12px/1.5 Georgia,serif;color:#665c4d;text-align:left;padding-top:10px}
+.uniform-book .book-leaf .anchor-real-thumb figcaption{font:7px/1.35 system-ui,sans-serif!important;padding-top:4px}
+.uniform-book .book-leaf .document-photo,.uniform-book .book-leaf .crossing-document{margin:18px 0 20px}
+.uniform-book .book-leaf .document-anchor{border-left:2px solid #b08a4e;padding:12px 16px;margin-top:18px;background:transparent}
+.uniform-book .book-leaf .document-anchor p{font-size:15px;line-height:1.5}
+.uniform-book .leaf-running-title{white-space:normal;overflow:visible;text-overflow:clip;font:11px/1.4 Georgia,serif;letter-spacing:.02em;margin-bottom:20px;padding:0 32px 9px 0;color:#81705a}
+.uniform-book .book-leaf .anchor-continuation-label{display:block;font:700 9px/1.4 system-ui,sans-serif;color:#91703f;letter-spacing:.08em;margin-bottom:9px}
+.uniform-book .book-leaf:before{bottom:23px}.uniform-book .narration-btn{font-size:10px;padding:6px 9px;bottom:16px;right:18px;box-shadow:none}
+@media(max-width:600px){.uniform-book .book>.book-leaf{padding:32px 34px 50px!important}.uniform-book .book-leaf article{font-size:18px!important;line-height:1.56!important}.uniform-book .book-leaf .page-head h2{font-size:26px}.uniform-book .book-leaf .page-head{margin-bottom:20px}.uniform-book .leaf-running-title{font-size:10px;line-height:1.4;margin-bottom:18px}}
+.uniform-book .book-leaf .historic-route.leaf-fragment{margin-bottom:0}.uniform-book .book-leaf .historic-route.leaf-fragment>i:last-child{display:none}
+
+.uniform-book .book-leaf:before{content:none!important}.leaf-folio{position:absolute;left:50%;bottom:23px;transform:translateX(-50%);font:11px/1 Georgia,serif;color:#9b8d78;letter-spacing:.08em}
+.uniform-book .book-leaf .anchor-visual.map-window{padding:8px;box-shadow:none;background:transparent}.uniform-book .book-leaf .anchor-visual.map-window a{display:block}

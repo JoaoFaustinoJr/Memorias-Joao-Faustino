@@ -15,6 +15,7 @@ window.paginateBook = async function () {
     const nodes = [...source.childNodes];
     const audioTemplates = [...source.querySelectorAll("audio")].map(a=>a.cloneNode(true));
     let leaf = source, part = 1, wrappers = new Map();
+    const startedNotes=new Set();
     source.style.setProperty('display','block','important');
     source.replaceChildren();
     function identify() { leaf.dataset.pageTitle = title; leaf.dataset.pageSource = String(sourceIndex); leaf.dataset.pageKey = 'leaf-' + sourceIndex + '-' + part; }
@@ -38,7 +39,9 @@ window.paginateBook = async function () {
       for (const original of path) {
         if (!wrappers.has(original)) {
           const copy = original.cloneNode(false); copy.removeAttribute('id');
-          copy.classList.add('leaf-fragment'); parent.append(copy); wrappers.set(original, copy);
+          copy.classList.add('leaf-fragment');
+          if(part>1 && startedNotes.has(original) && original.matches('.inline-anchor,.nature-anchor')){const label=document.createElement('span');label.className='anchor-continuation-label';label.textContent=(original.querySelector(':scope > span')?.textContent||'Nota')+' · continuação';copy.append(label)}
+          parent.append(copy); wrappers.set(original, copy);
         }
         parent = wrappers.get(original);
       }
@@ -53,7 +56,7 @@ window.paginateBook = async function () {
     }
     function hasContent() { return leaf.textContent.replace(title + ' · continuação','').trim().length > 0 || !!leaf.querySelector('img,svg'); }
     function slice(node, start, end) {
-      const clone = node.cloneNode(false); if (start) clone.removeAttribute('id');
+      const clone = node.cloneNode(false); if (start) {clone.removeAttribute('id');clone.classList.add('paragraph-carry')}
       const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT), texts = [];
       let t; while ((t = walker.nextNode())) texts.push(t);
       const range = document.createRange(); let offset = 0, begun = false;
@@ -77,15 +80,28 @@ window.paginateBook = async function () {
           if (okay) {best = mid; lo = mid+1;} else hi = mid-1;
         }
         if (best < 0) { if (hasContent()) {next(); continue;} best = boundaries.findIndex(n => n > start); }
-        const end = boundaries[best]; container(path).append(slice(node,start,end)); start = end;
+        let end = boundaries[best];
+        if(end < text.length && node.matches('p')) {
+          const trial=slice(node,start,end);container(path).append(trial);
+          const line=parseFloat(getComputedStyle(trial).lineHeight)||24;
+          const lines=Math.max(1,trial.getBoundingClientRect().height/line);trial.remove();
+          if(lines<3 && hasContent()){next();continue;}
+          const charsPerLine=(end-start)/lines;
+          // Deixar pelo menos duas linhas para a continuação do parágrafo.
+          while(best>0 && text.length-end<charsPerLine*2.2 && boundaries[best-1]>start+charsPerLine*3){end=boundaries[--best];}
+          const sentences=[...text.slice(start,end).matchAll(/[.!?][”"']?\s+/g)];
+          const last=sentences.at(-1);
+          if(last){const natural=start+last.index+last[0].length;if(natural>start+charsPerLine*3 && end-natural<charsPerLine*2)end=natural;}
+        }
+        container(path).append(slice(node,start,end)); start = end;
         if (start < text.length) next();
       }
     }
     function place(node, path = []) {
       if (node.nodeType === Node.TEXT_NODE && !node.textContent.trim()) return;
       let copy = node.cloneNode(true), parent = container(path);
-      parent.append(copy); if (fits()) return; copy.remove();
-      const atomic = node.nodeType !== Node.ELEMENT_NODE || node.matches('figure,img,svg,audio,header,.soundscape-cue,.page-head');
+      parent.append(copy); if (fits()) {if(node.nodeType===Node.ELEMENT_NODE && node.matches('span') && node.parentElement?.matches('.inline-anchor,.nature-anchor'))startedNotes.add(node.parentElement);return;} copy.remove();
+      const atomic = node.nodeType !== Node.ELEMENT_NODE || node.matches('figure,img,svg,audio,header,.soundscape-cue,.page-head,.inline-anchor,.nature-anchor');
       if (atomic && hasContent()) {next(); parent = container(path); copy = node.cloneNode(true); parent.append(copy); if (fits()) return; copy.remove();}
       if (node.nodeType === Node.ELEMENT_NODE && node.matches('p,li,blockquote,figcaption') && node.textContent.trim()) {textPieces(node,path); return;}
       if (node.childNodes.length && !node.matches('svg,img,audio')) {
@@ -98,5 +114,5 @@ window.paginateBook = async function () {
       for (const audio of audioTemplates) if (!page.querySelector(`audio[data-bird="${audio.dataset.bird}"]`)) page.append(audio.cloneNode(true));
     }
   });
-  [...book.querySelectorAll(':scope > .page')].forEach((page,i)=>{page.style.removeProperty('display');page.dataset.folio=String(i+1)});
+  [...book.querySelectorAll(':scope > .page')].forEach((page,i)=>{page.style.removeProperty('display');page.dataset.folio=String(i+1);if(page.classList.contains('book-leaf')){const folio=document.createElement('span');folio.className='leaf-folio';folio.setAttribute('aria-hidden','true');folio.textContent=String(i+1);page.append(folio)}});
 };

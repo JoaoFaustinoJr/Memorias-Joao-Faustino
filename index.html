@@ -8,13 +8,13 @@
 <meta name="theme-color" content="#17324b">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="apple-touch-icon" href="./assets/fotos/file_00000000ba78820eb7ec5a3721e57d12.png">
-<link rel="stylesheet" href="./memorias.css?v=355">
+<link rel="stylesheet" href="./memorias.css?v=356">
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <nav class="toolbar">
   <a href="#capa">Capa</a><a href="#prefacio">Nota</a><a href="#sumario">Compêndio</a><a href="#texto">Texto</a><a href="#genealogia">Genealogia</a>
-  <span>Projeto editorial · versão 3.55</span>
+  <span>Projeto editorial · versão 3.56</span>
 <a class="archive-link" href="conteudo-integral.html">Conteúdo integral</a></nav>
 
 <div class="reader-shell"><main class="book">
@@ -199,7 +199,7 @@
   <p>E, exatamente como uma profecia bíblica, assim aconteceu! O primeiro paranaense da família foi o meu Pai e teve como pajem o primo Duca. Duca levou o ainda menino Neco Major em algumas viagens a Jaguariaíva e depois em várias idas a Wenceslau Braz.</p>
   <p>Mais tarde, os trilhos alcançaram Pinhalão. Então os vagões de carga aposentaram os tropeiros. Os serviços de transportes de mercadorias em cargueiros e no lombo dos animais não eram mais necessários.</p>
   
-  <aside class="inline-anchor illustrated-anchor"><span>ÂNCORA · OS TRILHOS SE APROXIMAM</span><div class="anchor-visual map-window real-map"><a href="https://commons.wikimedia.org/wiki/File:Terceira_Edi%C3%A7%C3%A3o_Corrigida_-_1921._Mappa_Geral_do_Estado_do_Paran%C3%A1_de_Romario_Martins_Director_do_Museu_Paranaense_-_1%2C_Acervo_do_Museu_Paulista_da_USP.jpg" target="_blank" rel="noopener"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Terceira_Edi%C3%A7%C3%A3o_Corrigida_-_1921._Mappa_Geral_do_Estado_do_Paran%C3%A1_de_Romario_Martins_Director_do_Museu_Paranaense_-_1%2C_Acervo_do_Museu_Paulista_da_USP.jpg?width=1280" alt="Mappa Geral do Estado do Paraná de Romário Martins, edição corrigida de 1921" loading="lazy"></a><small><strong>Mapa real · 1921.</strong> Romário Martins · Acervo do Museu Paulista da USP. Toque para ampliar.</small></div><p>O mapa histórico do Paraná de 1922 registra o ramal do Paranapanema e também o pequeno ramal que partia de Wenceslau Braz em direção ao vale do Rio do Peixe, chegando naquele ano a Ibaiti.</p><small>Fonte: Coletânea de Mapas Históricos do Paraná · Instituto Água e Terra. <a class="document-link inline-doc-link" href="https://www.iat.pr.gov.br/Pagina/Coletanea-de-Mapas-Historicos-do-Parana" target="_blank" rel="noopener">Abrir acervo oficial</a></small></aside>
+  <aside class="inline-anchor illustrated-anchor"><span>ÂNCORA · OS TRILHOS SE APROXIMAM</span><div class="anchor-visual map-window real-map"><a href="./assets/fotos/parana-mapa-1922.jpg" target="_blank" rel="noopener"><img src="./assets/fotos/parana-mapa-1922.jpg" alt="Mapa original do Paraná de 1922, disponibilizado pelo IAT" loading="lazy"></a><small><strong>Mapa real · 1922.</strong> Prancha histórica disponibilizada pelo IAT. Toque para ampliar.</small></div><p>O mapa histórico do Paraná de 1922 registra o ramal do Paranapanema e também o pequeno ramal que partia de Wenceslau Braz em direção ao vale do Rio do Peixe, chegando naquele ano a Ibaiti.</p><small>Fonte: Coletânea de Mapas Históricos do Paraná · Instituto Água e Terra. <a class="document-link inline-doc-link" href="https://www.iat.pr.gov.br/Pagina/Coletanea-de-Mapas-Historicos-do-Parana" target="_blank" rel="noopener">Abrir acervo oficial</a></small></aside>
   <p>Depois disso, Duca voltou a Minas duas vezes com tropas. Na terceira vez, viajou de trem e era para ficar por lá em definitivo. Mas não ficou!</p>
   <p>PS. Minha Vó teve mais um filho homem, que não sobreviveu.</p>
   <p class="source-sign">Residencial Faustino — Rua José de Azevedo, 100<br>Jaboti, 17 de janeiro de 2017<br>JFMajor</p>
@@ -1051,7 +1051,7 @@
 <section class="page source-gateway"><span>CONTEÚDO CONSOLIDADO</span><h2>Todo o arquivo textual já está incorporado ao projeto</h2><p>O caderno integral preserva o conteúdo de <em>TEXTOS JFS</em> antes da deduplicação e da distribuição final pelas partes do livro.</p><a href="conteudo-integral.html">Abrir caderno integral →</a></section></main>
 <footer>MEMÓRIAS · maquete para definição do aspecto do livro · fotografias serão adicionadas depois</footer>
 <button class="print-btn" type="button" onclick="window.print()" aria-label="Imprimir maquete">Imprimir / PDF</button>
-<script src="./pagination.js?v=355"></script>
+<script src="./pagination.js?v=356"></script>
 <script>
 (async()=>{
 await window.paginateBook();
@@ -1059,7 +1059,7 @@ const pages=Array.from(document.querySelectorAll('.book > .page'));
 const synth=('speechSynthesis' in window)?window.speechSynthesis:null;
 let narrating=false;
 function stopNarration(){if(synth)synth.cancel();narrating=false;document.querySelectorAll('.narration-btn').forEach(b=>{b.classList.remove('speaking');b.textContent='▶ Ouvir esta página'})}
-function narratePage(p,btn){if(!synth||!p)return;if(narrating){stopNarration();return}const clone=p.cloneNode(true);clone.querySelectorAll('button,audio,script,style,.page-edge,.page-bookmark,.anchor-source,.crossing-sources,.soundscape-cue,figcaption').forEach(e=>e.remove());const txt=clone.innerText.replace(/\s+/g,' ').trim();if(!txt)return;const u=new SpeechSynthesisUtterance(txt);u.lang='pt-BR';u.rate=.86;u.pitch=.96;u.onend=u.onerror=()=>stopNarration();narrating=true;btn.classList.add('speaking');btn.textContent='■ Parar narração';synth.speak(u)}
+function narratePage(p,btn){if(!synth||!p)return;if(narrating){stopNarration();return}const clone=p.cloneNode(true);clone.querySelectorAll('button,audio,script,style,.page-edge,.page-bookmark,.leaf-folio,.leaf-running-title,.anchor-continuation-label,.anchor-source,.crossing-sources,.soundscape-cue,figcaption').forEach(e=>e.remove());const txt=clone.innerText.replace(/\s+/g,' ').trim();if(!txt)return;const u=new SpeechSynthesisUtterance(txt);u.lang='pt-BR';u.rate=.86;u.pitch=.96;u.onend=u.onerror=()=>stopNarration();narrating=true;btn.classList.add('speaking');btn.textContent='■ Parar narração';synth.speak(u)}
 const jump=document.querySelector('.bookmark-jump');
 let index=0,startX=null,startY=null,startT=0;
 function label(p,n){const e=p.querySelector('.page-head h2,.part-page h2,.title-page h2,.cover h1');return e?e.textContent.replace(/\s+/g,' ').trim():(p.dataset.pageTitle||'Página '+(n+1))}
