@@ -1470,3 +1470,6 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .anchor-real-thumb figcaption{font:7px/1.3 Arial,sans-serif!important;color:#625c50;padding-top:3px;text-align:left;text-indent:0}
 .anchor-real-thumb figcaption a{display:inline;color:inherit}
 @media(max-width:520px){.anchor-real-thumb{width:66px;margin-left:9px}.anchor-real-thumb img{height:54px}}
+
+/* v3.52 — reproduções documentais com proporção e bordas preservadas */
+.verified-archive-photo img{height:auto;object-fit:contain}.inline-anchor .verified-archive-photo{margin:12px 0}.inline-anchor .verified-archive-photo img{max-height:270px}.verified-archive-photo a{color:inherit}.clean-map-series .map-plate img{width:100%;height:auto;max-height:none;object-fit:contain}
