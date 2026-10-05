@@ -1476,3 +1476,20 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 
 /* v3.53 — preserva a resolução da fotografia documental */
 .inline-document-photo img[src*="tropeiros-ponta-grossa"],.document-photo img[src*="tropeiros-ponta-grossa"],.trope-photo img[src*="tropeiros-ponta-grossa"]{display:block;width:200px;max-width:100%;height:auto;object-fit:contain;margin:0 auto}
+
+/* v3.55 — folhas uniformes, com continuação automática */
+.uniform-book .book>.book-leaf{height:var(--book-leaf-height)!important;min-height:var(--book-leaf-height)!important;max-height:var(--book-leaf-height)!important;padding:38px 58px 48px!important;overflow:hidden}
+.uniform-book .book-leaf .leaf-fragment{min-height:0!important;height:auto!important;max-height:none!important}
+.uniform-book .book-leaf .leaf-fragment:empty{display:none}
+.uniform-book .book-leaf figure:not(.anchor-real-thumb) img{height:min(300px,calc(var(--book-leaf-height)*.40))!important;max-height:min(300px,calc(var(--book-leaf-height)*.40))!important;width:100%;object-fit:contain}
+.uniform-book .book-leaf .historical-map-gallery,.uniform-book .book-leaf .photo-grid{display:block}
+.uniform-book .book-leaf .historical-map-gallery figure{margin:10px 0}
+.leaf-running-title{font:italic 11px/1.4 Georgia,serif;color:#7d705f;margin:0 0 14px;border-bottom:1px solid #d4c6ac;padding-bottom:7px}
+.uniform-book .leaf-continuation .leaf-fragment{margin-top:0!important;padding-top:0!important}
+.uniform-book .book-leaf .map-field{max-height:calc(var(--book-leaf-height)*.55)}
+@media(max-width:600px){.uniform-book .book>.book-leaf{padding:28px 34px 44px!important}.uniform-book .book-leaf .page-head{margin-bottom:16px}.uniform-book .book-leaf .page-head h2{font-size:25px}.uniform-book .book-leaf .leaf-running-title{font-size:10px}}
+@media print{.uniform-book .book>.book-leaf{break-after:page;box-shadow:none}}
+.uniform-book .book-leaf .anchor-visual img{display:block;width:100%;height:150px!important;max-height:150px!important;object-fit:contain}
+
+.uniform-book body>footer{display:none}.leaf-running-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:34px}
+.uniform-book .book-leaf:before{content:attr(data-folio);position:absolute;bottom:19px;left:50%;transform:translateX(-50%);font:11px/1 Georgia,serif;color:#9b8d78;letter-spacing:.08em}
