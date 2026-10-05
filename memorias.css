@@ -1433,3 +1433,10 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 
 /* v3.46 — paisagem sonora e narração */
 .soundscape-cue{display:flex;align-items:center;gap:10px;margin:16px 0;padding:10px 12px;border-top:1px solid rgba(146,106,45,.22);border-bottom:1px solid rgba(146,106,45,.22)}.soundscape-btn{border:1px solid rgba(116,84,40,.38);border-radius:999px;background:#f7efdd;color:#173a51;padding:8px 12px;font:700 12px/1.2 system-ui,sans-serif}.soundscape-cue span{font:italic 12px/1.35 Georgia,serif;color:#756957}@media(max-width:700px){.soundscape-cue{align-items:flex-start;flex-direction:column;gap:6px}}
+
+/* 3.27 — âncoras naturais: distintas das notas históricas */
+.nature-anchor{margin:15px 3px 17px 18px;padding:10px 12px 9px;border-left:3px solid #6f8052;background:linear-gradient(90deg,rgba(111,128,82,.09),rgba(255,252,242,.72));font-family:Arial,sans-serif;color:#304353}
+.nature-anchor span{display:block;color:#66784b;font-size:9px;font-weight:800;letter-spacing:.13em;margin-bottom:6px}
+.nature-anchor p{font-family:Arial,sans-serif!important;font-size:10px!important;line-height:1.42!important;margin:0 0 6px!important;text-indent:0!important;text-align:left!important}
+.nature-anchor small{display:block;border-top:1px dotted rgba(111,128,82,.35);padding-top:6px;font-size:8px;line-height:1.35;color:#777}
+.nature-anchor .anchor-extra{border-top:1px dotted rgba(111,128,82,.35);padding-top:6px}
