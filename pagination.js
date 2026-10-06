@@ -15,7 +15,8 @@ window.paginateBook = async function () {
     const nodes = [...source.childNodes];
     const audioTemplates = [...source.querySelectorAll("audio")].map(a=>a.cloneNode(true));
     let leaf = source, part = 1, wrappers = new Map();
-    const startedNotes=new Set();
+    const startedNotes=new Set(), paragraphKeys=new WeakMap();let paragraphSequence=0;
+    function paragraphKey(node){if(node.dataset?.paragraphKey)return node.dataset.paragraphKey;if(!paragraphKeys.has(node))paragraphKeys.set(node,String(++paragraphSequence));return paragraphKeys.get(node);}
     source.style.setProperty('display','block','important');
     source.replaceChildren();
     function identify() { leaf.dataset.pageTitle = title; leaf.dataset.pageSource = String(sourceIndex); leaf.dataset.pageKey = 'leaf-' + sourceIndex + '-' + part; }
@@ -54,9 +55,13 @@ window.paginateBook = async function () {
         return style.position === 'absolute' || style.position === 'fixed' || style.display === 'none' || e.getBoundingClientRect().bottom <= bottom + 1;
       });
     }
-    function hasContent() { return leaf.textContent.replace(title + ' · continuação','').trim().length > 0 || !!leaf.querySelector('img,svg'); }
+    function hasContent() {
+      const clone=leaf.cloneNode(true);
+      clone.querySelectorAll('.leaf-running-title,.anchor-continuation-label,.engraving-line,audio').forEach(e=>e.remove());
+      return clone.textContent.trim().length > 0 || !!clone.querySelector('img,svg');
+    }
     function slice(node, start, end) {
-      const clone = node.cloneNode(false); if (start) {clone.removeAttribute('id');clone.classList.add('paragraph-carry')}
+      const clone = node.cloneNode(false);if(node.matches('p'))clone.dataset.paragraphKey=paragraphKey(node); if (start) {clone.removeAttribute('id');clone.classList.add('paragraph-carry')}
       const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT), texts = [];
       let t; while ((t = walker.nextNode())) texts.push(t);
       const range = document.createRange(); let offset = 0, begun = false;
@@ -99,7 +104,25 @@ window.paginateBook = async function () {
     }
     function place(node, path = []) {
       if (node.nodeType === Node.TEXT_NODE && !node.textContent.trim()) return;
+      // Ornamentação de fechamento nunca cria uma folha sozinha.
+      if(node.nodeType===Node.ELEMENT_NODE && node.matches('.engraving-line,.engraving,.source-sign')) {
+        const copy=node.cloneNode(true);container(path).append(copy);
+        if(!fits() && !node.matches('.source-sign')) copy.remove();
+        else if(!fits()){copy.remove();textPieces(node,path);}
+        return;
+      }
+      // Rótulos e subtítulos precisam levar ao menos o início do bloco seguinte.
+      if(node.nodeType===Node.ELEMENT_NODE && node.matches('span,b,h2,h3,h4,.running-head')) {
+        const following=node.nextElementSibling;
+        if(following && hasContent()) {
+          const probe=node.cloneNode(true), nextProbe=following.cloneNode(true);
+          if(nextProbe.textContent.length>150 && nextProbe.matches('p')) nextProbe.textContent=nextProbe.textContent.slice(0,150);
+          container(path).append(probe,nextProbe);const okay=fits();probe.remove();nextProbe.remove();
+          if(!okay)next();
+        }
+      }
       let copy = node.cloneNode(true), parent = container(path);
+      if(node.nodeType===Node.ELEMENT_NODE && node.matches('p'))copy.dataset.paragraphKey=paragraphKey(node);
       parent.append(copy); if (fits()) {if(node.nodeType===Node.ELEMENT_NODE && node.matches('span') && node.parentElement?.matches('.inline-anchor,.nature-anchor'))startedNotes.add(node.parentElement);return;} copy.remove();
       const atomic = node.nodeType !== Node.ELEMENT_NODE || node.matches('figure,img,svg,audio,header,.soundscape-cue,.page-head,.inline-anchor,.nature-anchor');
       if (atomic && hasContent()) {next(); parent = container(path); copy = node.cloneNode(true); parent.append(copy); if (fits()) return; copy.remove();}
@@ -110,6 +133,57 @@ window.paginateBook = async function () {
     }
     for (const node of nodes) place(node);
     clean();
+    // Redistribuir o fim entre as duas últimas folhas, sem alterar a sequência.
+    const group=[...book.querySelectorAll(`[data-page-source="${sourceIndex}"]`)];
+    if(group.length>1) {
+      const tail=group.at(-1), previous=group.at(-2);
+      const words=page=>{const c=page.cloneNode(true);c.querySelectorAll('.leaf-running-title,.anchor-continuation-label,audio,.engraving-line').forEach(e=>e.remove());return c.textContent.trim().split(/\s+/).filter(Boolean).length};
+      if(words(tail)<45) {
+        const tailArticle=tail.querySelector('article'), prevArticle=previous.querySelector('article');
+        if(tailArticle && prevArticle) {
+          for(let i=0;i<4 && words(tail)<40;i++) {
+            const candidate=prevArticle.lastElementChild;
+            if(!candidate || !candidate.matches('p') || candidate.classList.contains('source-sign'))break;
+            const first=tailArticle.firstChild, marker=candidate.nextSibling;
+            const wasCarry=candidate.classList.contains('paragraph-carry');
+            candidate.classList.add('paragraph-carry');tailArticle.insertBefore(candidate,first);
+            if(fits() && words(previous)>=25)continue;
+            prevArticle.insertBefore(candidate,marker);if(!wasCarry)candidate.classList.remove('paragraph-carry');
+            // Um parágrafo extenso pode ceder suas últimas linhas à folha final.
+            if(prevArticle.classList.contains('verse'))break;
+            const text=candidate.textContent, matches=[...text.matchAll(/\S+\s*/g)];
+            const take=Math.min(45,Math.max(0,matches.length-30));
+            if(take<8)break;
+            const cut=matches[matches.length-take].index;
+            const ending=slice(candidate,cut,text.length), beginning=slice(candidate,0,cut);
+            candidate.replaceWith(beginning);tailArticle.insertBefore(ending,first);
+            if(!fits()){ending.remove();beginning.replaceWith(candidate);break;}
+          }
+        }
+      }
+      // Remover uma continuação gerada só para decoração ou áudio.
+      if(!hasContent()){tail.remove();leaf=previous;}
+    }
+    // Reconectar partes do mesmo parágrafo após a redistribuição.
+    for(const page of book.querySelectorAll(`[data-page-source="${sourceIndex}"]`)) {
+      for(const paragraph of [...page.querySelectorAll('p[data-paragraph-key]')]) {
+        const next=paragraph.nextElementSibling;
+        if(next?.matches('p') && next.dataset.paragraphKey===paragraph.dataset.paragraphKey){paragraph.append(...next.childNodes);next.remove();}
+      }
+    }
+    // Um respiro visual contextual nas páginas curtas, sem ampliar fotografias.
+    for(const page of book.querySelectorAll(`[data-page-source="${sourceIndex}"]`)) {
+      if(!page.matches('.prose-page') || page.querySelector('img,svg,.engraving,.roots-illustration'))continue;
+      const last=[...page.children].at(-1);
+      const free=page.getBoundingClientRect().bottom-parseFloat(getComputedStyle(page).paddingBottom)-(last?.getBoundingClientRect().bottom||0);
+      if(free<150)continue;
+      const text=page.textContent;
+      const motif=/rio|ribeir|lagoa|água/i.test(text)?'rio':/tropa|mula|cargueiro|tropeir/i.test(text)?'tropa':/serra|Mantiqueira|colina/i.test(text)?'serra':/passar|saracura|coruja/i.test(text)?'passaros':null;
+      const closing=document.createElement('div');closing.className='editorial-close';closing.setAttribute('aria-hidden','true');
+      if(motif){const image=document.createElement('img');image.src='./assets/gravura-'+motif+'.svg';image.alt='';closing.append(image);}
+      else closing.classList.add('editorial-close-rule');
+      page.append(closing);
+    }
     if (audioTemplates.length) for (const page of book.querySelectorAll(`[data-page-source="${sourceIndex}"]`)) {
       for (const audio of audioTemplates) if (!page.querySelector(`audio[data-bird="${audio.dataset.bird}"]`)) page.append(audio.cloneNode(true));
     }

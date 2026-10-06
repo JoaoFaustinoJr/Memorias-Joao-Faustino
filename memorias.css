@@ -1524,3 +1524,13 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 
 .uniform-book .book-leaf:before{content:none!important}.leaf-folio{position:absolute;left:50%;bottom:23px;transform:translateX(-50%);font:11px/1 Georgia,serif;color:#9b8d78;letter-spacing:.08em}
 .uniform-book .book-leaf .anchor-visual.map-window{padding:8px;box-shadow:none;background:transparent}.uniform-book .book-leaf .anchor-visual.map-window a{display:block}
+
+/* v3.57 — notas compactas e encerramentos editoriais */
+.uniform-book .inline-anchor::after,.uniform-book .nature-anchor::after{content:"";display:block;clear:both}
+.uniform-book .book-leaf .anchor-real-thumb img{width:66px!important;height:56px!important;max-height:56px!important;object-fit:contain}
+.uniform-book .book-leaf .editorial-close{margin:30px auto 0;width:70%;max-width:280px;height:90px;opacity:.62}
+.uniform-book .book-leaf .editorial-close img{display:block;width:100%;height:90px;object-fit:contain}
+.uniform-book .book-leaf .editorial-close-rule{height:1px;width:64px;margin-top:44px;background:#b69868;opacity:.65}
+.uniform-book .book-leaf .engraving-line{margin:20px auto}
+
+.uniform-book .prose-page article:after{content:none!important}
