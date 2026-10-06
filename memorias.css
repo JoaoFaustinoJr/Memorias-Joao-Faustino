@@ -1633,3 +1633,13 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
  .context-doc-page .crossing-document img{max-height:245px}
  .uniform-book .book-leaf .anchor-source{font-size:8px}
 }
+
+/* 3.67 — retrato do autor */
+.author-portrait-page{text-align:center}
+.author-portrait-page .page-head{text-align:center!important;margin-bottom:16px!important}
+.author-portrait-page .page-head h2{font-size:clamp(23px,3vw,32px)!important}
+.author-portrait-page .author-portrait{margin:0 auto;max-width:100%;break-inside:avoid}
+.author-portrait-page .author-portrait img{display:block;width:auto!important;height:auto!important;max-width:100%!important;max-height:min(48vh,430px)!important;object-fit:contain!important;margin:0 auto;filter:none!important}
+.author-portrait-page .author-portrait figcaption{text-align:center!important;font:12px/1.45 Georgia,serif!important;color:#665849;padding-top:10px!important}
+.author-portrait-page .author-portrait small{font:9px/1.4 system-ui,sans-serif;color:#857663}
+@media(max-height:600px){.author-portrait-page .author-portrait img{max-height:37vh!important}.author-portrait-page .page-head{padding-bottom:4px!important;margin-bottom:8px!important}}
