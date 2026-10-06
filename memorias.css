@@ -1572,3 +1572,37 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 
 /* v3.64 — prancha documental Paris/Santos-Dumont */
 .context-document-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0 18px}.context-document-grid figure{margin:0;padding:7px;background:#efe4ce;border:1px solid rgba(169,132,66,.38)}.uniform-book .book-leaf .context-document-grid img{width:100%;height:155px!important;max-height:155px!important;object-fit:contain;background:#e5d8bf}.context-document-grid figcaption{font:8px/1.35 system-ui,sans-serif!important;padding:6px 1px 0!important}.aviation-page .era-strip{margin:15px 0}.aviation-page .narrative-bridge{margin:15px 0;font-size:14px;line-height:1.45}@media(max-width:600px){.context-document-grid{gap:9px}.uniform-book .book-leaf .context-document-grid img{height:112px!important;max-height:112px!important}.context-document-grid figcaption{font-size:7px!important}}
+
+/* v3.65 — curadoria editorial: ritmo, hierarquia, legibilidade e documentos */
+.uniform-book .book>.book-leaf{box-shadow:0 18px 44px rgba(31,25,16,.12)}
+.uniform-book .book-leaf article>p{orphans:3;widows:3}
+.uniform-book .book-leaf .page-head{margin-bottom:22px}
+.uniform-book .book-leaf .page-head h2{max-width:18ch;text-wrap:balance}
+.uniform-book .book-leaf .page-head p{max-width:42ch}
+.context-doc-page{background:linear-gradient(180deg,#fffaf0 0%,#f6edda 100%)}
+.context-doc-page .page-head{border-bottom:1px solid rgba(156,115,51,.25);padding-bottom:13px}
+.context-doc-page figure{break-inside:avoid}
+.context-doc-page figcaption,.context-niche figcaption{hyphens:auto}
+.context-doc-page .anchor-source{margin-top:12px;padding-top:9px;border-top:1px dotted rgba(128,98,53,.32)}
+.context-1910 .context-niche{float:none;width:min(100%,360px);max-width:360px;margin:16px auto 18px}
+.context-1910 .context-niche img{height:auto!important;max-height:210px!important;object-fit:contain!important}
+.context-1910 .context-niche figcaption{font-size:9px!important;line-height:1.45!important}
+.aviation-page .context-document-grid{align-items:start}
+.aviation-page .context-document-grid figure{height:100%;display:flex;flex-direction:column}
+.aviation-page .context-document-grid figcaption{margin-top:auto}
+.era-strip{break-inside:avoid}
+.narrative-bridge{break-inside:avoid}
+.document-anchor{break-inside:avoid}
+@media(max-width:700px){
+ .uniform-book .book>.book-leaf{padding:30px 28px 44px!important}
+ .uniform-book .book-leaf .page-head{margin-bottom:17px}
+ .context-1910 .context-niche{width:100%;max-width:300px;margin:13px auto 15px}
+ .context-1910 .context-niche img{max-height:165px!important}
+ .context-document-grid{grid-template-columns:1fr}
+ .uniform-book .book-leaf .context-document-grid img{height:145px!important;max-height:145px!important}
+ .aviation-page .era-strip{grid-template-columns:46px 1fr}
+}
+@media print{
+ .toolbar,.print-btn,.page-edge,.page-bookmark,.narration-btn{display:none!important}
+ .uniform-book .book>.book-leaf{box-shadow:none!important;break-after:page}
+}
