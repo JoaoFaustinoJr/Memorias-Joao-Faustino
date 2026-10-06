@@ -1554,3 +1554,11 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .uniform-book .book-leaf .editorial-close{height:auto;max-width:280px;opacity:1;margin:22px auto 0}
 .uniform-book .book-leaf .editorial-close img{height:86px;object-fit:contain}
 .uniform-book .book-leaf .editorial-close figcaption{font:8px/1.3 system-ui,sans-serif!important;padding-top:4px}
+
+/* v3.50 — caderno de época 1908–1914 */
+.context-opener{background:linear-gradient(155deg,#f5ecd8,#e8d7b6)}
+.context-1910 .page-head span,.context-return .page-head span{letter-spacing:.18em}
+.era-strip{display:grid;grid-template-columns:54px 1fr;gap:0 12px;margin:24px 0;border-top:1px solid rgba(169,132,66,.45);border-bottom:1px solid rgba(169,132,66,.35);padding:8px 0}
+.era-strip b,.era-strip span{padding:9px 2px;border-bottom:1px dotted rgba(169,132,66,.24)}
+.era-strip b{color:var(--gold);font:700 13px system-ui,sans-serif}.era-strip span{font:13px/1.4 system-ui,sans-serif;color:#51483d}
+.context-return{background:linear-gradient(180deg,#fffaf0,#f2e7d1)}
