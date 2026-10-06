@@ -1534,3 +1534,12 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .uniform-book .book-leaf .engraving-line{margin:20px auto}
 
 .uniform-book .prose-page article:after{content:none!important}
+
+/* 3.27 — âncoras naturais passam de pictogramas a fotografias */
+.natural-photo{float:right;width:39%;margin:0 0 8px 12px;padding:4px;background:#eee3c8;border:1px solid rgba(158,126,67,.38);box-shadow:0 2px 7px rgba(55,43,24,.10)}
+.natural-photo img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.natural-photo figcaption{font-family:Arial,sans-serif;font-size:7.5px;line-height:1.25;color:#6e675c;padding:4px 2px 1px;text-align:left}
+.natural-photo-wide{float:none;width:100%;margin:7px 0 10px}
+.natural-photo-wide img{aspect-ratio:16/9}
+.natural-anchor:has(.natural-photo) .natural-icon{display:none!important}
+@media(max-width:600px){.natural-photo{width:42%}.natural-photo-wide{width:100%}}
