@@ -1562,3 +1562,10 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .era-strip b,.era-strip span{padding:9px 2px;border-bottom:1px dotted rgba(169,132,66,.24)}
 .era-strip b{color:var(--gold);font:700 13px system-ui,sans-serif}.era-strip span{font:13px/1.4 system-ui,sans-serif;color:#51483d}
 .context-return{background:linear-gradient(180deg,#fffaf0,#f2e7d1)}
+
+/* v3.62 — nichos documentais integrados ao texto */
+.context-1910 .context-niche{float:right;width:38%;max-width:190px;margin:4px 0 12px 18px;padding:7px;background:#f2e7d1;border:1px solid rgba(169,132,66,.35)}
+.context-1910 .context-niche img{width:100%!important;height:112px!important;object-fit:contain!important;background:#eadfc9}
+.context-1910 .context-niche figcaption{font:8px/1.35 system-ui,sans-serif!important;text-align:left!important;padding-top:5px!important}
+.context-1910 article:after{content:"";display:block;clear:both}
+@media(max-width:600px){.context-1910 .context-niche{width:42%;max-width:150px;margin-left:12px}.context-1910 .context-niche img{height:90px!important}}
