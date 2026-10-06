@@ -188,5 +188,31 @@ window.paginateBook = async function () {
       for (const audio of audioTemplates) if (!page.querySelector(`audio[data-bird="${audio.dataset.bird}"]`)) page.append(audio.cloneNode(true));
     }
   });
+  // v3.59 — evitar folhas de continuação com apenas fonte/nota curta.
+  // Se a folha tiver somente uma nota final, tenta devolvê-la à folha anterior;
+  // se não couber, mantém a nota acompanhada por um fecho editorial discreto.
+  {
+    const leaves=[...book.querySelectorAll(':scope > .book-leaf')];
+    const wordCount=page=>{const c=page.cloneNode(true);c.querySelectorAll('.leaf-running-title,.leaf-folio,audio,.engraving-line').forEach(e=>e.remove());return c.textContent.trim().split(/\s+/).filter(Boolean).length};
+    const pageFits=page=>page.scrollHeight<=page.clientHeight+2;
+    for(let n=1;n<leaves.length;n++){
+      const page=leaves[n], prev=leaves[n-1];
+      if(wordCount(page)>38 || page.querySelector('img,svg,figure,.page-head')) continue;
+      const body=page.querySelector('article,.leaf-fragment,.archival-find,.document-anchor');
+      const prevBody=prev.querySelector('article,.leaf-fragment,.archival-find,.document-anchor');
+      if(!body||!prevBody) continue;
+      const movable=[...body.children].filter(e=>!e.matches('.leaf-running-title,.anchor-continuation-label,.editorial-close'));
+      if(!movable.length) continue;
+      const moved=[];
+      for(const el of movable){const clone=el.cloneNode(true);prevBody.append(clone);moved.push(clone);}
+      if(pageFits(prev)){
+        movable.forEach(e=>e.remove());
+        page.remove();
+      }else{
+        moved.forEach(e=>e.remove());
+        if(!page.querySelector('.editorial-close-rule')){const rule=document.createElement('div');rule.className='editorial-close editorial-close-rule';body.append(rule);}
+      }
+    }
+  }
   [...book.querySelectorAll(':scope > .page')].forEach((page,i)=>{page.style.removeProperty('display');page.dataset.folio=String(i+1);if(page.classList.contains('book-leaf')){const folio=document.createElement('span');folio.className='leaf-folio';folio.setAttribute('aria-hidden','true');folio.textContent=String(i+1);page.append(folio)}});
 };
