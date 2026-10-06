@@ -1606,3 +1606,30 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
  .toolbar,.print-btn,.page-edge,.page-bookmark,.narration-btn{display:none!important}
  .uniform-book .book>.book-leaf{box-shadow:none!important;break-after:page}
 }
+
+/* v3.66 — curadoria fina: consistência de página, legendas e ritmo */
+.uniform-book .book>.book-leaf{background-color:#fffaf0}
+.uniform-book .book>.book-leaf:not(.cover):not(.part-page):not(.back-cover){border-top:1px solid rgba(139,103,48,.08)}
+.uniform-book .book-leaf article{max-width:100%}
+.uniform-book .book-leaf article p{hyphens:auto;text-wrap:pretty}
+.uniform-book .book-leaf .dropcap:first-letter{float:left;font:700 3.25em/.82 Georgia,serif;margin:.08em .09em 0 0;color:#173a51}
+.uniform-book .book-leaf figure{break-inside:avoid;page-break-inside:avoid}
+.uniform-book .book-leaf figure img{display:block}
+.uniform-book .book-leaf figcaption{color:#62594d}
+.uniform-book .book-leaf figcaption strong{color:#263f50}
+.uniform-book .book-leaf .anchor-source{font-size:9px;line-height:1.45;color:#6d6559}
+.part-page h2{text-wrap:balance}
+.part-page p{max-width:34ch;margin-left:auto;margin-right:auto}
+.title-page .editorial-note{max-width:38ch;margin-left:auto;margin-right:auto}
+.chapter-colophon,.context-return{display:flex!important;flex-direction:column;justify-content:center}
+.chapter-colophon .colophon-rule{width:72px}
+.notes-page .note{break-inside:avoid}
+.contents-list a{min-height:34px}
+.context-doc-page .crossing-document img{max-height:310px;object-fit:contain}
+.context-doc-page .crossing-document figcaption{max-width:62ch;margin-left:auto;margin-right:auto}
+.context-return article{max-width:34em;margin-left:auto;margin-right:auto}
+@media(max-width:700px){
+ .uniform-book .book-leaf .dropcap:first-letter{font-size:2.85em}
+ .context-doc-page .crossing-document img{max-height:245px}
+ .uniform-book .book-leaf .anchor-source{font-size:8px}
+}
