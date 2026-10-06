@@ -1543,3 +1543,14 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .natural-photo-wide img{aspect-ratio:16/9}
 .natural-anchor:has(.natural-photo) .natural-icon{display:none!important}
 @media(max-width:600px){.natural-photo{width:42%}.natural-photo-wide{width:100%}}
+
+/* 3.58 — fotografias substituem pictogramas figurativos */
+.real-context-photo{display:block;position:relative;width:100%;max-width:380px;margin:20px auto;break-inside:avoid;opacity:1}
+.real-context-photo img{display:block;width:100%;height:135px;object-fit:contain;filter:none;opacity:1}
+.real-context-photo figcaption{font:9px/1.4 system-ui,sans-serif!important;color:#75644e!important;padding:7px 0 0!important;text-align:center!important}
+.real-context-photo a{color:inherit}
+.part-page .real-context-photo{max-width:400px;margin:24px auto 0}.part-page .real-context-photo img{height:180px}
+.story-start::before,.engraving-horse .page-head::after,.prose-page::after,.part-opener::after{content:none!important;display:none!important}
+.uniform-book .book-leaf .editorial-close{height:auto;max-width:280px;opacity:1;margin:22px auto 0}
+.uniform-book .book-leaf .editorial-close img{height:86px;object-fit:contain}
+.uniform-book .book-leaf .editorial-close figcaption{font:8px/1.3 system-ui,sans-serif!important;padding-top:4px}
