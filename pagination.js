@@ -208,9 +208,11 @@ window.paginateBook = async function () {
     const pageFits=page=>page.scrollHeight<=page.clientHeight+2;
     for(let n=1;n<leaves.length;n++){
       const page=leaves[n], prev=leaves[n-1];
-      if(wordCount(page)>38 || page.querySelector('img,svg,figure,.page-head')) continue;
-      const body=page.querySelector('article,.leaf-fragment,.archival-find,.document-anchor');
-      const prevBody=prev.querySelector('article,.leaf-fragment,.archival-find,.document-anchor');
+      const wc=wordCount(page);
+      const substantiveVisual=page.querySelector('img:not([hidden]),svg:not(.engraving-line),figure:not(.anchor-real-thumb)');
+      if(wc>58 || substantiveVisual || page.querySelector('.page-head')) continue;
+      const body=page.querySelector('article,.leaf-fragment,.archival-find,.document-anchor') || page;
+      const prevBody=prev.querySelector('article,.leaf-fragment,.archival-find,.document-anchor') || prev;
       if(!body||!prevBody) continue;
       const movable=[...body.children].filter(e=>!e.matches('.leaf-running-title,.anchor-continuation-label,.editorial-close'));
       if(!movable.length) continue;
@@ -221,7 +223,9 @@ window.paginateBook = async function () {
         page.remove();
       }else{
         moved.forEach(e=>e.remove());
-        if(!page.querySelector('.editorial-close-rule')){const rule=document.createElement('div');rule.className='editorial-close editorial-close-rule';body.append(rule);}
+        // Uma folha curta deve parecer intencional, não um erro de paginação.
+        page.classList.add('short-continuation');
+        if(wc<26 && !page.querySelector('.editorial-close-rule')){const rule=document.createElement('div');rule.className='editorial-close editorial-close-rule';body.append(rule);}
       }
     }
   }
