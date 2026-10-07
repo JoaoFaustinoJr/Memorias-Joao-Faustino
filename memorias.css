@@ -1680,3 +1680,21 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .nature-anchor .anchor-real-thumb{width:104px!important}
 .nature-anchor .anchor-real-thumb img{width:104px!important;height:78px!important;object-fit:cover!important}
 @media(max-width:600px){.natural-photo-triptych img{height:76px}.serra-focus-image{height:34vh!important}}
+
+
+/* v3.68 — correções móveis da auditoria editorial 07/10 */
+.context-doc-page .verified-archive-photo,
+.context-1910 .context-niche{background:transparent!important;border:0!important}
+.context-doc-page .verified-archive-photo img,
+.context-1910 .context-niche img{width:100%!important;height:auto!important;object-fit:contain!important;background:transparent!important}
+.landscape-anchor .natural-photo-triptych figure{display:grid;grid-template-rows:92px auto;align-content:start}
+.landscape-anchor .natural-photo-triptych img{height:92px!important;object-fit:cover!important}
+.landscape-anchor .natural-photo-triptych figcaption{min-height:0!important;padding:5px 6px 7px!important}
+@media(max-width:600px){
+ .landscape-anchor .natural-photo-triptych{gap:5px!important}
+ .landscape-anchor .natural-photo-triptych figure{grid-template-rows:70px auto!important}
+ .landscape-anchor .natural-photo-triptych img{height:70px!important}
+ .landscape-anchor .natural-photo-triptych figcaption{font-size:7px!important;line-height:1.2!important;padding:4px!important}
+ .landscape-anchor .anchor-real-thumb{float:right;margin:0 0 6px 10px!important}
+ .context-doc-page .verified-archive-photo,.context-1910 .context-niche{max-width:100%!important}
+}
