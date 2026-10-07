@@ -210,7 +210,7 @@ window.paginateBook = async function () {
       const page=leaves[n], prev=leaves[n-1];
       const wc=wordCount(page);
       const substantiveVisual=page.querySelector('img:not([hidden]),svg:not(.engraving-line),figure:not(.anchor-real-thumb)');
-      if(wc>58 || substantiveVisual || page.querySelector('.page-head')) continue;
+      if(page.id || page.matches('.part-page') || wc>58 || substantiveVisual || page.querySelector('.page-head')) continue;
       const body=page.querySelector('article,.leaf-fragment,.archival-find,.document-anchor') || page;
       const prevBody=prev.querySelector('article,.leaf-fragment,.archival-find,.document-anchor') || prev;
       if(!body||!prevBody) continue;
@@ -231,3 +231,4 @@ window.paginateBook = async function () {
   }
   [...book.querySelectorAll(':scope > .page')].forEach((page,i)=>{page.style.removeProperty('display');page.dataset.folio=String(i+1);if(page.classList.contains('book-leaf')){const folio=document.createElement('span');folio.className='leaf-folio';folio.setAttribute('aria-hidden','true');folio.textContent=String(i+1);page.append(folio)}});
 };
+
