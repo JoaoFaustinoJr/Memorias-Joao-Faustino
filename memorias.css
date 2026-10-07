@@ -1705,3 +1705,14 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .archive-image-missing .archive-fallback-note{display:block}
 .archive-image-missing{min-height:0!important;background:transparent!important}
 .archive-image-missing figcaption{margin-top:8px}
+
+
+/* v3.70 — ritmo editorial das continuações curtas */
+.uniform-book .book-leaf.short-continuation{display:flex!important;flex-direction:column}
+.uniform-book .book-leaf.short-continuation>.leaf-running-title{flex:0 0 auto}
+.uniform-book .book-leaf.short-continuation>article,
+.uniform-book .book-leaf.short-continuation>.leaf-fragment{flex:0 0 auto}
+.uniform-book .book-leaf.short-continuation .editorial-close-rule{margin-top:28px!important;opacity:.72}
+@media(max-width:600px){
+ .uniform-book .book-leaf.short-continuation .leaf-running-title{margin-bottom:18px}
+}
