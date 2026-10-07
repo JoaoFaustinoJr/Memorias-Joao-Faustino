@@ -1670,3 +1670,13 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 }
 /* fotos contextuais não devem competir com a narrativa */
 .real-context-photo{max-width:100%}
+
+/* 3.27 — curadoria fotográfica: menos repetição, mais especificidade */
+.serra-focus-image{width:100%!important;height:38vh!important;object-fit:cover!important;object-position:50% 35%!important;filter:saturate(1.08) contrast(1.05)!important}
+.natural-photo-triptych{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:9px 0 12px}
+.natural-photo-triptych figure{margin:0;min-width:0;background:#eee5ce;border:1px solid rgba(145,113,59,.25);overflow:hidden}
+.natural-photo-triptych img{width:100%;height:92px;object-fit:cover;display:block}
+.natural-photo-triptych figcaption{font:8px/1.25 Arial,sans-serif;padding:5px;color:#4d5b60}
+.nature-anchor .anchor-real-thumb{width:104px!important}
+.nature-anchor .anchor-real-thumb img{width:104px!important;height:78px!important;object-fit:cover!important}
+@media(max-width:600px){.natural-photo-triptych img{height:76px}.serra-focus-image{height:34vh!important}}
