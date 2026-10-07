@@ -1643,3 +1643,30 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 .author-portrait-page .author-portrait figcaption{text-align:center!important;font:12px/1.45 Georgia,serif!important;color:#665849;padding-top:10px!important}
 .author-portrait-page .author-portrait small{font:9px/1.4 system-ui,sans-serif;color:#857663}
 @media(max-height:600px){.author-portrait-page .author-portrait img{max-height:37vh!important}.author-portrait-page .page-head{padding-bottom:4px!important;margin-bottom:8px!important}}
+
+/* 3.68 — curadoria fotográfica: hierarquia, recorte e respiro */
+.serra-focus-photo{
+  margin:14px 0 20px!important;
+  overflow:hidden!important;
+  background:#e9e0ca!important;
+}
+.serra-focus-photo a{
+  display:block!important;
+  height:clamp(210px,42vh,430px)!important;
+  overflow:hidden!important;
+}
+.serra-focus-photo img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center 42%!important;
+  transform:scale(1.16)!important;
+  filter:saturate(1.08) contrast(1.035)!important;
+}
+.serra-focus-photo figcaption{
+  position:relative!important;
+  padding:8px 10px!important;
+  background:#f6efdf!important;
+}
+/* fotos contextuais não devem competir com a narrativa */
+.real-context-photo{max-width:100%}
