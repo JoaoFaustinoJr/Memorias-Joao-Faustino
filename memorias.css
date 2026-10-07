@@ -1781,3 +1781,12 @@ html.paged-reader .book>.book-leaf.page-active{margin-left:auto!important;margin
  .era-strip{grid-template-columns:58px minmax(0,1fr)!important;width:100%!important}
  .era-strip>b,.era-strip>span{font-size:13px!important;line-height:1.3!important;overflow-wrap:normal!important;word-break:normal!important;hyphens:none!important}
 }
+
+/* v3.70 — placas escolares como documentos integrais */
+.school-document-page .school-plaque{margin:14px auto;break-inside:avoid;max-width:100%;width:100%}
+.school-document-page .school-plaque a{display:block}
+.school-document-page .school-plaque img{display:block;position:static!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:46vh!important;object-fit:contain!important;margin:0 auto;filter:none!important;opacity:1!important}
+.school-document-page .school-plaque figcaption{font:11px/1.45 Georgia,serif!important;padding-top:9px!important;text-align:left!important;color:#665849}
+.school-document-page .school-plaque small{font:9px/1.35 system-ui,sans-serif;color:#80715f}
+.school-document-page .school-document-note{font:12px/1.5 Georgia,serif;margin:12px 0 0;text-indent:0}
+@media(max-height:600px){.school-document-page .school-plaque img{max-height:34vh!important}.school-document-page .page-head{margin-bottom:10px!important;padding-bottom:6px!important}.school-document-page .page-head h2{font-size:23px!important}}
