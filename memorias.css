@@ -1742,3 +1742,19 @@ html.paged-reader .book>.book-leaf.page-active{margin-left:auto!important;margin
 @media print{
  html.paged-reader .book>.book-leaf{display:block!important}
 }
+
+
+/* v3.73 — curadoria de falhas fotográficas e ritmo móvel */
+.archive-image-missing{display:block!important;height:auto!important;min-height:0!important;padding:0!important;border:0!important;background:transparent!important}
+.archive-image-missing>a:empty{display:none!important}
+.archive-image-missing figcaption{margin:0!important;padding:8px 0 0!important;border-top:1px solid rgba(151,119,63,.22)}
+.uniform-book .book-leaf figure:has(>a:empty){height:auto!important;min-height:0!important}
+@media(max-width:700px){
+ .uniform-book .book>.book-leaf:not(.cover):not(.part-page){padding:28px 28px 42px!important}
+ .uniform-book .book-leaf figure{margin-top:10px!important;margin-bottom:12px!important}
+ .uniform-book .book-leaf figcaption{font-size:8.5px!important;line-height:1.35!important}
+ .uniform-book .book-leaf .context-document-grid{gap:10px!important}
+ .uniform-book .book-leaf .context-document-grid figure{margin:0!important}
+ .uniform-book .book-leaf .document-anchor,
+ .uniform-book .book-leaf .archival-find{margin-top:12px!important;margin-bottom:12px!important}
+}
