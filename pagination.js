@@ -124,7 +124,7 @@ window.paginateBook = async function () {
       let copy = node.cloneNode(true), parent = container(path);
       if(node.nodeType===Node.ELEMENT_NODE && node.matches('p'))copy.dataset.paragraphKey=paragraphKey(node);
       parent.append(copy); if (fits()) {if(node.nodeType===Node.ELEMENT_NODE && node.matches('span') && node.parentElement?.matches('.inline-anchor,.nature-anchor'))startedNotes.add(node.parentElement);return;} copy.remove();
-      const atomic = node.nodeType !== Node.ELEMENT_NODE || node.matches('figure,img,svg,audio,header,.soundscape-cue,.page-head,.inline-anchor,.nature-anchor');
+      const atomic = node.nodeType !== Node.ELEMENT_NODE || node.matches('figure,img,svg,audio,header,.soundscape-cue,.page-head,.inline-anchor,.nature-anchor,.era-strip,.context-document-grid');
       if (atomic && hasContent()) {next(); parent = container(path); copy = node.cloneNode(true); parent.append(copy); if (fits()) return; copy.remove();}
       if (node.nodeType === Node.ELEMENT_NODE && node.matches('p,li,blockquote,figcaption') && node.textContent.trim()) {textPieces(node,path); return;}
       if (node.childNodes.length && !node.matches('svg,img,audio')) {
