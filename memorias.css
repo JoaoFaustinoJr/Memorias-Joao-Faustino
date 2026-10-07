@@ -1716,3 +1716,13 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
 @media(max-width:600px){
  .uniform-book .book-leaf.short-continuation .leaf-running-title{margin-bottom:18px}
 }
+
+
+/* v3.71 — compêndio: fecho inseparável e sem folha órfã */
+.contents-page .contents-tail{break-inside:avoid;page-break-inside:avoid;margin-top:14px!important}
+.contents-page .bookmark-jump{break-inside:avoid;page-break-inside:avoid}
+.contents-page .contents-tail + .bookmark-jump{margin-top:12px!important}
+@media(max-width:600px){
+ .contents-page .contents-tail{font-size:11px!important;line-height:1.45!important;margin-top:10px!important}
+ .contents-page .bookmark-jump{margin-top:9px!important}
+}
