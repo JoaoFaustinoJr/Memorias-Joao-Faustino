@@ -1726,3 +1726,19 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
  .contents-page .contents-tail{font-size:11px!important;line-height:1.45!important;margin-top:10px!important}
  .contents-page .bookmark-jump{margin-top:9px!important}
 }
+
+
+/* v3.72 — restaura o leitor folheado após a repaginação dinâmica */
+html.paged-reader body{overflow-x:hidden}
+html.paged-reader .book>.book-leaf{display:none!important}
+html.paged-reader .book>.book-leaf.page-active,
+html.paged-reader .book>.book-leaf.page-turning{display:block!important}
+html.paged-reader .book>.book-leaf.page-active{margin-left:auto!important;margin-right:auto!important}
+@media(max-width:700px){
+ html.paged-reader .reader-shell{overflow:hidden!important}
+ html.paged-reader .book{display:block!important;overflow:visible!important}
+ html.paged-reader .book>.book-leaf{margin-top:0!important;margin-bottom:0!important}
+}
+@media print{
+ html.paged-reader .book>.book-leaf{display:block!important}
+}
