@@ -1793,7 +1793,7 @@ html.paged-reader .book>.book-leaf.page-active{margin-left:auto!important;margin
 
 
 /* 3.73 — integração editorial dos novos relatos */
-.curated-photo-text .page-head h2{max-width:26ch;text-wrap:balance}
+.uniform-book .book-leaf.curated-photo-text .page-head h2{max-width:26ch;text-wrap:balance}
 .curated-photo-text article>p{orphans:3;widows:3}
 .curated-photo-text .source-sign{font:10px/1.4 Georgia,serif!important;text-indent:0!important;color:#796c5d;margin:12px 0 0!important;padding-top:7px;border-top:1px solid #c8b894}
 .curated-photo-text .letter-address{font:italic 13px/1.55 Georgia,serif;text-indent:0;margin-bottom:18px}
@@ -1803,7 +1803,7 @@ html.paged-reader .book>.book-leaf.page-active{margin-left:auto!important;margin
 .curated-related{display:inline-block;font:10px/1.4 system-ui,sans-serif;margin-top:7px;color:#7c3431;text-decoration:none;border-bottom:1px solid #c6b592}
 .uniform-book .book-leaf .curated-document{display:block;margin:15px auto!important;width:100%!important;max-width:520px;break-inside:avoid;background:transparent!important;overflow:hidden}
 .uniform-book .book-leaf .curated-document>a{display:block}
-.uniform-book .book-leaf .curated-document img{display:block;position:static!important;transform:none!important;opacity:1!important;width:100%!important;height:min(240px,30vh)!important;max-height:min(240px,30vh)!important;object-fit:contain!important;object-position:center!important;margin:0 auto;filter:none!important}
+.uniform-book .book-leaf figure.curated-document img{display:block;position:static!important;transform:none!important;opacity:1!important;width:100%!important;height:min(240px,30vh)!important;max-height:min(240px,30vh)!important;object-fit:contain!important;object-position:center!important;margin:0 auto;filter:none!important}
 .uniform-book .book-leaf .curated-document figcaption{position:static!important;background:transparent!important;font:10px/1.4 Georgia,serif!important;padding:7px 0 0!important;color:#74634e!important;text-align:left!important;opacity:1!important;text-indent:0}
 .curated-document figcaption a{color:inherit}
-@media(max-width:600px){.uniform-book .book-leaf .curated-anchor{padding:8px 10px!important;margin:10px 0!important}.uniform-book .book-leaf .curated-anchor p{font-size:11px!important}.uniform-book .book-leaf .curated-document img{height:min(185px,26vh)!important;max-height:min(185px,26vh)!important}.curated-photo-text .page-head h2{font-size:clamp(24px,6.3vw,31px)!important}}
+@media(max-width:600px){.uniform-book .book-leaf .curated-anchor{padding:8px 10px!important;margin:10px 0!important}.uniform-book .book-leaf .curated-anchor p{font-size:11px!important}.uniform-book .book-leaf figure.curated-document img{height:min(185px,26vh)!important;max-height:min(185px,26vh)!important}.curated-photo-text .page-head h2{font-size:clamp(24px,6.3vw,31px)!important}}
