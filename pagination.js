@@ -163,6 +163,17 @@ window.paginateBook = async function () {
       }
       // Remover uma continuação gerada só para decoração ou áudio.
       if(!hasContent()){tail.remove();leaf=previous;}
+      // Uma continuação com apenas fonte/legenda curta não merece uma folha inteira.
+      // Move a nota para a folha anterior quando houver espaço; caso contrário,
+      // mantém a continuação sem inflar artificialmente a página.
+      else if(words(tail)<24 && !tail.querySelector('img,svg,figure,.page-head')) {
+        const tailItems=[...tail.children].filter(e=>!e.matches('.leaf-running-title,audio,.leaf-folio'));
+        const moved=[];
+        for(const item of tailItems){const clone=item.cloneNode(true);previous.append(clone);moved.push(clone);}
+        const prevFits=previous.scrollHeight<=previous.clientHeight+2;
+        if(prevFits){tail.remove();leaf=previous;}
+        else moved.forEach(e=>e.remove());
+      }
     }
     // Reconectar partes do mesmo parágrafo após a redistribuição.
     for(const page of book.querySelectorAll(`[data-page-source="${sourceIndex}"]`)) {
