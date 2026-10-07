@@ -1698,3 +1698,10 @@ blockquote,.pullquote{border-left:2px solid rgba(169,132,66,.72)}
  .landscape-anchor .anchor-real-thumb{float:right;margin:0 0 6px 10px!important}
  .context-doc-page .verified-archive-photo,.context-1910 .context-niche{max-width:100%!important}
 }
+
+
+/* v3.69 — falha elegante para documentos externos */
+.archive-fallback-note{display:none;font:italic 10px/1.4 Georgia,serif;color:#766a59;text-align:center;padding:18px 10px;border:1px solid rgba(151,119,63,.2);background:rgba(239,229,207,.42)}
+.archive-image-missing .archive-fallback-note{display:block}
+.archive-image-missing{min-height:0!important;background:transparent!important}
+.archive-image-missing figcaption{margin-top:8px}
