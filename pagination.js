@@ -115,7 +115,9 @@ window.paginateBook = async function () {
       if(node.nodeType===Node.ELEMENT_NODE && node.matches('span,b,h2,h3,h4,.running-head')) {
         const following=node.nextElementSibling;
         if(following && hasContent()) {
-          const probe=node.cloneNode(true), nextProbe=following.cloneNode(true);
+          const probe=node.cloneNode(true);
+          let nextProbe=following.cloneNode(true);
+          if(following.matches('ol,ul') && following.firstElementChild){nextProbe=following.cloneNode(false);nextProbe.append(following.firstElementChild.cloneNode(true));}
           if(nextProbe.textContent.length>150 && nextProbe.matches('p')) nextProbe.textContent=nextProbe.textContent.slice(0,150);
           container(path).append(probe,nextProbe);const okay=fits();probe.remove();nextProbe.remove();
           if(!okay)next();
@@ -124,7 +126,7 @@ window.paginateBook = async function () {
       let copy = node.cloneNode(true), parent = container(path);
       if(node.nodeType===Node.ELEMENT_NODE && node.matches('p'))copy.dataset.paragraphKey=paragraphKey(node);
       parent.append(copy); if (fits()) {if(node.nodeType===Node.ELEMENT_NODE && node.matches('span') && node.parentElement?.matches('.inline-anchor,.nature-anchor'))startedNotes.add(node.parentElement);return;} copy.remove();
-      const atomic = node.nodeType !== Node.ELEMENT_NODE || node.matches('figure,img,svg,audio,header,.soundscape-cue,.page-head,.inline-anchor,.nature-anchor,.era-strip,.context-document-grid');
+      const atomic = node.nodeType !== Node.ELEMENT_NODE || node.matches('li,figure,img,svg,audio,header,.soundscape-cue,.page-head,.inline-anchor,.nature-anchor,.era-strip,.context-document-grid');
       if (atomic && hasContent()) {next(); parent = container(path); copy = node.cloneNode(true); parent.append(copy); if (fits()) return; copy.remove();}
       if (node.nodeType === Node.ELEMENT_NODE && node.matches('p,li,blockquote,figcaption') && node.textContent.trim()) {textPieces(node,path); return;}
       if (node.childNodes.length && !node.matches('svg,img,audio')) {
@@ -231,4 +233,5 @@ window.paginateBook = async function () {
   }
   [...book.querySelectorAll(':scope > .page')].forEach((page,i)=>{page.style.removeProperty('display');page.dataset.folio=String(i+1);if(page.classList.contains('book-leaf')){const folio=document.createElement('span');folio.className='leaf-folio';folio.setAttribute('aria-hidden','true');folio.textContent=String(i+1);page.append(folio)}});
 };
+
 
