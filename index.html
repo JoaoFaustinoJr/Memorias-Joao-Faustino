@@ -14,7 +14,7 @@
 <body>
 <nav class="toolbar">
   <a href="#capa">Capa</a><a href="#prefacio">Nota</a><a href="#sumario">Compêndio</a><a href="#texto">Texto</a><a href="conteudo-integral.html">Genealogia</a>
-  <span>Projeto editorial · versão 3.86</span>
+  <span>Projeto editorial · versão 3.87</span>
 <a class="archive-link" href="conteudo-integral.html">Conteúdo integral</a></nav>
 
 <div class="reader-shell"><main class="book">
@@ -456,8 +456,25 @@ function narratePage(p,btn){
  const clone=p.cloneNode(true);
  clone.querySelectorAll('button,audio,script,style,.page-edge,.page-bookmark,.leaf-folio,.leaf-running-title,.anchor-continuation-label,.anchor-source,.crossing-sources,.soundscape-cue,figcaption').forEach(e=>e.remove());
  const special=p.id==='prologo-otelo';
- const segments=special?[{text:'Prólogo.',pause:1050},{text:'Uma voz à porteira.',pause:1500},{text:'Ô de casa!',pause:0}]:[{text:narrationWords(clone.innerText||clone.textContent||''),pause:0}];
- if(!segments.some(x=>x.text))return;
+ const segments=[];
+ function add(text,pause=0){text=narrationWords(text||'');if(text)segments.push({text,pause})}
+ if(special){
+  add('Prólogo.',1050);add('Uma voz à porteira.',1500);add('Ô de casa!');
+ }else{
+  const heading=clone.querySelector('.page-head,.part-no');
+  const category=clone.querySelector('.page-head > span,.part-no');
+  const title=clone.querySelector('h1,h2');
+  const subtitle=clone.querySelector('.page-head > p');
+  if(category)add(category.textContent,850);
+  if(title)add(title.textContent,1050);
+  if(subtitle)add(subtitle.textContent,650);
+  [category,title,subtitle].forEach(el=>{if(el)el.remove()});
+  const remaining=clone.innerText||clone.textContent||'';
+  const paragraphs=remaining.split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
+  if(paragraphs.length>1){paragraphs.forEach((paragraph,i)=>add(paragraph,i<paragraphs.length-1?450:0))}
+  else add(remaining);
+ }
+ if(!segments.length)return;
  const token=++narrationToken;
  narrating=true;btn.classList.add('speaking');btn.textContent='■ Parar narração';
  function next(i){
