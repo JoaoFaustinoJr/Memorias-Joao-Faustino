@@ -14,7 +14,7 @@
 <body>
 <nav class="toolbar">
   <a href="#capa">Capa</a><a href="#prefacio">Nota</a><a href="#sumario">Compêndio</a><a href="#texto">Texto</a><a href="conteudo-integral.html">Genealogia</a>
-  <span>Projeto editorial · versão 3.85</span>
+  <span>Projeto editorial · versão 3.86</span>
 <a class="archive-link" href="conteudo-integral.html">Conteúdo integral</a></nav>
 
 <div class="reader-shell"><main class="book">
@@ -447,8 +447,30 @@ await window.paginateBook();
 const pages=Array.from(document.querySelectorAll('.book > .page'));
 const synth=('speechSynthesis' in window)?window.speechSynthesis:null;
 let narrating=false;
-function stopNarration(){if(synth)synth.cancel();narrating=false;document.querySelectorAll('.narration-btn').forEach(b=>{b.classList.remove('speaking');b.textContent='▶ Ouvir esta página'})}
-function narratePage(p,btn){if(!synth||!p)return;if(narrating){stopNarration();return}const clone=p.cloneNode(true);clone.querySelectorAll('button,audio,script,style,.page-edge,.page-bookmark,.leaf-folio,.leaf-running-title,.anchor-continuation-label,.anchor-source,.crossing-sources,.soundscape-cue,figcaption').forEach(e=>e.remove());const txt=clone.innerText.replace(/\s+/g,' ').trim();if(!txt)return;const u=new SpeechSynthesisUtterance(txt);u.lang='pt-BR';u.rate=.86;u.pitch=.96;u.onend=u.onerror=()=>stopNarration();narrating=true;btn.classList.add('speaking');btn.textContent='■ Parar narração';synth.speak(u)}
+let narrationToken=0;
+function stopNarration(){narrationToken++;if(synth)synth.cancel();narrating=false;document.querySelectorAll('.narration-btn').forEach(b=>{b.classList.remove('speaking');b.textContent='▶ Ouvir esta página'})}
+function narrationWords(t){return t.replace(/\b1909\b/g,'mil novecentos e nove').replace(/\b1910\b/g,'mil novecentos e dez').replace(/\s+/g,' ').trim()}
+function narratePage(p,btn){
+ if(!synth||!p)return;
+ if(narrating){stopNarration();return}
+ const clone=p.cloneNode(true);
+ clone.querySelectorAll('button,audio,script,style,.page-edge,.page-bookmark,.leaf-folio,.leaf-running-title,.anchor-continuation-label,.anchor-source,.crossing-sources,.soundscape-cue,figcaption').forEach(e=>e.remove());
+ const special=p.id==='prologo-otelo';
+ const segments=special?[{text:'Prólogo.',pause:1050},{text:'Uma voz à porteira.',pause:1500},{text:'Ô de casa!',pause:0}]:[{text:narrationWords(clone.innerText||clone.textContent||''),pause:0}];
+ if(!segments.some(x=>x.text))return;
+ const token=++narrationToken;
+ narrating=true;btn.classList.add('speaking');btn.textContent='■ Parar narração';
+ function next(i){
+  if(token!==narrationToken)return;
+  if(i>=segments.length){stopNarration();return}
+  const seg=segments[i],u=new SpeechSynthesisUtterance(seg.text);
+  u.lang='pt-BR';u.rate=special?.78:.86;u.pitch=special?.91:.96;
+  u.onend=()=>{if(token!==narrationToken)return;if(seg.pause){setTimeout(()=>{if(token===narrationToken)next(i+1)},seg.pause)}else next(i+1)};
+  u.onerror=()=>{if(token===narrationToken)stopNarration()};
+  synth.speak(u)
+ }
+ next(0)
+}
 const jump=document.querySelector('.bookmark-jump');
 let index=0,startX=null,startY=null,startT=0;
 function label(p,n){const e=p.querySelector('.page-head h2,.part-page h2,.title-page h2,.cover h1');return e?e.textContent.replace(/\s+/g,' ').trim():(p.dataset.pageTitle||'Página '+(n+1))}
