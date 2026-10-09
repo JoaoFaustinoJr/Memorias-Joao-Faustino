@@ -14,7 +14,7 @@
 <body>
 <nav class="toolbar">
   <a href="#capa">Capa</a><a href="#prefacio">Nota</a><a href="#sumario">Compêndio</a><a href="#texto">Texto</a><a href="#mundo-memorias">Âncoras e documentos</a>
-  <span>Projeto editorial · versão 4.21</span>
+  <span>Projeto editorial · versão 4.22</span>
 <a class="archive-link" href="conteudo-integral.html">Conteúdo integral</a></nav>
 
 <div class="reader-shell"><main class="book">
@@ -580,6 +580,19 @@ const pages=Array.from(document.querySelectorAll('.book > .page'));
 const synth=('speechSynthesis' in window)?window.speechSynthesis:null;
 let narrating=false;
 let narrationToken=0;
+// Prioriza uma voz masculina brasileira quando o dispositivo a disponibiliza.
+// A API nativa não informa gênero nem idade: esta é uma preferência heurística.
+function selectNarratorVoice(){
+ if(!synth)return null;
+ const voices=synth.getVoices().filter(v=>/^pt[-_]BR$/i.test(v.lang||''));
+ if(!voices.length)return null;
+ const male=/\b(male|masculin[oa]|homem|daniel|antonio|antônio|ricardo|felipe|paulo|carlos|jo[aã]o|marcelo)\b/i;
+ const female=/\b(female|feminin[oa]|mulher|maria|luciana|francisca|helena|fernanda|vitoria|vitória)\b/i;
+ return voices.slice().sort((a,b)=>{
+  const score=v=>(male.test(v.name)?10:0)-(female.test(v.name)?10:0)+(v.localService?1:0);
+  return score(b)-score(a)
+ })[0];
+}
 function stopNarration(){narrationToken++;if(synth)synth.cancel();narrating=false;document.querySelectorAll('.narration-btn').forEach(b=>{b.classList.remove('speaking');b.textContent='▶ Ouvir esta página'})}
 function narrationWords(t){return t.replace(/\b1909\b/g,'mil novecentos e nove').replace(/\b1910\b/g,'mil novecentos e dez').replace(/\s+/g,' ').trim()}
 function narratePage(p,btn){
@@ -613,7 +626,7 @@ function narratePage(p,btn){
   if(token!==narrationToken)return;
   if(i>=segments.length){stopNarration();return}
   const seg=segments[i],u=new SpeechSynthesisUtterance(seg.text);
-  u.lang='pt-BR';u.rate=1.5;u.pitch=special?.91:.96;
+  u.lang='pt-BR';const narratorVoice=selectNarratorVoice();if(narratorVoice)u.voice=narratorVoice;u.rate=1.5;u.pitch=.82;
   u.onend=()=>{if(token!==narrationToken)return;if(seg.pause){setTimeout(()=>{if(token===narrationToken)next(i+1)},seg.pause)}else next(i+1)};
   u.onerror=()=>{if(token===narrationToken)stopNarration()};
   synth.speak(u)
