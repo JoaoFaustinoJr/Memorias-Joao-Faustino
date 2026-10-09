@@ -14,7 +14,7 @@
 <body>
 <nav class="toolbar">
   <a href="#capa">Capa</a><a href="#prefacio">Nota</a><a href="#sumario">Compêndio</a><a href="#texto">Texto</a><a href="#mundo-memorias">Âncoras e documentos</a>
-  <span>Projeto editorial · versão 4.20</span>
+  <span>Projeto editorial · versão 4.21</span>
 <a class="archive-link" href="conteudo-integral.html">Conteúdo integral</a></nav>
 
 <div class="reader-shell"><main class="book">
@@ -591,19 +591,19 @@ function narratePage(p,btn){
  const segments=[];
  function add(text,pause=0){text=narrationWords(text||'');if(text)segments.push({text,pause})}
  if(special){
-  add('Prólogo.',1050);add('Uma voz à porteira.',1500);add('Ô de casa!');
+  add('Prólogo.',450);add('Uma voz à porteira.',650);add('Ô de casa!');
  }else{
   const heading=clone.querySelector('.page-head,.part-no');
   const category=clone.querySelector('.page-head > span,.part-no');
   const title=clone.querySelector('h1,h2');
   const subtitle=clone.querySelector('.page-head > p');
-  if(category)add(category.textContent,850);
-  if(title)add(title.textContent,1050);
-  if(subtitle)add(subtitle.textContent,650);
+  if(category)add(category.textContent,350);
+  if(title)add(title.textContent,500);
+  if(subtitle)add(subtitle.textContent,300);
   [category,title,subtitle].forEach(el=>{if(el)el.remove()});
   const remaining=clone.innerText||clone.textContent||'';
   const paragraphs=remaining.split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
-  if(paragraphs.length>1){paragraphs.forEach((paragraph,i)=>add(paragraph,i<paragraphs.length-1?450:0))}
+  if(paragraphs.length>1){paragraphs.forEach((paragraph,i)=>add(paragraph,i<paragraphs.length-1?250:0))}
   else add(remaining);
  }
  if(!segments.length)return;
@@ -613,7 +613,7 @@ function narratePage(p,btn){
   if(token!==narrationToken)return;
   if(i>=segments.length){stopNarration();return}
   const seg=segments[i],u=new SpeechSynthesisUtterance(seg.text);
-  u.lang='pt-BR';u.rate=special?.78:.86;u.pitch=special?.91:.96;
+  u.lang='pt-BR';u.rate=1.5;u.pitch=special?.91:.96;
   u.onend=()=>{if(token!==narrationToken)return;if(seg.pause){setTimeout(()=>{if(token===narrationToken)next(i+1)},seg.pause)}else next(i+1)};
   u.onerror=()=>{if(token===narrationToken)stopNarration()};
   synth.speak(u)
